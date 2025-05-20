@@ -1,0 +1,705 @@
+/* =========================================
+  HOME PAGE SPECIFIC STYLES
+  Avoids any navigation-related styling
+========================================= */
+
+/* General home page styles */
+.home-page {
+  /* No padding-top here - navigation.css will handle this */
+  color: #333;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 80vh;
+  min-height: 600px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../assets/Homepage.png');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  margin-top: 0; /* Remove any margin that might affect the navigation */
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.hero.fade-in {
+  opacity: 1;
+}
+
+.hero-inner {
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.btn-sell {
+  display: inline-block;
+  background-color: var(--accent, #ff6f61);
+  color: white;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-sell:hover {
+  background-color: #e85a4f;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* How It Works Section */
+.how-it-works {
+  padding: 80px 0; /* Keep original padding */
+  background-color: #8c2d38; /* Rich burgundy */
+  /* Alternative options:
+     #7d2935 - deeper burgundy
+     #9a3845 - slightly brighter burgundy
+     #6d2630 - darker burgundy
+     #a84955 - lighter burgundy
+  */
+  color: white; /* Change text color to white for better contrast */
+}
+
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 15px;
+}
+
+.section-header p {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.steps-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.step {
+  flex: 1;
+  min-width: 300px;
+  max-width: 350px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: flex-start;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.step.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.step:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.step-number {
+  background-color: var(--accent, #ff6f61);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-right: 20px;
+  flex-shrink: 0;
+}
+
+.step-content h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.step-content p {
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Button container for How It Works section */
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+/* Style for the How It Works button */
+.how-it-works-btn {
+  background-color: #8c2d38; /* Burgundy to match the Our Mission section */
+  color: white;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.how-it-works-btn:hover {
+  background-color: #7d2935; /* Slightly darker burgundy on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Background wrapper for Our Mission and Featured Brands sections */
+.background-wrapper {
+  background-image: url('../assets/Brand-grid_image_2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+}
+
+.background-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.85);
+  z-index: 1;
+}
+
+/* Why Choose Us Section (Our Mission) */
+.why-choose-us {
+  padding: 80px 0;
+  background-image: none;
+  background-color: transparent;
+  position: relative;
+  z-index: 2;
+}
+
+/* Featured Brands Section */
+.featured-brands {
+  padding: 80px 0;
+  background-image: none;
+  background-color: transparent;
+  position: relative;
+  z-index: 2;
+}
+
+/* Remove the individual ::before overlays */
+.why-choose-us::before, .featured-brands::before {
+  display: none;
+}
+
+/* Ensure content appears above the overlay */
+.why-choose-us .section-container,
+.featured-brands .section-container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Brand Cards - Box Style */
+.brands-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Reduced minimum width */
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.brand-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.brand-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.brand-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.brand-color-block {
+  height: 50%; /* Take up half the card height */
+  width: 100%;
+  margin-bottom: 15px; /* Reduced margin */
+  border-radius: 6px;
+}
+
+/* Brand-specific colors */
+.brand-card.accu-chek .brand-color-block {
+  background-color: #e30613; /* Accu-Chek red */
+}
+
+.brand-card.onetouch .brand-color-block {
+  background-color: #0057b8; /* OneTouch blue */
+}
+
+.brand-card.contour .brand-color-block {
+  background-color: #00a651; /* Contour green */
+}
+
+.brand-card.freestyle .brand-color-block {
+  background-color: #0073cf; /* FreeStyle blue */
+}
+
+.brand-card.true-metrix .brand-color-block {
+  background-color: #6a2c91; /* True Metrix purple */
+}
+
+.brand-card.dexcom .brand-color-block {
+  background-color: #00a0df; /* Dexcom blue */
+}
+
+.brand-card h3 {
+  font-size: 1.2rem; /* Slightly smaller font */
+  font-weight: 600;
+  margin-bottom: 8px; /* Reduced margin */
+  color: #333;
+}
+
+.brand-card p {
+  color: #666;
+  font-size: 0.9rem; /* Smaller font for descriptions */
+  line-height: 1.4;
+}
+
+/* Make feature cards stand out against the background */
+.why-choose-us .feature-card {
+  background-color: white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.feature-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.feature-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon {
+  font-size: 2rem;
+  color: var(--accent, #ff6f61);
+  margin-bottom: 20px;
+}
+
+.feature-card h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.feature-card p {
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Testimonials Section */
+/* Alternative Testimonials Design */
+.testimonials {
+  padding: 80px 0;
+  background-color: #f5e6e8; /* Light burgundy/wine color */
+}
+
+.testimonials .section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Large single testimonial display */
+.testimonials-display {
+  margin: 60px auto 40px;
+  max-width: 900px;
+  text-align: center;
+  position: relative;
+}
+
+.testimonial-quote {
+  font-size: 1.8rem;
+  line-height: 1.5;
+  color: #333;
+  font-style: italic;
+  margin-bottom: 30px;
+  position: relative;
+  padding: 0 40px;
+}
+
+.testimonial-quote::before,
+.testimonial-quote::after {
+  content: '"';
+  font-size: 60px;
+  color: rgba(140, 45, 56, 0.2);
+  position: absolute;
+  font-family: Georgia, serif;
+  line-height: 0;
+}
+
+.testimonial-quote::before {
+  left: 0;
+  top: 20px;
+}
+
+.testimonial-quote::after {
+  content: '"';
+  right: 0;
+  bottom: 0;
+}
+
+.testimonial-attribution {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.testimonial-location {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 5px;
+}
+
+/* Testimonial navigation */
+.testimonial-nav {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  gap: 15px;
+}
+
+.testimonial-nav-item {
+  padding: 15px 20px;
+  background-color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 180px;
+}
+
+.testimonial-nav-item:hover {
+  opacity: 0.8;
+  transform: translateY(-3px);
+}
+
+.testimonial-nav-item.active {
+  opacity: 1;
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.nav-item-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 3px;
+}
+
+.nav-item-location {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+/* CTA Section */
+.cta-section {
+  padding: 80px 0;
+  background-color: var(--accent, #ff6f61);
+  color: white;
+  text-align: center;
+}
+
+.cta-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cta-content h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.cta-content p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  opacity: 0.9;
+}
+
+.cta-content .btn-primary {
+  background-color: white;
+  color: var(--accent, #ff6f61);
+}
+
+.cta-content .btn-primary:hover {
+  background-color: #f0f0f0;
+}
+
+/* Fade-in animation for scroll elements */
+.fade-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .hero h1 {
+    font-size: 2.8rem;
+  }
+  
+  .hero p {
+    font-size: 1.2rem;
+  }
+  
+  .section-header h2 {
+    font-size: 2.2rem;
+  }
+  
+  .steps-container, .brands-grid, .features-grid {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 500px;
+  }
+  
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+  
+  .hero p {
+    font-size: 1rem;
+  }
+  
+  .section-header h2 {
+    font-size: 1.8rem;
+  }
+  
+  .section-header p {
+    font-size: 1rem;
+  }
+  
+  .step, .brand-card, .feature-card {
+    padding: 20px;
+  }
+  
+  .cta-content h2 {
+    font-size: 2rem;
+  }
+  
+  .cta-content p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero {
+    min-height: 400px;
+  }
+  
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+  
+  .btn-sell {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+  
+  .how-it-works, .featured-brands, .why-choose-us, .testimonials, .cta-section {
+    padding: 50px 0;
+  }
+  
+  .section-header {
+    margin-bottom: 30px;
+  }
+  
+  .testimonial {
+    padding: 20px;
+  }
+}
+
+/* Change mission statement text color to black */
+.why-choose-us .section-header h2,
+.why-choose-us .section-header p {
+  color: #000 !important;
+}
+
+/* Change "We Buy These Brands" section header text to black */
+.featured-brands .section-header h2,
+.featured-brands .section-header p {
+  color: #000 !important;
+}
+
+/* Change "What Our Customers Say" section header text to black */
+.testimonials .section-header h2,
+.testimonials .section-header p {
+  color: #000 !important;
+}
+
+/* Add these styles to your home.css file */
+
+/* Update the How It Works section (now Our Mission) */
+.how-it-works .section-header h2,
+.how-it-works .section-header p {
+  color: white; /* Keep white text on burgundy background */
+}
+
+.how-it-works .feature-card {
+  background-color: white;
+  color: #333;
+}
+
+.how-it-works .feature-card h3 {
+  color: #333;
+}
+
+.how-it-works .feature-card p {
+  color: #666;
+}
+
+/* Update the Our Mission section (now How It Works) */
+.why-choose-us .section-header h2,
+.why-choose-us .section-header p {
+  color: #000 !important; /* Black text on the light background */
+}
+
+.why-choose-us .step {
+  background-color: white;
+}
+
+.why-choose-us .step-content h3 {
+  color: #333;
+}
+
+.why-choose-us .step-content p {
+  color: #666;
+}
+
+/* Mission Statement Styling */
+.mission-statement {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mission-statement p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.learn-more-btn {
+  display: inline-block;
+  background-color: white;
+  color: #8c2d38;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.learn-more-btn:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}

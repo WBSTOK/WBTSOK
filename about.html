@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us – We Buy Test Strips Oklahoma</title>
+  <!-- For all pages -->
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/footer-styles.css"> <!-- Add this line to all pages -->
+  <link rel="stylesheet" href="css/faq.css">
+  <link rel="stylesheet" href="css/navigation.css">
+  <!-- Page-specific CSS -->
+  <link rel="stylesheet" href="css/about.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    /* Enhanced styles for the existing About Us page */
+    .about-section {
+      width: 100%;
+      padding: 40px 10%;
+      box-sizing: border-box;
+      margin-top: 60px; /* Added space between nav and content */
+    }
+    
+    .about-section h1 {
+      color: #8c2d38;
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      text-align: center;
+      position: relative;
+      padding-bottom: 15px;
+    }
+    
+    .about-section h1:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background-color: #8c2d38;
+    }
+    
+    .about-section h2 {
+      color: #8c2d38;
+      font-size: 1.8rem;
+      margin: 40px 0 20px;
+      /* Removed the red line before heading */
+    }
+    
+    .about-section p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    
+    .about-section ul {
+      margin-bottom: 30px;
+      padding-left: 20px;
+      list-style-type: none; /* Remove default bullets */
+    }
+    
+    .about-section li {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 15px;
+      /* Removed the checkmark icon */
+    }
+    
+    .commitment-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin: 40px 0;
+    }
+    
+    .commitment-card {
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      padding: 25px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .commitment-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .commitment-icon {
+      font-size: 2.5rem;
+      color: #8c2d38;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    
+    .commitment-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: #333;
+      text-align: center;
+    }
+    
+    .commitment-text {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #555;
+    }
+    
+    .contact-cta {
+      background-color: #f5e6e8;
+      border-radius: 10px;
+      padding: 25px; /* Reduced padding */
+      text-align: center;
+      margin: 50px 0 30px;
+      max-width: 600px; /* Added max-width to make it shorter */
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .contact-cta h2 {
+      color: #333;
+      margin-top: 0;
+      margin-bottom: 10px; /* Reduced margin */
+      font-size: 1.6rem; /* Slightly smaller heading */
+    }
+    
+    .contact-cta p {
+      margin: 0 auto 15px; /* Reduced margin */
+      font-size: 1rem; /* Slightly smaller text */
+    }
+    
+    .cta-button {
+      display: inline-block;
+      background-color: #8c2d38;
+      color: white;
+      padding: 10px 25px; /* Reduced padding */
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+    
+    .cta-button:hover {
+      background-color: #6d2129;
+    }
+    
+    /* Ensure full width and proper centering */
+    body, html {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+    
+    main {
+      width: 100%;
+      max-width: 100%;
+      padding: 0;
+      margin: 0 auto;
+      box-sizing: border-box;
+      overflow-x: hidden;
+    }
+    
+    .page-container {
+      width: 100%;
+      max-width: 100%;
+      padding: 0;
+      margin: 0 auto;
+      box-sizing: border-box;
+      overflow-x: hidden;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .about-section {
+        padding: 30px 5%;
+        margin-top: 40px;
+      }
+      
+      .commitment-cards {
+        grid-template-columns: 1fr;
+      }
+      
+      .about-section h1 {
+        font-size: 2rem;
+      }
+      
+      .about-section h2 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body class="about-page">
+  <div class="page-container">
+    <nav class="nav">
+      <div class="nav-wrapper">
+        <a href="index.html" class="logo">
+          <img src="assets/WBSTOK-Logo_2.png" alt="We Buy Test Strips Oklahoma Logo" />
+        </a>
+        <button class="menu-toggle" aria-label="Toggle menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="how-it-works.html">How it Works</a>
+          <a href="sell.html">Sell</a>
+          <a href="contact.html">Contact</a>
+          <a href="faqs.html">FAQs</a>
+        </div>
+        <div class="user-actions">
+          <a href="login.html" class="login-link">
+            <i class="fas fa-user"></i>
+            <span>Sign In</span>
+          </a>
+          <a href="cart.html" class="cart-link">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count">0</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <section class="about-section">
+        <h1>About Us – We Buy Test Strips Oklahoma</h1>
+        
+        <p>At <strong>We Buy Test Strips Oklahoma (WBTSOK)</strong>, we specialize in providing an easy and trustworthy way for people to sell their unused or unneeded diabetes supplies. Whether you have Dexcom G6, Freestyle Libre 2 & 3, or Omnipod 5, we offer competitive payouts and free, prepaid shipping for your convenience.</p>
+        
+        <p>As seasoned professionals in the medical reselling industry, our mission is simple: to create a hassle-free platform where people can turn their surplus medical supplies into cash quickly and securely. Since our inception, we've been dedicated to offering transparency, excellent customer service, and prompt payments, all while ensuring that we comply with federal guidelines.</p>
+        
+        <h2>Our Commitment to You</h2>
+        <p>We are committed to making your experience as easy and efficient as possible. Here's what you can expect when you work with us:</p>
+        
+        <div class="commitment-cards">
+          <div class="commitment-card">
+            <div class="commitment-icon">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <div class="commitment-title">Fast & Easy Process</div>
+            <div class="commitment-text">From the moment you check if your supplies qualify, to the time you receive payment, we aim to make every step of the process simple and transparent.</div>
+          </div>
+          
+          <div class="commitment-card">
+            <div class="commitment-icon">
+              <i class="fas fa-dollar-sign"></i>
+            </div>
+            <div class="commitment-title">Competitive Payouts</div>
+            <div class="commitment-text">We offer one of the best payout rates in the industry to ensure you get the most value for your unused supplies.</div>
+          </div>
+          
+          <div class="commitment-card">
+            <div class="commitment-icon">
+              <i class="fas fa-shipping-fast"></i>
+            </div>
+            <div class="commitment-title">Free Shipping</div>
+            <div class="commitment-text">Once you agree to sell your supplies, we send you a prepaid shipping label, so there are no additional costs to you.</div>
+          </div>
+          
+          <div class="commitment-card">
+            <div class="commitment-icon">
+              <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="commitment-title">100% Legally Compliant</div>
+            <div class="commitment-text">We only accept unexpired, factory-sealed products, and operate in full compliance with all federal and state regulations.</div>
+          </div>
+        </div>
+        
+        <h2>Why Choose Us?</h2>
+        <p>As a trusted leader in the medical reselling space, our platform stands out because:</p>
+        <ul>
+          <li><strong>Reliability:</strong> We've built a reputation on providing fast, reliable service and being completely transparent in our operations.</li>
+          <li><strong>Community-Focused:</strong> With a strong community of sellers, we've earned the trust of many, and we continue to grow our network by offering exceptional support to every customer.</li>
+          <li><strong>Secure & Confidential:</strong> We ensure your personal information is protected. Our payment process is secure and quick, with various options available to suit your preferences.</li>
+        </ul>
+        
+        <h2>Our Mission</h2>
+        <p>At WBTSOK, we believe in the power of recycling medical supplies that are still safe and effective. By participating in our buyback program, you not only turn your surplus into cash but also help others in need by making quality medical devices available at a lower cost. Our goal is to create a sustainable solution where everyone benefits—from the seller to the recipient.</p>
+        
+        <div class="contact-cta">
+          <h2>Get in Touch</h2>
+          <p>Questions about our services? We're here to help!</p>
+          <a href="contact.html" class="cta-button">Contact Us</a>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-column">
+          <h4>About Us</h4>
+          <ul>
+            <li><a href="about.html">Our Story</a></li>
+            <li><a href="about.html">Our Mission</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Sell to Us</h4>
+          <ul>
+            <li><a href="how-it-works.html">How It Works</a></li>
+            <li><a href="sell.html">Sell Your Supplies</a></li>
+            <li><a href="faqs.html">FAQs</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Get in Touch</h4>
+          <ul>
+            <li><a href="tel:+18001234567">405-459-0973</a></li>
+            <li><a href="mailto:info@wbtsok.com">webuydiabeticteststripsOK@gmail.com</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <div class="footer-logo">
+          <img src="assets/WBSTOK-Logo_3.png" alt="We Buy Test Strips Oklahoma Logo">
+        </div>
+        
+        <div class="copyright">
+          &copy; 2025 We Buy Test Strips Oklahoma. All rights reserved.
+        </div>
+        
+        <div class="social-icons">
+          <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      
+      if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', function() {
+          navLinks.classList.toggle('active');
+          menuToggle.classList.toggle('active');
+        });
+      }
+    });
+  </script>
+  <script src="js/script.js"></script>
+  <script src="footer.js"></script>
+</body>
+</html>

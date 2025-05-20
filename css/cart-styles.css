@@ -1,0 +1,280 @@
+/* Cart Page Layout */
+.cart-page {
+  background-color: #f5f5f5;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.cart-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px;
+}
+
+/* Cart Container */
+.cart-container {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 40px;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cart-container h1 {
+  font-size: 2.2rem;
+  color: #333;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.cart-subtitle {
+  color: #666;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Cart Items */
+.cart-items {
+  margin-bottom: 30px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.cart-item-image {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-right: 20px;
+}
+
+.cart-item-details {
+  flex-grow: 1;
+}
+
+.cart-item-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.cart-item-price {
+  color: #4CAF50;
+  font-weight: 600;
+}
+
+/* Quantity Controls */
+.cart-item-quantity {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.quantity-btn {
+  background: none;
+  border: 1px solid #ddd;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quantity-input {
+  width: 40px;
+  text-align: center;
+  margin: 0 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.cart-item-remove {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  color: #ff6f61;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-left: 20px;
+  padding: 5px 10px;
+  transition: all 0.2s ease;
+}
+
+.cart-item-remove:hover {
+  background-color: #ff6f61;
+  color: white;
+  border-color: #ff6f61;
+}
+
+/* Cart Summary */
+.cart-summary {
+  background-color: #f9f9f9;
+  padding: 25px;
+  border-radius: 8px;
+  margin-top: 30px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.cart-total {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.cart-total span:first-child {
+  margin-right: 10px;
+}
+
+.cart-total span:last-child {
+  color: #4CAF50;
+}
+
+.checkout-btn {
+  width: 80%;
+  max-width: 300px;
+  padding: 15px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(76, 175, 80, 0.2);
+}
+
+.checkout-btn:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(76, 175, 80, 0.3);
+}
+
+.checkout-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(76, 175, 80, 0.2);
+}
+
+/* Make sure the cart summary is visible even when empty */
+#empty-cart-message + .cart-summary {
+  display: block !important;
+}
+
+/* Empty Cart */
+.empty-cart {
+  text-align: center;
+  padding: 30px 0;
+}
+
+.empty-cart p {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.continue-shopping {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #ff6f61;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.continue-shopping:hover {
+  background-color: #e25e50;
+}
+
+/* Clear Selection Button */
+.clear-selection-btn {
+  display: none !important;
+}
+
+.clear-selection-btn:hover {
+  color: #e25e50;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .cart-container {
+    padding: 20px;
+  }
+  
+  .cart-item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 0;
+  }
+  
+  .cart-item-image {
+    margin-bottom: 15px;
+    margin-right: 0;
+  }
+  
+  .cart-item-remove {
+    margin-left: 0;
+    margin-top: 15px;
+  }
+}
+
+/* Add to cart-styles.css and sell-page CSS */
+.cart-page footer, 
+.sell-page footer {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  padding-left: 20px;
+  padding-right: 20px;
+  box-sizing: border-box;
+}
+
+/* Reset the previous aggressive fix */
+.cart-page .cart-count {
+  /* Remove the absolute positioning that might be causing issues */
+  position: static !important;
+  transform: none !important;
+  
+  /* Basic centering */
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  
+  /* Ensure text is centered */
+  text-align: center !important;
+  
+  /* Adjust vertical alignment */
+  line-height: normal !important;
+  
+  /* Make sure padding and margins aren't causing issues */
+  padding: 0 !important;
+  margin: auto !important;
+}
+
+/* Remove this rule that might be causing the icon to disappear */
+.cart-page .cart-link {
+  position: static !important;
+}

@@ -1,0 +1,246 @@
+/* Hero Section */
+.hero {
+  height: 100vh;
+  background: linear-gradient(135deg, #2e36ff, #6a5af9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: 0 1.5rem;
+  opacity: 0;
+  transition: opacity 1.5s ease-out;
+}
+
+.hero.fade-in {
+  opacity: 1;
+}
+
+.hero.fade-out {
+  opacity: 0.2;
+  transition: opacity 0.8s ease-out;
+}
+
+.hero-inner {
+  max-width: 600px;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 15px;
+  color: white;
+}
+
+.brand-grid h2 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 700;
+  color: black;
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  color: white;
+}
+
+.btn-sell {
+  background: white;
+  color: var(--primary, #4CAF50);
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.btn-sell:hover {
+  background: var(--accent, #ff6f61);
+  color: white;
+}
+
+/* Fade-in animations for scrolling elements */
+.fade-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Improve contrast for brand grid overlay */
+.brand-grid::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.9); /* Increased opacity for better contrast */
+  z-index: 0;
+}
+
+/* Ensure text is dark enough for contrast */
+.brand-grid p {
+  font-size: 1.1rem;
+  color: #333; /* Darker text color for better contrast */
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Ensure text legibility on colored cards */
+.card.accu-chek,
+.card.contour,
+.card.freestyle,
+.card.onetouch,
+.card.dexcom,
+.card.omnipod,
+.card.medtronic,
+.card.dash {
+  color: white;
+}
+
+/* Add text shadow for better readability on colored backgrounds */
+.card.accu-chek p,
+.card.contour p,
+.card.freestyle p,
+.card.onetouch p,
+.card.dexcom p,
+.card.omnipod p,
+.card.medtronic p,
+.card.dash p {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* For very light colored cards, ensure text is dark enough */
+.card p {
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-top: 10px;
+  color: #333; /* Default for light backgrounds */
+}
+
+.card.accu-chek p,
+.card.contour p,
+.card.freestyle p,
+.card.onetouch p,
+.card.dexcom p,
+.card.omnipod p,
+.card.medtronic p,
+.card.dash p {
+  color: white; /* Override for colored backgrounds */
+}
+/* Fade-in animation */
+.fade-scroll {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-scroll.visible {
+  opacity: 1;
+}
+
+/* Unified Navigation Styles for All Pages - Thinner Vibrance-like style */
+.nav {
+  background-color: #fff;
+  padding: 10px 20px; /* Reduced padding */
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05); /* Lighter shadow */
+  margin-bottom: 20px; /* Reduced margin */
+  position: relative;
+  width: 100%;
+}
+
+.nav-wrapper {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo positioning - smaller */
+.logo {
+  flex: 0 0 auto;
+  margin-right: 30px; /* Reduced margin */
+}
+
+.logo img {
+  height: 28px; /* Smaller logo height */
+}
+
+/* Center the nav links - thinner */
+.nav-links {
+  display: flex;
+  gap: 15px; /* Reduced gap between links */
+  justify-content: center;
+  flex: 1;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 0.9rem; /* Smaller font size */
+  transition: color 0.3s ease;
+  padding: 5px 0; /* Add some vertical padding */
+}
+
+.nav-links a:hover {
+  color: #ff6f61;
+}
+
+/* Position user actions at the far right - smaller */
+.user-actions {
+  display: flex;
+  gap: 15px; /* Reduced gap */
+  align-items: center;
+  flex: 0 0 auto;
+  margin-left: 30px; /* Reduced margin */
+}
+
+/* If using fixed positioning */
+.nav.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+/* If using fixed positioning, add appropriate body padding */
+body.fixed-nav {
+  padding-top: 48px; /* Adjust based on your new nav height */
+}
+
+/* Responsive adjustments for navigation */
+@media (max-width: 768px) {
+  .nav-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .logo {
+    margin-right: 0;
+    margin-bottom: 10px; /* Reduced margin */
+  }
+  
+  .nav-links {
+    margin: 8px 0; /* Reduced margin */
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .user-actions {
+    margin-left: 0;
+    margin-top: 10px; /* Reduced margin */
+  }
+}

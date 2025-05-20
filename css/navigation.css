@@ -1,0 +1,214 @@
+/* Navigation Styles */
+.nav {
+  background-color: #fff;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  height: var(--nav-height);
+}
+
+.nav-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  flex: 0 0 auto;
+  margin-right: 30px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 28px;
+  vertical-align: middle;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex: 1;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--dark);
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+  padding: 5px 0;
+  position: relative;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+/* Active link indicator */
+.nav-links a.active {
+  color: var(--accent);
+}
+
+.nav-links a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--accent);
+}
+
+.user-actions {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex: 0 0 auto;
+  margin-left: 30px;
+}
+
+.login-link,
+.cart-link {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+  color: var(--dark);
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.login-link:hover,
+.cart-link:hover {
+  color: var(--accent);
+}
+
+/* Specific fix for cart count alignment */
+.cart-count {
+  background-color: var(--accent);
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  text-align: center;
+  line-height: 1;
+}
+
+/* Reset any problematic positioning */
+.cart-page .cart-count,
+.cart-page .cart-link,
+.login-page .cart-count,
+.login-page .cart-link {
+  position: static;
+  transform: none;
+}
+
+/* Additional specific fix just for the cart page if needed */
+.cart-page .cart-count {
+  padding: 0;
+  margin: 0;
+}
+
+.btn-sell {
+  background-color: var(--button-green);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.btn-sell:hover {
+  background-color: var(--button-green-hover);
+}
+
+/* Mobile menu toggle */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: var(--dark);
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+  .menu-toggle {
+    display: flex;
+  }
+  .nav-links {
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+    width: 100%;
+    background-color: white;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 999;
+  }
+  .nav-links.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+  .user-actions {
+    margin-left: 0;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .user-actions {
+    display: none;
+  }
+  .user-actions.mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+    margin-top: 15px;
+  }
+  .nav-links.active {
+    padding-bottom: 30px;
+  }
+}
+
+/* Add padding to body to account for fixed navigation */
+body {
+  padding-top: 70px;
+}

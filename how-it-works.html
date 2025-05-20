@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>How It Works – We Buy Test Strips Oklahoma</title>
+  <!-- For all pages -->
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/footer-styles.css"> <!-- Add this line to all pages -->
+  <!-- Other CSS files -->
+  <link rel="stylesheet" href="css/faq.css">
+  <link rel="stylesheet" href="css/navigation.css">
+  <!-- Page-specific CSS -->
+  <link rel="stylesheet" href="css/how-it-works.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    /* Enhanced styles for the How It Works page - based on About Us page */
+    .about-section {
+      width: 100%;
+      padding: 40px 10%;
+      box-sizing: border-box;
+      margin-top: 60px; /* Added space between nav and content */
+    }
+    
+    .about-section h1 {
+      color: #8c2d38;
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      text-align: center;
+      position: relative;
+      padding-bottom: 15px;
+    }
+    
+    .about-section h1:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background-color: #8c2d38;
+    }
+    
+    .about-section h2 {
+      color: #8c2d38;
+      font-size: 1.8rem;
+      margin: 40px 0 20px;
+      /* Removed the red line before heading */
+    }
+    
+    .about-section p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    
+    .about-section ul {
+      margin-bottom: 30px;
+      padding-left: 20px;
+      list-style-type: none; /* Remove default bullets */
+    }
+    
+    .about-section li {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 15px;
+      /* Removed the checkmark icon */
+    }
+    
+    .commitment-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin: 40px 0;
+    }
+    
+    .commitment-card {
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      padding: 25px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .commitment-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .commitment-icon {
+      font-size: 2.5rem;
+      color: #8c2d38;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    
+    .commitment-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: #333;
+      text-align: center;
+    }
+    
+    .commitment-text {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #555;
+    }
+    
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin: 40px 0;
+    }
+    
+    .step-card {
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      padding: 25px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+    
+    .step-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .step-number {
+      position: absolute;
+      top: -15px;
+      left: -15px;
+      background-color: #8c2d38;
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    
+    .step-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: #333;
+      padding-left: 10px;
+    }
+    
+    .step-text {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #555;
+    }
+    
+    .contact-cta {
+      background-color: #f5e6e8;
+      border-radius: 10px;
+      padding: 25px; /* Reduced padding */
+      text-align: center;
+      margin: 50px 0 30px;
+      max-width: 600px; /* Added max-width to make it shorter */
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .contact-cta h2 {
+      color: #333;
+      margin-top: 0;
+      margin-bottom: 10px; /* Reduced margin */
+      font-size: 1.6rem; /* Slightly smaller heading */
+    }
+    
+    .contact-cta p {
+      margin: 0 auto 15px; /* Reduced margin */
+      font-size: 1rem; /* Slightly smaller text */
+    }
+    
+    .cta-button {
+      display: inline-block;
+      background-color: #8c2d38;
+      color: white;
+      padding: 10px 25px; /* Reduced padding */
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+    
+    .cta-button:hover {
+      background-color: #6d2129;
+    }
+    
+    .faq-preview {
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      padding: 30px;
+      margin: 40px 0;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .faq-preview h3 {
+      color: #8c2d38;
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-size: 1.4rem;
+    }
+    
+    .faq-item {
+      margin-bottom: 20px;
+    }
+    
+    .faq-question {
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+    
+    .faq-answer {
+      color: #555;
+      line-height: 1.5;
+    }
+    
+    /* Ensure full width and proper centering */
+    body, html {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+    
+    main {
+      width: 100%;
+      max-width: 100%;
+      padding: 0;
+      margin: 0 auto;
+      box-sizing: border-box;
+      overflow-x: hidden;
+    }
+    
+    .page-container {
+      width: 100%;
+      max-width: 100%;
+      padding: 0;
+      margin: 0 auto;
+      box-sizing: border-box;
+      overflow-x: hidden;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .about-section {
+        padding: 30px 5%;
+        margin-top: 40px;
+      }
+      
+      .commitment-cards,
+      .process-steps {
+        grid-template-columns: 1fr;
+      }
+      
+      .about-section h1 {
+        font-size: 2rem;
+      }
+      
+      .about-section h2 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body class="how-it-works-page">
+  <div class="page-container">
+    <!-- Navigation -->
+    <nav class="nav">
+      <div class="nav-wrapper">
+        <a href="index.html" class="logo">
+          <img src="assets/WBSTOK-Logo_2.png" alt="We Buy Test Strips Oklahoma Logo" />
+        </a>
+        <button class="menu-toggle" aria-label="Toggle menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="how-it-works.html">How it Works</a>
+          <a href="sell.html">Sell</a>
+          <a href="contact.html">Contact</a>
+          <a href="faqs.html">FAQs</a>
+        </div>
+        <div class="user-actions">
+          <a href="login.html" class="login-link">
+            <i class="fas fa-user"></i>
+            <span>Sign In</span>
+          </a>
+          <a href="cart.html" class="cart-link">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count">0</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <section class="about-section">
+        <h1>How It Works – We Buy Test Strips Oklahoma</h1>
+        
+        <p>Selling your extra diabetic supplies to WBTSOK is fast, secure, and fully transparent. We've created a smooth, 4-step process — with upfront pricing, free shipping, no label removal required, and a clear confirmation once your sell order is submitted.</p>
+        
+        <h2>Our Simple 4-Step Process</h2>
+        
+        <div class="process-steps">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <div class="step-title">Check Our Prices</div>
+            <div class="step-text">
+              <p>Go to our <a href="sell.html">Sell Page</a> to view our current payouts. We offer top-dollar rates for all major diabetic brands, including:</p>
+              <ul>
+                <li>Dexcom G6 & G7 sensors and transmitters</li>
+                <li>Freestyle Libre 2 & 3</li>
+                <li>Omnipod Dash & Omnipod 5 pods</li>
+                <li>Accu-Chek, Contour, OneTouch, and more</li>
+              </ul>
+              <p>You'll know exactly what you're earning before you ship. No quotes, no waiting.</p>
+            </div>
+          </div>
+          
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <div class="step-title">Prepare Your Supplies</div>
+            <div class="step-text">
+              <p>Before shipping, make sure your items meet these basic requirements:</p>
+              <ul>
+                <li>✅ Unopened and factory-sealed</li>
+                <li>✅ No damage, tears, or excessive stickers</li>
+                <li>✅ At least 10 months before expiration (unless otherwise approved)</li>
+              </ul>
+              <p><strong>⚠️ Do not remove prescription labels or pharmacy stickers.</strong></p>
+              <p>Attempting to peel off labels may damage the box and reduce your payout. WBTSOK safely removes all labels for you, protecting your privacy with secure, professional handling.</p>
+            </div>
+          </div>
+          
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <div class="step-title">Ship It for Free</div>
+            <div class="step-text">
+              <p>Once you've selected your items and submitted the sell form:</p>
+              <ul>
+                <li>You'll receive a prepaid USPS shipping label via email</li>
+                <li>Pack your items securely (we provide packing tips if needed)</li>
+                <li>Drop off your box at any USPS location or schedule a pickup</li>
+              </ul>
+              <p>All shipping is 100% free — we cover the cost.</p>
+            </div>
+          </div>
+          
+          <div class="step-card">
+            <div class="step-number">4</div>
+            <div class="step-title">Sell Order Confirmation & Fast Payment</div>
+            <div class="step-text">
+              <p><strong>🟢 Order Submitted? You're Approved!</strong></p>
+              <p>Once you finish your sell order on our website, you'll receive an instant confirmation email with:</p>
+              <ul>
+                <li>✅ A summary of the items you're sending</li>
+                <li>✅ Your expected payout amount</li>
+                <li>✅ A prepaid USPS shipping label</li>
+                <li>✅ A unique order ID for tracking</li>
+              </ul>
+              <p>No waiting for approval — your order is confirmed immediately.</p>
+              <p><strong>💰 Payment Processing</strong></p>
+              <p>As soon as your package arrives and passes inspection, we process your payout within 24–48 hours. Choose:</p>
+              <ul>
+                <li>PayPal</li>
+                <li>Zelle</li>
+                <li>Venmo</li>
+              </ul>
+              <p>We'll notify you once payment is sent — no guessing, no delays.</p>
+            </div>
+          </div>
+        </div>
+        
+        <h2>What We Accept</h2>
+        <p class="center-text">We purchase a wide variety of diabetic supplies, with the following requirements:</p>
+        
+        <div class="commitment-cards">
+          <div class="commitment-card">
+            <div class="commitment-icon">
+              <i class="fas fa-box"></i>
+            </div>
+            <div class="commitment-title">Test Strips</div>
+            <div class="commitment-text">We accept unopened boxes of test strips from major brands including OneTouch, Freestyle, Contour, Accu-Chek, and more. Boxes must be factory sealed with at least 10 months until expiration.</div>
+          </div>
+          
+          <div class="commitment-card">
+            <div class="commitment-icon">
+              <i class="fas fa-broadcast-tower"></i>
+            </div>
+            <div class="commitment-title">CGM Sensors</div>
+            <div class="commitment-text">We buy Dexcom G6, Dexcom G7, Freestyle Libre 2 & 3, Guardian sensors and other CGM supplies. Packaging must be unopened with valid expiration dates.</div>
+          </div>
+          
+          <div class="commitment-card">
+            <div class="commitment-icon">
+              <i class="fas fa-pump-medical"></i>
+            </div>
+            <div class="commitment-title">Insulin Pumps & Supplies</div>
+            <div class="commitment-text">We purchase Omnipod Dash, Omnipod 5, Medtronic, and other insulin pump supplies. Items must be in original packaging and unexpired.</div>
+          </div>
+          
+          <div class="commitment-card">
+            <div class="commitment-icon">
+              <i class="fas fa-prescription-bottle"></i>
+            </div>
+            <div class="commitment-title">Lancets & Accessories</div>
+            <div class="commitment-text">We also buy lancets, control solution, and other diabetic accessories when sold along with test strips or sensors.</div>
+          </div>
+        </div>
+        
+        <h2 id="brands-we-buy">Brands We Buy</h2>
+        <p class="center-text">We purchase a wide variety of diabetic supplies from these trusted brands:</p>
+        
+        <div class="commitment-cards">
+          <!-- Test Strips Category -->
+          <div class="commitment-card">
+            <div class="commitment-icon">
+              <i class="fas fa-tint"></i>
+            </div>
+            <div class="commitment-title">Test Strips</div>
+            <div class="commitment-text">
+              <ul>
+                <li><strong>Accu-Chek:</strong> Aviva Plus (50ct, 100ct), Guide (50ct, 100ct), SmartView (50ct, 100ct)</li>
+                <li><strong>Contour:</strong> Next (50ct, 100ct)</li>
+                <li><strong>FreeStyle:</strong> Regular (50ct, 100ct), Lite (50ct, 100ct)</li>
+                <li><strong>One Touch:</strong> Ultra (50ct, 100ct), Verio (50ct, 100ct)</li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- CGM Systems Category -->
+          <div class="commitment-card">
+            <div class="commitment-icon">
+              <i class="fas fa-mobile-alt"></i>
+            </div>
+            <div class="commitment-title">CGM Systems</div>
+            <div class="commitment-text">
+              <ul>
+                <li><strong>Dexcom G6:</strong> Sensors (1-pack, 3-pack), Receivers</li>
+                <li><strong>Dexcom G7:</strong> Sensors (all models), Receivers</li>
+                <li><strong>Freestyle Libre:</strong> 2 & 3 Sensors</li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- Insulin Pumps Category -->
+          <div class="commitment-card">
+            <div class="commitment-icon">
+              <i class="fas fa-pump-medical"></i>
+            </div>
+            <div class="commitment-title">Insulin Pumps & Supplies</div>
+            <div class="commitment-text">
+              <ul>
+                <li><strong>Omnipod:</strong> Dash, 5 (Purple Box), Classic</li>
+                <li><strong>Medtronic:</strong> Infusion Sets, Reservoirs</li>
+                <li><strong>Tandem:</strong> Infusion Sets, Cartridges</li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- Other Supplies Category -->
+          <div class="commitment-card">
+            <div class="commitment-icon">
+              <i class="fas fa-first-aid"></i>
+            </div>
+            <div class="commitment-title">Additional Supplies</div>
+            <div class="commitment-text">
+              <p>We also buy other diabetic supplies including lancets, control solutions, pen needles, and more.</p>
+            </div>
+          </div>
+        </div>
+        
+        <h2>Why Sell to WBTSOK?</h2>
+        <div class="commitment-cards">
+          <div class="commitment-card">
+            <div class="commitment-icon">
+              <i class="fas fa-home"></i>
+            </div>
+            <div class="commitment-title">Oklahoma-based</div>
+            <div class="commitment-text">We're a local, community-focused business serving Oklahoma and beyond.</div>
+          </div>
+          
+          <div class="commitment-card">
+            <div class="commitment-icon">
+              <i class="fas fa-lock"></i>
+            </div>
+            <div class="commitment-title">Privacy-First Approach</div>
+            <div class="commitment-text">We handle label removal for you, protecting your personal information.</div>
+          </div>
+          
+          <div class="commitment-card">
+            <div class="commitment-icon">
+              <i class="fas fa-truck"></i>
+            </div>
+            <div class="commitment-title">Free Shipping</div>
+            <div class="commitment-text">We provide free, trackable shipping labels for all orders.</div>
+          </div>
+          
+          <div class="commitment-card">
+            <div class="commitment-icon">
+              <i class="fas fa-comments"></i>
+            </div>
+            <div class="commitment-title">Local Support</div>
+            <div class="commitment-text">Get responsive, local customer support throughout the process.</div>
+          </div>
+        </div>
+        
+        <div class="contact-cta">
+          <h2>Ready to Sell Your Unused Supplies?</h2>
+          <p>Get started today and receive payment within days!</p>
+          <a href="sell.html" class="cta-button">Sell Your Supplies</a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-column">
+          <h4>About Us</h4>
+          <ul>
+            <li><a href="about.html">Our Story</a></li>
+            <li><a href="about.html">Our Mission</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Sell to Us</h4>
+          <ul>
+            <li><a href="how-it-works.html">How It Works</a></li>
+            <li><a href="sell.html">Sell Your Supplies</a></li>
+            <li><a href="faqs.html">FAQs</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Get in Touch</h4>
+          <ul>
+            <li><a href="tel:+14054590973">405-459-0973</a></li>
+            <li><a href="mailto:webuydiabeticteststripsOK@gmail.com">webuydiabeticteststripsOK@gmail.com</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <div class="footer-logo">
+          <img src="assets/WBSTOK-Logo_3.png" alt="We Buy Test Strips Oklahoma Logo">
+        </div>
+        
+        <div class="copyright">
+          &copy; 2025 We Buy Test Strips Oklahoma. All rights reserved.
+        </div>
+        
+        <div class="social-icons">
+          <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="js/script.js"></script>
+  <script src="footer.js"></script>
+</body>
+</html>

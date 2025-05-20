@@ -1,0 +1,241 @@
+/* ==========================================================================
+   How it Works Page Styles
+   ========================================================================== */
+
+/* Base Page Structure
+   ========================================================================== */
+.how-it-works-page {
+  padding-top: 70px;
+}
+
+/* Background Image Setup
+   ========================================================================== */
+body.how-it-works-page {
+  background-image: url('../assets/How_it_Works_image.png');
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: white; /* Set default text color to white */
+}
+
+/* Navigation Fixes
+   ========================================================================== */
+.how-it-works-page .nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: #fff;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 0;
+}
+
+.how-it-works-page .nav-wrapper {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  justify-content: space-between;
+}
+
+.how-it-works-page .logo {
+  flex: 0 0 auto;
+  margin-right: 40px;
+}
+
+.how-it-works-page .nav-links {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex: 1;
+}
+
+.how-it-works-page .user-actions {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex: 0 0 auto;
+  margin-left: 40px;
+}
+
+/* Text color overrides for the how-it-works page */
+.how-it-works-page .about-section h1 {
+  color: white;
+  text-align: center;
+}
+
+.how-it-works-page .about-section h2 {
+  color: white;
+  text-align: center;
+}
+
+.how-it-works-page .about-section p {
+  color: white;
+}
+
+.how-it-works-page .about-section li {
+  color: white;
+}
+
+.about-section {
+  width: 100%;
+  padding: 40px 10%;
+  box-sizing: border-box;
+  margin-top: -10px !important; /* Negative margin to pull content up */
+}
+
+/* Styles for the Brands We Buy section */
+.commitment-cards .commitment-text ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 10px;
+}
+
+.commitment-cards .commitment-text li {
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.commitment-cards .commitment-text strong {
+  color: #8c2d38;
+}
+
+.center-text {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 30px;
+}
+
+.center-list {
+  max-width: 800px;
+  margin: 0 auto 30px;
+  text-align: center;
+}
+
+.center-list li {
+  display: inline-block;
+  margin: 0 15px 10px;
+}
+
+/* Make commitment cards and step cards have transparent backgrounds */
+.how-it-works-page .commitment-card,
+.how-it-works-page .step-card {
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Keep the category titles red and centered */
+.how-it-works-page .commitment-title,
+.how-it-works-page .step-title {
+  color: #ff9e80; /* Bright red/orange color */
+  text-align: center;
+}
+
+/* Make all other text in cards white */
+.how-it-works-page .commitment-text,
+.how-it-works-page .step-text,
+.how-it-works-page .step-text p {
+  color: white;
+}
+
+/* Keep the icons red */
+.how-it-works-page .commitment-icon {
+  color: #ff9e80;
+}
+
+/* Make the step number white on red background */
+.how-it-works-page .step-number {
+  background-color: #8c2d38;
+  color: white;
+}
+
+/* Make the CTA section have a semi-transparent background */
+.how-it-works-page .contact-cta {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.how-it-works-page .contact-cta h2,
+.how-it-works-page .contact-cta p {
+  color: white;
+}
+
+/* FAQ section styling */
+.how-it-works-page .faq-preview {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.how-it-works-page .faq-preview h3 {
+  color: #ff9e80;
+  text-align: center;
+}
+
+.how-it-works-page .faq-question {
+  color: #ff9e80;
+}
+
+.how-it-works-page .faq-answer {
+  color: white;
+}
+
+/* Ensure full width and proper centering */
+body, html {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+main {
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  margin: 0 auto;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.page-container {
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  margin: 0 auto;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* Add text shadow to improve readability on varied backgrounds */
+.how-it-works-page .about-section h1,
+.how-it-works-page .about-section h2,
+.how-it-works-page .about-section p,
+.how-it-works-page .about-section li,
+.how-it-works-page .commitment-title,
+.how-it-works-page .commitment-text,
+.how-it-works-page .step-title,
+.how-it-works-page .step-text {
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+/* Remove the underline from the main heading */
+.how-it-works-page .about-section h1:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background-color: #8c2d38;
+}
+
+/* Responsive Adjustments
+   ========================================================================== */
+@media (max-width: 768px) {
+  .how-it-works-page {
+    padding-top: 90px;
+  }
+}
