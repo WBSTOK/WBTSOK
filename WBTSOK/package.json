@@ -1,0 +1,11 @@
+{
+  "name": "wbtsok-website",
+  "version": "1.0.0",
+  "description": "We Buy Test Strips Oklahoma Website",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,709 @@
+// Main cart rendering function
+function renderCart() {
+  console.log("renderCart function called");
+  
+  const cartItemsContainer = document.querySelector('.cart-items');
+  const emptyCartMessage = document.getElementById('empty-cart-message');
+  const cartSummary = document.querySelector('.cart-summary');
+  
+  if (!cartItemsContainer) {
+    console.error("Cart items container not found");
+    return;
+  }
+  
+  // Get cart from localStorage
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  console.log("Current cart contents:", cart);
+  
+  // Clear current items
+  cartItemsContainer.innerHTML = '';
+  
+  if (cart.length === 0) {
+    // Show empty cart message
+    if (emptyCartMessage) emptyCartMessage.style.display = 'block';
+    if (cartItemsContainer) cartItemsContainer.style.display = 'none';
+    if (cartSummary) cartSummary.style.display = 'none';
+    return;
+  }
+  
+  // Hide empty cart message
+  if (emptyCartMessage) emptyCartMessage.style.display = 'none';
+  if (cartItemsContainer) cartItemsContainer.style.display = 'block';
+  if (cartSummary) cartSummary.style.display = 'block';
+  
+  // Calculate total
+  let total = 0;
+  
+  // Render each cart item
+  cart.forEach(item => {
+    // Calculate item subtotal
+    const itemTotal = item.price * item.quantity;
+    total += itemTotal;
+    
+    // Get image path (use stored path or default to placeholder)
+    let imagePath = item.imagePath || 'assets/Shopping_Cart_Icon_PNG_Clipart.png';
+    console.log("Using image path:", imagePath);
+    
+    // Create cart item element
+    const cartItemElement = document.createElement('div');
+    cartItemElement.className = 'cart-item';
+    cartItemElement.dataset.id = item.id; // Important: Add the item ID as a data attribute
+    
+    cartItemElement.innerHTML = `
+      <img src="${imagePath}"
+           alt="${item.name}"
+           class="cart-item-image"
+           onerror="this.src='assets/Shopping_Cart_Icon_PNG_Clipart.png'">
+      <div class="cart-item-details">
+        <h3 class="cart-item-title">${item.name}</h3>
+        <p class="cart-item-model">${item.category || ''} ${item.model ? '- ' + item.model : ''}</p>
+        <p class="cart-item-price">$${item.price.toFixed(2)}</p>
+        <div class="cart-item-quantity">
+          <button class="quantity-btn decrease" data-id="${item.id}">-</button>
+          <input type="number" class="quantity-input" value="${item.quantity}" min="1" data-id="${item.id}">
+          <button class="quantity-btn increase" data-id="${item.id}">+</button>
+        </div>
+      </div>
+      <button class="cart-item-remove" data-id="${item.id}">
+        Remove
+      </button>
+    `;
+    
+    cartItemsContainer.appendChild(cartItemElement);
+  });
+  
+  // Update total display
+  const totalElement = document.getElementById('cart-total-amount');
+  if (totalElement) {
+    totalElement.textContent = total.toFixed(2);
+  }
+  
+  // Set up event listeners for the newly added cart items
+  setupCartItemRemoval();
+  setupCartQuantityControls();
+}
+
+// Function to update cart item quantity
+function updateCartItemQuantity(itemId, quantity) {
+  console.log(`Updating quantity for item ${itemId} to ${quantity}`);
+  
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  
+  const itemIndex = cart.findIndex(item => item.id === itemId);
+  
+  if (itemIndex !== -1) {
+    cart[itemIndex].quantity = quantity;
+    localStorage.setItem('cart', JSON.stringify(cart));
+    renderCart();
+    updateCartCount();
+  }
+}
+
+// Function to remove cart item
+function removeCartItem(itemId) {
+  console.log(`Removing item ${itemId} from cart`);
+  
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  
+  const updatedCart = cart.filter(item => item.id !== itemId);
+  localStorage.setItem('cart', JSON.stringify(updatedCart));
+  
+  renderCart();
+  updateCartCount();
+}
+
+// Function to set up cart item removal
+function setupCartItemRemoval() {
+  console.log("Setting up cart item removal");
+  
+  document.querySelectorAll('.cart-item-remove').forEach(button => {
+    button.addEventListener('click', function() {
+      const itemId = this.dataset.id;
+      console.log(`Remove button clicked for item ${itemId}`);
+      removeCartItem(itemId);
+    });
+  });
+}
+
+// Function to set up cart quantity controls
+function setupCartQuantityControls() {
+  console.log("Setting up cart quantity controls");
+ 
+  // Add event listeners for quantity buttons in cart
+  document.querySelectorAll('.cart-item .quantity-btn').forEach(button => {
+    button.addEventListener('click', function() {
+      const itemId = this.dataset.id;
+      const cartItem = this.closest('.cart-item');
+      const quantityInput = cartItem.querySelector('.quantity-input');
+      
+      if (quantityInput) {
+        let quantity = parseInt(quantityInput.value) || 1;
+        
+        if (this.classList.contains('increase')) {
+          quantity += 1;
+        } else if (this.classList.contains('decrease') && quantity > 1) {
+          quantity -= 1;
+        }
+        
+        quantityInput.value = quantity;
+        console.log(`Cart quantity updated to ${quantity} for item ${itemId}`);
+        
+        updateCartItemQuantity(itemId, quantity);
+      }
+    });
+  });
+ 
+  // Add event listeners for quantity input changes in cart
+  document.querySelectorAll('.cart-item .quantity-input').forEach(input => {
+    input.addEventListener('change', function() {
+      const itemId = this.dataset.id;
+      let value = parseInt(this.value);
+      
+      console.log(`Quantity input changed for item ${itemId}, new value: ${value}`);
+      
+      // Ensure the value is at least 1
+      if (value < 1) {
+        value = 1;
+        this.value = 1;
+      }
+      
+      updateCartItemQuantity(itemId, value);
+    });
+  });
+}
+
+// Add to cart function
+function addToCart(item) {
+  console.log("Adding to cart:", item);
+  
+  // Get existing cart or initialize empty array
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  
+  // Check if item already exists in cart
+  const existingItemIndex = cart.findIndex(cartItem => cartItem.id === item.id);
+  
+  if (existingItemIndex !== -1) {
+    // Update quantity if item exists
+    cart[existingItemIndex].quantity += item.quantity;
+  } else {
+    // Add new item to cart
+    cart.push({
+      id: item.id,
+      productId: item.productId || item.id,
+      name: item.name,
+      price: item.price,
+      quantity: item.quantity || 1,
+      category: item.category,
+      model: item.model
+    });
+  }
+  
+  // Save cart to localStorage
+  localStorage.setItem('cart', JSON.stringify(cart));
+  
+  // Update cart count in header
+  updateCartCount();
+  
+  // Debug: Show current cart contents
+  console.log("Current cart after adding:", JSON.parse(localStorage.getItem('cart')));
+  
+  // Show success message
+  showMessage(`Added ${item.quantity} ${item.name} to cart!`);
+  
+  // Force immediate DOM update for cart count
+  const cartCountElement = document.querySelector('.cart-count');
+  if (cartCountElement) {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+    cartCountElement.textContent = totalItems;
+    
+    // Visual feedback
+    cartCountElement.classList.add('updated');
+    setTimeout(() => cartCountElement.classList.remove('updated'), 500);
+  }
+}
+
+// Make addToCart available globally
+window.addToCart = addToCart;
+
+// Update cart count in header
+function updateCartCount() {
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+  
+  const cartCountElement = document.querySelector('.cart-count');
+  if (cartCountElement) {
+    cartCountElement.textContent = totalItems;
+  }
+}
+
+// Update cart total
+function updateCartTotal() {
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const totalAmount = cart.reduce((total, item) => {
+    return total + (item.price * item.quantity);
+  }, 0);
+  
+  const cartTotalElement = document.getElementById('cart-total-amount');
+  if (cartTotalElement) {
+    cartTotalElement.textContent = totalAmount.toFixed(2);
+  }
+}
+
+// Show message function
+function showMessage(message) {
+  const messageElement = document.createElement('div');
+  messageElement.className = 'message';
+  messageElement.textContent = message;
+  
+  // Style the message
+  messageElement.style.position = 'fixed';
+  messageElement.style.top = '20px';
+  messageElement.style.left = '50%';
+  messageElement.style.transform = 'translateX(-50%)';
+  messageElement.style.backgroundColor = '#4CAF50';
+  messageElement.style.color = 'white';
+  messageElement.style.padding = '10px 20px';
+  messageElement.style.borderRadius = '5px';
+  messageElement.style.zIndex = '1000';
+  
+  document.body.appendChild(messageElement);
+  
+  // Remove after 3 seconds
+  setTimeout(() => {
+    messageElement.remove();
+  }, 3000);
+}
+
+// Function to update product subtotal
+function updateSubtotal(productId) {
+  const select = document.querySelector(`.model-select[data-product="${productId}"]`);
+  if (!select) return;
+  
+  const productCard = select.closest('.product-card');
+  if (!productCard) return;
+  
+  const quantityInput = document.querySelector(`.quantity-input[data-product="${productId}"]`);
+  const subtotalElement = productCard.querySelector('.product-subtotal .subtotal-amount');
+  
+  if (quantityInput && subtotalElement) {
+    const selectedOption = select.options[select.selectedIndex];
+    let price = 0;
+    
+    if (selectedOption && selectedOption.dataset.price && selectedOption.dataset.price !== 'N/A') {
+      price = parseFloat(selectedOption.dataset.price);
+    }
+    
+    const quantity = parseInt(quantityInput.value) || 0;
+    const subtotal = price * quantity;
+    
+    // Update the subtotal display
+    subtotalElement.textContent = subtotal.toFixed(2);
+  }
+}
+
+// Function to update Add to Cart button state
+function updateAddToCartButton(productId) {
+  console.log(`Updating Add to Cart button for product ${productId}`);
+  
+  const quantityInput = document.querySelector(`.quantity-input[data-product="${productId}"]`);
+  const addToCartBtn = document.querySelector(`.add-to-cart-btn[data-product="${productId}"]`);
+  
+  if (quantityInput && addToCartBtn) {
+    const quantity = parseInt(quantityInput.value) || 0;
+    console.log(`Quantity: ${quantity}, Button will be ${quantity <= 0 ? 'disabled' : 'enabled'}`);
+    
+    // Only disable if quantity is 0 or less
+    addToCartBtn.disabled = quantity <= 0;
+    
+    // Add visual feedback
+    if (quantity <= 0) {
+      addToCartBtn.classList.add('disabled');
+    } else {
+      addToCartBtn.classList.remove('disabled');
+    }
+  } else {
+    console.error(`Could not find quantity input or add to cart button for product ${productId}`);
+  }
+}
+
+// Direct add to cart function
+function addProductToCart(productId) {
+  console.log(`Direct add to cart for product ${productId}`);
+  
+  // Get product details
+  const select = document.querySelector(`.model-select[data-product="${productId}"]`);
+  const quantityInput = document.querySelector(`.quantity-input[data-product="${productId}"]`);
+  
+  if (select && quantityInput) {
+    const selectedOption = select.options[select.selectedIndex];
+    const modelId = select.value;
+    const modelName = selectedOption.text;
+    const price = parseFloat(selectedOption.dataset.price) || 0;
+    const quantity = parseInt(quantityInput.value) || 1;
+    
+    // Create cart item
+    const item = {
+      id: modelId,
+      productId: productId,
+      name: modelName,
+      price: price,
+      quantity: quantity
+    };
+    
+    // Add to cart using our addToCart function
+    addToCart(item);
+    
+    // Reset quantity
+    quantityInput.value = 0;
+    updateSubtotal(productId);
+    updateAddToCartButton(productId);
+    
+    // Force update cart count immediately
+    updateCartCount();
+  }
+}
+
+// Make addProductToCart available globally
+window.addProductToCart = addProductToCart;
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  console.log("DOM loaded");
+  
+  // Check if we're on the cart page
+  const isCartPage = document.querySelector('.cart-page') !== null;
+  console.log("Is cart page:", isCartPage);
+  
+  if (isCartPage) {
+    // Render the cart
+    renderCart();
+    
+    // Set up checkout button
+    const checkoutBtn = document.querySelector('.checkout-btn');
+    if (checkoutBtn) {
+      checkoutBtn.addEventListener('click', function() {
+        // You can add checkout logic here
+        alert('Proceeding to checkout...');
+        window.location.href = 'checkout.html';
+      });
+    }
+  }
+  
+  // Update cart count in header (do this on all pages)
+  updateCartCount();
+  
+  // Set up model select change handlers (for product/sell pages)
+  document.querySelectorAll('.model-select').forEach(select => {
+    select.addEventListener('change', function() {
+      const productId = this.dataset.product;
+      const selectedOption = this.options[this.selectedIndex];
+      
+      console.log(`Model selected for product ${productId}:`, selectedOption.value);
+      
+      if (selectedOption && selectedOption.value) {
+        // Enable quantity controls
+        const quantityInput = document.querySelector(`.quantity-input[data-product="${productId}"]`);
+        const minusBtn = document.querySelector(`.quantity-btn.minus[data-product="${productId}"]`);
+        const plusBtn = document.querySelector(`.quantity-btn.plus[data-product="${productId}"]`);
+        
+        if (quantityInput && minusBtn && plusBtn) {
+          quantityInput.disabled = false;
+          minusBtn.disabled = false;
+          plusBtn.disabled = false;
+          
+          // Set default quantity to 1 when a model is selected
+          quantityInput.value = 1;
+          
+          // Update subtotal and button state
+          updateSubtotal(productId);
+          updateAddToCartButton(productId);
+        }
+      }
+    });
+  });
+  
+  // Set up quantity buttons on product/sell pages
+  document.querySelectorAll('.product-card .quantity-btn').forEach(button => {
+    button.addEventListener('click', function() {
+      const productId = this.dataset.product;
+      const quantityInput = document.querySelector(`.quantity-input[data-product="${productId}"]`);
+      
+      if (quantityInput) {
+        let quantity = parseInt(quantityInput.value) || 0;
+        
+        if (this.classList.contains('plus')) {
+          quantity += 1;
+        } else if (this.classList.contains('minus') && quantity > 0) {
+          quantity -= 1;
+        }
+        
+        quantityInput.value = quantity;
+        console.log(`Quantity updated to ${quantity} for product ${productId}`);
+        
+        updateSubtotal(productId);
+        updateAddToCartButton(productId);
+      }
+    });
+  });
+  
+  // Set up quantity input changes on product/sell pages
+  document.querySelectorAll('.product-card .quantity-input').forEach(input => {
+    input.addEventListener('change', function() {
+      const productId = this.dataset.product;
+      let value = parseInt(this.value) || 0;
+      
+      // Ensure non-negative value
+      if (value < 0) {
+        value = 0;
+        this.value = 0;
+      }
+      
+      updateSubtotal(productId);
+      updateAddToCartButton(productId);
+    });
+  });
+  
+  // Instead of attaching to each button
+  document.addEventListener('click', function(event) {
+    // Check if the clicked element is an add-to-cart button
+    if (event.target.matches('.add-to-cart-btn') || 
+        event.target.closest('.add-to-cart-btn')) {
+      
+      event.preventDefault();
+      const button = event.target.matches('.add-to-cart-btn') ? 
+                    event.target : 
+                    event.target.closest('.add-to-cart-btn');
+      
+      const productId = button.dataset.product;
+      console.log(`Add to cart clicked for product ${productId}`);
+      
+      addProductToCart(productId);
+    }
+  });
+  
+  // Debug: Check all Add to Cart buttons
+  checkAllAddToCartButtons();
+});
+
+// Debug function to check all Add to Cart buttons
+function checkAllAddToCartButtons() {
+  const buttons = document.querySelectorAll('.add-to-cart-btn');
+  console.log(`Found ${buttons.length} Add to Cart buttons`);
+  
+  buttons.forEach(button => {
+    const productId = button.dataset.product;
+    console.log(`Button for product ${productId}: disabled = ${button.disabled}`);
+    
+    // Force enable all buttons for testing
+    button.disabled = false;
+    button.classList.remove('disabled');
+  });
+}
+
+// Navigation menu toggle
+document.addEventListener('DOMContentLoaded', function() {
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener('click', function() {
+      navLinks.classList.toggle('active');
+      menuToggle.classList.toggle('active');
+    });
+  }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Testimonials functionality for new design
+  const testimonialNavItems = document.querySelectorAll('.testimonial-nav-item');
+  const testimonialQuote = document.getElementById('testimonial-quote');
+  const testimonialName = document.getElementById('testimonial-name');
+  const testimonialLocation = document.getElementById('testimonial-location');
+  
+  // Testimonial data
+  const testimonials = [
+    {
+      quote: "I had boxes of test strips that were just going to expire. We Buy Test Strips Oklahoma gave me a fair price and made the process so easy!",
+      name: "Sarah M.",
+      location: "Oklahoma City, OK"
+    },
+    {
+      quote: "I was skeptical at first, but they paid exactly what they promised and the money was in my account the next day. Highly recommend!",
+      name: "Michael T.",
+      location: "Tulsa, OK"
+    },
+    {
+      quote: "The free shipping and quick payment process makes this a no-brainer. I've sold to them multiple times now!",
+      name: "Jennifer K.",
+      location: "Norman, OK"
+    }
+  ];
+  
+  // Function to show testimonial
+  function showTestimonial(index) {
+    // Update testimonial content
+    testimonialQuote.textContent = testimonials[index].quote;
+    testimonialName.textContent = testimonials[index].name;
+    testimonialLocation.textContent = testimonials[index].location;
+    
+    // Update active nav item
+    testimonialNavItems.forEach(item => {
+      item.classList.remove('active');
+    });
+    testimonialNavItems[index].classList.add('active');
+  }
+  
+  // Add click event listeners to nav items
+  testimonialNavItems.forEach(item => {
+    item.addEventListener('click', function() {
+      const index = parseInt(this.getAttribute('data-index'));
+      showTestimonial(index);
+    });
+  });
+  
+  // Initialize with first testimonial
+  showTestimonial(0);
+});
+
+// Add this to your script.js
+function traceCartEvents() {
+  const originalSetItem = localStorage.setItem;
+  localStorage.setItem = function(key, value) {
+    console.log(`localStorage.setItem('${key}', ${value})`);
+    originalSetItem.apply(this, arguments);
+    
+    // Force UI update when cart is modified
+    if (key === 'cart') {
+      console.log("Cart updated, refreshing UI");
+      updateCartCount();
+    }
+  };
+}
+
+// Call this at the start of your script
+traceCartEvents();
+// Direct add to cart function
+function addProductToCart(productId) {
+  console.log(`Direct add to cart for product ${productId}`);
+  
+  // Get product details
+  const select = document.querySelector(`.model-select[data-product="${productId}"]`);
+  const quantityInput = document.querySelector(`.quantity-input[data-product="${productId}"]`);
+  
+  if (select && quantityInput) {
+    const selectedOption = select.options[select.selectedIndex];
+    const modelId = select.value;
+    
+    // Extract just the model name without category
+    // This assumes the format might be "Category - Model Name"
+    let modelName = selectedOption.text;
+    if (modelName.includes(' - ')) {
+      // If there's a category separator, take only what's after it
+      modelName = modelName.split(' - ')[1];
+    }
+    
+    const price = parseFloat(selectedOption.dataset.price) || 0;
+    const quantity = parseInt(quantityInput.value) || 1;
+    
+    // Create cart item
+    const item = {
+      id: modelId,
+      productId: productId,
+      name: modelName, // Now contains only the model name
+      price: price,
+      quantity: quantity
+    };
+    
+    // Add to cart using our addToCart function
+    addToCart(item);
+    
+    // Reset quantity
+    quantityInput.value = 0;
+    updateSubtotal(productId);
+    updateAddToCartButton(productId);
+    
+    // Force update cart count immediately
+    updateCartCount();
+  }
+}
+// Enhanced show message function
+function showMessage(message, type = 'success') {
+  const messageElement = document.createElement('div');
+  messageElement.className = `message message-${type}`;
+  messageElement.textContent = message;
+  
+  // Style the message
+  messageElement.style.position = 'fixed';
+  messageElement.style.top = '20px';
+  messageElement.style.left = '50%';
+  messageElement.style.transform = 'translateX(-50%)';
+  messageElement.style.padding = '10px 20px';
+  messageElement.style.borderRadius = '5px';
+  messageElement.style.zIndex = '1000';
+  
+  // Set color based on message type
+  switch(type) {
+    case 'success':
+      messageElement.style.backgroundColor = '#4CAF50';
+      messageElement.style.color = 'white';
+      break;
+    case 'info':
+      messageElement.style.backgroundColor = '#2196F3';
+      messageElement.style.color = 'white';
+      break;
+    case 'warning':
+      messageElement.style.backgroundColor = '#ff9800';
+      messageElement.style.color = 'white';
+      break;
+    case 'error':
+      messageElement.style.backgroundColor = '#f44336';
+      messageElement.style.color = 'white';
+      break;
+  }
+  
+  document.body.appendChild(messageElement);
+  
+  // Remove after 3 seconds
+  setTimeout(() => {
+    messageElement.remove();
+  }, 3000);
+}
+// Function to remove cart item
+function removeCartItem(itemId) {
+  console.log(`Removing item ${itemId} from cart`);
+  
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  
+  // Find the item to get its name for the message
+  const itemToRemove = cart.find(item => item.id === itemId);
+  const itemName = itemToRemove ? itemToRemove.name : 'Item';
+  
+  const updatedCart = cart.filter(item => item.id !== itemId);
+  localStorage.setItem('cart', JSON.stringify(updatedCart));
+  
+  renderCart();
+  updateCartCount();
+  
+  // Show removal message
+  showMessage(`${itemName} removed from cart`, 'info');
+}
+// Inside renderCart function, update the cart item HTML template
+cartItemElement.innerHTML = `
+  <img src="${imagePath}" 
+       alt="${item.name}"
+       class="cart-item-image"
+       onerror="this.src='assets/Shopping_Cart_Icon_PNG_Clipart.png'">
+  <div class="cart-item-details">
+    <h3 class="cart-item-title">${item.name}</h3>
+    <p class="cart-item-price">$${item.price.toFixed(2)}</p>
+    <div class="cart-item-quantity">
+      <button class="quantity-btn decrease" data-id="${item.id}">-</button>
+      <input type="number" class="quantity-input" value="${item.quantity}" min="1" data-id="${item.id}">
+      <button class="quantity-btn increase" data-id="${item.id}">+</button>
+    </div>
+  </div>
+  <button class="cart-item-remove" data-id="${item.id}">
+    Remove
+  </button>
+`;

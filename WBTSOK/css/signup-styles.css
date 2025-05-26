@@ -1,0 +1,120 @@
+/* Remove root variable as it should be in global.css */
+/* :root { --nav-height: 70px; } */
+
+/* Make selectors more specific to avoid conflicts */
+.signup-form {
+  max-width: 450px;
+  margin: 0 auto;
+}
+
+.signup-form .form-group {
+  margin-bottom: 20px;
+}
+
+.signup-form .form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--dark);
+}
+
+.signup-form .form-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.signup-form .form-group input:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+
+.signup-form .password-container {
+  position: relative;
+}
+
+.signup-form .toggle-password {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #777;
+}
+
+.signup-form .password-requirements {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #666;
+}
+
+.signup-form .requirement {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.signup-form .requirement i {
+  margin-right: 8px;
+  font-size: 12px;
+}
+
+.signup-form .requirement.met i {
+  color: var(--button-green);
+}
+
+.signup-form .requirement.unmet i {
+  color: #ccc;
+}
+
+.signup-form .terms-checkbox {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.signup-form .terms-checkbox input {
+  margin-top: 5px;
+  margin-right: 10px;
+}
+
+.signup-btn {
+  width: 100%;
+  padding: 14px;
+  background-color: var(--button-green);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.signup-btn:hover {
+  background-color: var(--button-green-hover);
+}
+
+.signup-btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Rename to avoid conflicts with navigation .login-link */
+.signup-form .signup-login-link {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.signup-form .signup-login-link a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.signup-form .signup-login-link a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Checkout – We Buy Test Strips Oklahoma</title>
+  
+  <!-- Global styles first -->
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/footer-styles.css">
+  
+  <!-- Page-specific CSS -->
+  <link rel="stylesheet" href="css/checkout.css">
+  
+  <!-- Navigation styles last to override any conflicts -->
+  <link rel="stylesheet" href="css/navigation.css">
+  <link rel="stylesheet" href="css/navigation-override.css">
+  <link rel="stylesheet" href="css/navigation-fix.css">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/page-layout.css">
+  <meta name="description" content="Complete your transaction and sell your test strips to We Buy Test Strips Oklahoma." />
+</head>
+<body class="checkout-page">
+  
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-wrapper">
+      <a href="index.html" class="logo">
+        <img src="assets/WBSTOK-Logo_2.png" alt="We Buy Test Strips Oklahoma Logo" />
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="how-it-works.html">How it Works</a>
+        <a href="sell.html">Sell</a>
+        <a href="contact.html">Contact</a>
+        <a href="faqs.html">FAQs</a>
+      </div>
+      <div class="user-actions">
+        <a href="login.html" class="login-link">
+          <i class="fas fa-user"></i>
+          <span>Sign In</span>
+        </a>
+        <a href="cart.html" class="cart-link">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="cart-count">0</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+  
+  <div class="content-wrapper">
+    <!-- Checkout Hero Section -->
+    <section class="checkout-hero">
+      <div class="checkout-hero-inner">
+        <h1>Checkout</h1>
+        <p>Complete your transaction to sell your test strips</p>
+      </div>
+    </section>
+    
+    <!-- Checkout Section -->
+    <section class="checkout-section">
+      <div class="checkout-container">
+        <div class="checkout-progress">
+          <div class="progress-step active">
+            <div class="step-number">1</div>
+            <div class="step-label">Review Items</div>
+          </div>
+          <div class="progress-connector"></div>
+          <div class="progress-step">
+            <div class="step-number">2</div>
+            <div class="step-label">Shipping</div>
+          </div>
+          <div class="progress-connector"></div>
+          <div class="progress-step">
+            <div class="step-number">3</div>
+            <div class="step-label">Payment</div>
+          </div>
+          <div class="progress-connector"></div>
+          <div class="progress-step">
+            <div class="step-number">4</div>
+            <div class="step-label">Confirmation</div>
+          </div>
+        </div>
+        
+        <!-- Multi-step checkout form -->
+        <div class="checkout-form-container">
+          <!-- Step 1: Review Items -->
+          <div class="checkout-step active" id="step-1">
+            <h2>Review Your Items</h2>
+            <div class="order-summary">
+              <div class="order-items">
+                <!-- Cart items will be dynamically inserted here -->
+              </div>
+              
+              <div class="order-total">
+                <div class="total-row">
+                  <span>Subtotal:</span>
+                  <span id="subtotal-amount">$0.00</span>
+                </div>
+                <div class="total-row">
+                  <span>Shipping:</span>
+                  <span>FREE</span>
+                </div>
+                <div class="total-row grand-total">
+                  <span>Total Payment:</span>
+                  <span id="total-amount">$0.00</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="checkout-actions">
+              <a href="cart.html" class="btn secondary-btn">Back to Cart</a>
+              <button class="btn primary-btn next-step" data-next="2">Continue to Shipping</button>
+            </div>
+          </div>
+          
+          <!-- Step 2: Shipping Information -->
+          <div class="checkout-step" id="step-2">
+            <h2>Shipping Information</h2>
+            <p class="step-description">Please provide your shipping address where we'll send the prepaid shipping label.</p>
+            
+            <form id="checkout-form" class="checkout-form">
+              <!-- Personal Information -->
+              <div class="form-section">
+                <h2>Personal Information</h2>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" name="phone" required>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Shipping Address -->
+              <div class="form-section">
+                <h2>Shipping Address</h2>
+                <div class="form-group">
+                  <label for="address">Street Address</label>
+                  <input type="text" id="address" name="address" required>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="city">City</label>
+                    <input type="text" id="city" name="city" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="state">State</label>
+                    <select id="state" name="state" required>
+                      <!-- State options -->
+                      <option value="AL">Alabama</option>
+                      <option value="AK">Alaska</option>
+                      <!-- Add all states -->
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="zip">ZIP Code</label>
+                    <input type="text" id="zip" name="zip" required>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Payment Method -->
+              <div class="form-section">
+                <h2>Payment Method</h2>
+                <div class="form-group">
+                  <label for="payment-method">Select Payment Method</label>
+                  <select id="payment-method" name="paymentMethod" required>
+                    <option value="">Select a payment method</option>
+                    <option value="paypal">PayPal</option>
+                    <option value="venmo">Venmo</option>
+                    <option value="zelle">Zelle</option>
+                    <option value="cashapp">Cash App</option>
+                  </select>
+                </div>
+                
+                <!-- PayPal Details -->
+                <div id="paypal-details" class="payment-details">
+                  <div class="form-group">
+                    <label for="paypal-email">PayPal Email</label>
+                    <input type="email" id="paypal-email" name="paypalEmail">
+                  </div>
+                </div>
+                
+                <!-- Venmo Details -->
+                <div id="venmo-details" class="payment-details">
+                  <div class="form-group">
+                    <label for="venmo-username">Venmo Username</label>
+                    <input type="text" id="venmo-username" name="venmoUsername">
+                  </div>
+                </div>
+                
+                <!-- Zelle Details -->
+                <div id="zelle-details" class="payment-details">
+                  <div class="form-group">
+                    <label for="zelle-email">Zelle Email</label>
+                    <input type="email" id="zelle-email" name="zelleEmail">
+                  </div>
+                  <div class="form-group">
+                    <label for="zelle-phone">Zelle Phone</label>
+                    <input type="tel" id="zelle-phone" name="zellePhone">
+                  </div>
+                </div>
+                
+                <!-- Cash App Details -->
+                <div id="cashapp-details" class="payment-details">
+                  <div class="form-group">
+                    <label for="cashapp-tag">Cash App $Cashtag</label>
+                    <input type="text" id="cashapp-tag" name="cashAppTag">
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Order Summary -->
+              <div class="form-section">
+                <h2>Order Summary</h2>
+                <div id="checkout-cart-summary">
+                  <!-- Cart items will be displayed here -->
+                </div>
+                <div class="checkout-total">
+                  <span>Total:</span>
+                  <span id="checkout-total-amount">$0.00</span>
+                </div>
+              </div>
+              
+              <!-- Submit Button -->
+              <div class="form-actions">
+                <button type="submit" id="checkout-submit" class="checkout-submit-btn">Place Order</button>
+              </div>
+            </form>
+            
+            <div class="checkout-actions">
+              <button class="btn secondary-btn prev-step" data-prev="1">Back</button>
+              <button class="btn primary-btn next-step" data-next="3">Continue to Payment</button>
+            </div>
+          </div>
+          
+          <!-- Step 3: Payment Information -->
+          <div class="checkout-step" id="step-3">
+            <h2>Payment Information</h2>
+            <p class="step-description">Please select how you would like to receive payment for your test strips.</p>
+            
+            <form class="payment-form">
+              <div class="payment-options">
+                <div class="payment-option">
+                  <input type="radio" id="paypal" name="paymentMethod" value="paypal" checked>
+                  <label for="paypal">
+                    <img src="assets/paypal-logo.png" alt="PayPal" class="payment-logo">
+                    <span>PayPal</span>
+                  </label>
+                </div>
+                
+                <div class="payment-option">
+                  <input type="radio" id="venmo" name="paymentMethod" value="venmo">
+                  <label for="venmo">
+                    <img src="assets/venmo-logo.png" alt="Venmo" class="payment-logo">
+                    <span>Venmo</span>
+                  </label>
+                </div>
+                
+                <div class="payment-option">
+                  <input type="radio" id="zelle" name="paymentMethod" value="zelle">
+                  <label for="zelle">
+                    <img src="assets/zelle-logo.png" alt="Zelle" class="payment-logo">
+                    <span>Zelle</span>
+                  </label>
+                </div>
+              </div>
+              
+              <div class="payment-details" id="paypal-details">
+                <div class="form-group">
+                  <label for="paypalEmail">PayPal Email Address</label>
+                  <input type="email" id="paypalEmail" name="paypalEmail">
+                </div>
+              </div>
+              
+              <div class="payment-details" id="venmo-details" style="display: none;">
+                <div class="form-group">
+                  <label for="venmoUsername">Venmo Username</label>
+                  <input type="text" id="venmoUsername" name="venmoUsername">
+                </div>
+              </div>
+              
+              <div class="payment-details" id="zelle-details" style="display: none;">
+                <div class="form-group">
+                  <label for="zelleEmail">Zelle Email or Phone Number</label>
+                  <input type="text" id="zelleEmail" name="zelleEmail">
+                </div>
+              </div>
+              
+              <div class="form-group terms-agreement">
+                <input type="checkbox" id="termsAgree" name="termsAgree" required>
+                <label for="termsAgree">I agree to the <a href="terms-of-service.html" target="_blank">Terms of Service</a> and <a href="privacy-policy.html" target="_blank">Privacy Policy</a></label>
+              </div>
+            </form>
+            
+            <div class="checkout-actions">
+              <button class="btn secondary-btn prev-step" data-prev="2">Back</button>
+              <button class="btn primary-btn next-step" data-next="4" id="complete-order-btn">Complete Order</button>
+            </div>
+          </div>
+          
+          <!-- Step 4: Confirmation -->
+          <div class="checkout-step" id="step-4">
+            <div class="confirmation-message">
+              <i class="fas fa-check-circle confirmation-icon"></i>
+              <h2>Thank You for Your Order!</h2>
+              <p>Your order has been successfully placed.</p>
+              <div class="order-number">
+                <span>Order Number:</span>
+                <span id="confirmation-order-number">WB12345678</span>
+              </div>
+              <p>We've sent a confirmation email to <span id="confirmation-email">your@email.com</span> with all the details.</p>
+              
+              <div class="next-steps">
+                <h3>Next Steps:</h3>
+                <ol>
+                  <li>Print the prepaid shipping label we've emailed you.</li>
+                  <li>Package your test strips securely.</li>
+                  <li>Drop off the package at any USPS location.</li>
+                  <li>Once we receive and verify your items, we'll process your payment.</li>
+                </ol>
+              </div>
+              
+              <a href="sell.html" class="btn primary-btn">Sell More Test Strips</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  <!-- Footer -->
+  <footer>
+    <!-- Footer content will be inserted by footer.js -->
+  </footer>
+  
+  <script src="js/script.js"></script>
+  <script src="js/checkout.js"></script>
+  <script src="footer.js"></script>
+  <script src="shipping.js"></script>
+</body>
+</html>

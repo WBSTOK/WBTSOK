@@ -1,0 +1,391 @@
+/* At the top of your global.css file */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Add to global.css at the top */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Add to global.css */
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  position: relative;
+}
+
+:root {
+  --primary: #394d6c;
+  --accent: #ff6f61;
+  --accent-hover: #e25e50;
+  --button-green: #4CAF50;
+  --button-green-hover: #45a049;
+  --dark: #333;
+  --light: #ffffff;
+  --gray: #f2f2f2;
+  --nav-height: 60px;
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--primary);
+  color: var(--dark);
+  overflow-x: hidden;
+  width: 100%;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:focus, .btn:focus, input:focus, textarea:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: var(--accent);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: var(--accent-hover);
+}
+
+.btn-sell {
+  background-color: var(--button-green);
+  padding: 14px 28px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  border-radius: 10px;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-sell:hover {
+  background-color: var(--button-green-hover);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input, textarea {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+button[type="submit"] {
+  border: none;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 1s ease-in-out;
+}
+
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+footer {
+  background-color: #000;
+  color: #fff;
+  padding: 80px 0 40px;
+  width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+  position: relative;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+}
+
+.footer-column {
+  flex: 1;
+  padding: 0 15px;
+  position: relative;
+}
+
+.footer-divider {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 1px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.footer-column {
+  position: relative;
+}
+
+.footer-column:last-child .footer-divider {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .footer-divider {
+    display: none;
+  }
+}
+
+.footer-column h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+  color: #999;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.footer-column ul li a:hover {
+  color: #fff;
+}
+
+.footer-bottom {
+  border-top: 1px solid #333;
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-size: 0.9rem;
+  color: #888;
+  padding: 0 20px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .btn-sell {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .footer-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .footer-divider {
+    display: none;
+  }
+  
+  .footer-column {
+    padding: 0;
+  }
+  
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+}
+
+/* Add this to your CSS to remove the underline */
+.about-section h1:after {
+  display: none !important; /* This will hide the underline */
+}
+
+/* Footer Fix - Add to end of global.css */
+body footer,
+.home-page footer,
+.cart-page footer,
+.sell-page footer,
+.login-page footer,
+.about-page footer,
+.contact-page footer,
+.faq-page footer {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  padding-bottom: 40px !important;
+  padding-top: 80px !important;
+  box-sizing: border-box !important;
+  left: 0 !important;
+  right: 0 !important;
+  overflow: hidden !important;
+}
+
+.footer-container,
+.footer-bottom {
+  max-width: 1200px !important;
+  width: auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  box-sizing: border-box !important;
+}
+
+.footer-logo img {
+  height: 30px !important;
+  width: auto !important;
+  object-fit: contain !important;
+}
+
+/* Message styles */
+.message {
+  animation: fadeInOut 3s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.message-success {
+  border-left: 4px solid #2e7d32;
+}
+
+.message-info {
+  border-left: 4px solid #0d47a1;
+}
+
+.message-warning {
+  border-left: 4px solid #e65100;
+}
+
+.message-error {
+  border-left: 4px solid #b71c1c;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translate(-50%, -20px); }
+  10% { opacity: 1; transform: translate(-50%, 0); }
+  90% { opacity: 1; transform: translate(-50%, 0); }
+  100% { opacity: 0; transform: translate(-50%, -20px); }
+}
+
+/* Fix for navigation font on login page */
+body.login-page .nav,
+body.login-page .nav-wrapper,
+body.login-page .nav-links,
+body.login-page .nav-links a,
+body.login-page .user-actions,
+body.login-page .login-link,
+body.login-page .cart-link {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+}
+
+/* Fix for navigation links on login page */
+body.login-page .nav-links a {
+  position: relative !important;
+  text-decoration: none !important;
+  color: var(--dark) !important;
+  font-weight: 500 !important;
+  font-size: 1rem !important;
+  transition: color 0.3s ease !important;
+  padding: 5px 0 !important;
+}
+
+/* Fix for active link indicator if needed */
+body.login-page .nav-links a.active::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: -5px !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 2px !important;
+  background-color: var(--accent) !important;
+}
+
+/* Ensure proper body padding */
+body.login-page {
+  padding-top: 70px !important;
+}
+
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #f5f5f5;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+.cookie-banner p {
+  margin: 0;
+  padding-right: 20px;
+}
+
+.cookie-banner button {
+  background-color: #8c2d38;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.cookie-banner button:hover {
+  background-color: #7d2935;
+}

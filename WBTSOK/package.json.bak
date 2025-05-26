@@ -1,0 +1,26 @@
+{
+  "name": "wbtsok-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": "16.x"
+  },
+  "dependencies": {
+  }
+}
+echo '{
+  "name": "wbtsok-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": "16.x"
+  },
+  "dependencies": {
+  }
+}' > package.json

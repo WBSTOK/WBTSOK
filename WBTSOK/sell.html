@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sell Your Supplies – We Buy Test Strips Oklahoma</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/footer-styles.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/navigation.css">
+  <link rel="stylesheet" href="css/sell.css">
+  <meta name="description" content="Sell your unopened, unexpired diabetic test strips and supplies in Oklahoma. We buy Dexcom, Libre, Omnipod and more." />
+  <!-- Add this CSS in the head section of your sell.html -->
+  <style>
+    /* Add to Cart Button */
+    .add-to-cart-btn {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 15px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 15px;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+    
+    .add-to-cart-btn:hover {
+      background-color: #45a049;
+    }
+    
+    .add-to-cart-btn:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+    
+    /* Fixed Cart Summary */
+    .cart-summary-container {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: white;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+    }
+    
+    .cart-summary {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    
+    .checkout-btn {
+      padding: 10px 20px;
+      min-width: 200px;
+    }
+    
+    /* Add some padding to the bottom of the page to account for the fixed cart summary */
+    .sell-page {
+      padding-bottom: 70px;
+    }
+  </style>
+</head>
+<body class="sell-page">
+  <div class="page-container">
+    <!-- Navigation -->
+    <nav class="nav">
+      <div class="nav-wrapper">
+        <a href="index.html" class="logo">
+          <img src="assets/WBSTOK-Logo_2.png" alt="We Buy Test Strips Oklahoma Logo" />
+        </a>
+        <button class="menu-toggle" aria-label="Toggle menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <!-- Change this line in ALL HTML files -->
+          <a href="how-it-works.html">How it Works</a>
+          <a href="sell.html">Sell</a>
+          <a href="contact.html">Contact</a>
+          <a href="faqs.html">FAQs</a>
+        </div>
+        <div class="user-actions">
+          <a href="login.html" class="login-link">
+            <i class="fas fa-user"></i>
+            <span>Sign In</span>
+          </a>
+          <a href="cart.html" class="cart-link">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count">0</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Sell Page Header -->
+    <header class="page-header container">
+      <h1>Sell Your Supplies</h1>
+      <p>We buy unopened, unexpired diabetic test strips and supplies</p>
+    </header>
+
+    <!-- Product Categories -->
+    <section class="product-categories container">
+      <div class="category-tabs">
+        <button class="category-tab active" data-category="all">All Products</button>
+        <button class="category-tab" data-category="test-strips">Test Strips</button>
+        <button class="category-tab" data-category="cgms">CGM Systems</button>
+        <button class="category-tab" data-category="expired">Expired/Damaged</button>
+      </div>
+
+      <!-- Cart Summary Container (fixed at bottom) -->
+      <div class="cart-summary-container">
+        <div class="cart-summary">
+          <div class="cart-total">
+            <span>Cart Total:</span>
+            <span id="sell-page-cart-total">$0.00</span>
+          </div>
+          <a href="cart.html" class="view-cart-btn">View Cart</a>
+        </div>
+        <div class="cart-buttons">
+          <button class="checkout-btn" id="sell-page-checkout-btn">Proceed to Checkout</button>
+        </div>
+      </div>
+
+      <!-- Product Grid -->
+      <div class="products-grid">
+        <!-- Accu-Chek Brand -->
+        <div class="product-card" data-category="test-strips" data-product="accu-chek">
+          <img src="assets/products/Accu-Chek Aviva Plus 100ct.png" alt="Accu-Chek Test Strips">
+          <h3>Accu-Chek</h3>
+          <p>We buy unopened boxes of various Accu-Chek test strips.</p>
+          
+          <div class="product-model-selection">
+            <label for="accu-chek-model">Select Model:</label>
+            <select id="accu-chek-model" class="model-select" data-product="accu-chek">
+              <option value="">-- Select Model --</option>
+              <option value="aviva-plus-100" data-price="25" data-expiry="10+ mos">Aviva Plus 100ct Retail - $25.00 (10+ mos)</option>
+              <option value="aviva-plus-50" data-price="10" data-expiry="10+ mos">Aviva Plus 50ct Retail - $10.00 (10+ mos)</option>
+              <option value="guide-100" data-price="10" data-expiry="10+ mos">Guide 100ct Retail - $10.00 (10+ mos)</option>
+              <option value="guide-50" data-price="5" data-expiry="10+ mos">Guide 50ct Retail - $5.00 (10+ mos)</option>
+              <option value="guide-50-mail" data-price="3" data-expiry="10+ mos">Guide 50ct Mail Order - $3.00 (10+ mos)</option>
+              <option value="smartview-100" data-price="15" data-expiry="10+ mos">SmartView 100ct - $15.00 (10+ mos)</option>
+              <option value="smartview-50" data-price="8" data-expiry="10+ mos">SmartView 50ct - $8.00 (10+ mos)</option>
+              <option value="smartview-50-mail" data-price="3" data-expiry="10+ mos">SmartView 50ct Mail Order - $3.00 (10+ mos)</option>
+            </select>
+          </div>
+          
+          <div class="product-price" id="accu-chek-price">Select a model to see price</div>
+          <div class="product-expiry" id="accu-chek-expiry"></div>
+          
+          <div class="quantity-control">
+            <button class="quantity-btn minus" data-product="accu-chek" disabled>-</button>
+            <input type="number" min="0" value="0" class="quantity-input" data-product="accu-chek" disabled>
+            <button class="quantity-btn plus" data-product="accu-chek" disabled>+</button>
+          </div>
+          
+          <div class="product-subtotal">Subtotal: $<span class="subtotal-amount">0.00</span></div>
+          <button class="add-to-cart-btn" data-product="accu-chek" disabled>Add to Cart</button>
+          <button class="clear-selection-btn" data-product="accu-chek">Clear Selection</button>
+        </div>
+
+        <!-- Contour Brand -->
+        <div class="product-card" data-category="test-strips" data-product="contour">
+          <img src="assets/products/contour next 100ct.png" alt="Contour Test Strips">
+          <h3>Contour</h3>
+          <p>We buy unopened boxes of Contour test strips.</p>
+          
+          <div class="product-model-selection">
+            <label for="contour-model">Select Model:</label>
+            <select id="contour-model" class="model-select" data-product="contour">
+              <option value="">-- Select Model --</option>
+              <option value="next-100" data-price="10" data-expiry="10+ mos">Contour Next 100ct Retail - $10.00 (10+ mos)</option>
+              <option value="next-50" data-price="5" data-expiry="10+ mos">Contour Next 50ct Retail - $5.00 (10+ mos)</option>
+            </select>
+          </div>
+          
+          <div class="product-price" id="contour-price">Select a model to see price</div>
+          <div class="product-expiry" id="contour-expiry"></div>
+          
+          <div class="quantity-control">
+            <button class="quantity-btn minus" data-product="contour" disabled>-</button>
+            <input type="number" min="0" value="0" class="quantity-input" data-product="contour" disabled>
+            <button class="quantity-btn plus" data-product="contour" disabled>+</button>
+          </div>
+          
+          <div class="product-subtotal">Subtotal: $<span class="subtotal-amount">0.00</span></div>
+          <button class="add-to-cart-btn" data-product="contour" disabled>Add to Cart</button>
+          <button class="clear-selection-btn" data-product="contour">Clear Selection</button>
+        </div>
+
+        <!-- FreeStyle Brand -->
+        <div class="product-card" data-category="test-strips" data-product="freestyle">
+          <img src="assets/products/FSL3.png" alt="FreeStyle Test Strips">
+          <h3>FreeStyle</h3>
+          <p>We buy unopened boxes of FreeStyle test strips.</p>
+          
+          <div class="product-model-selection">
+            <label for="freestyle-model">Select Model:</label>
+            <select id="freestyle-model" class="model-select" data-product="freestyle">
+              <option value="">-- Select Model --</option>
+              <option value="freestyle-100" data-price="10" data-expiry="10+ mos">FreeStyle 100ct Retail - $10.00 (10+ mos)</option>
+              <option value="freestyle-50" data-price="5" data-expiry="10+ mos">FreeStyle 50ct Retail - $5.00 (10+ mos)</option>
+              <option value="freestyle-lite-100" data-price="35" data-expiry="10+ mos">FreeStyle Lite 100ct Retail - $35.00 (10+ mos)</option>
+              <option value="freestyle-lite-50-inst" data-price="3" data-expiry="10+ mos">FreeStyle Lite 50ct Institutional Use Only - $3.00 (10+ mos)</option>
+              <option value="freestyle-lite-50-nfr" data-price="3" data-expiry="10+ mos">FreeStyle Lite 50ct NFR - $3.00 (10+ mos)</option>
+              <option value="freestyle-lite-50" data-price="16" data-expiry="10+ mos">FreeStyle Lite 50ct Retail - $16.00 (10+ mos)</option>
+            </select>
+          </div>
+          
+          <div class="product-price" id="freestyle-price">Select a model to see price</div>
+          <div class="product-expiry" id="freestyle-expiry"></div>
+          
+          <div class="quantity-control">
+            <button class="quantity-btn minus" data-product="freestyle" disabled>-</button>
+            <input type="number" min="0" value="0" class="quantity-input" data-product="freestyle" disabled>
+            <button class="quantity-btn plus" data-product="freestyle" disabled>+</button>
+          </div>
+          
+          <div class="product-subtotal">Subtotal: $<span class="subtotal-amount">0.00</span></div>
+          <button class="add-to-cart-btn" data-product="freestyle" disabled>Add to Cart</button>
+          <button class="clear-selection-btn" data-product="freestyle">Clear Selection</button>
+        </div>
+
+        <!-- One Touch Brand -->
+        <div class="product-card" data-category="test-strips" data-product="onetouch">
+          <img src="assets/products/OneTouch Ultra 100ct.png" alt="One Touch Test Strips">
+          <h3>One Touch</h3>
+          <p>We buy unopened boxes of One Touch test strips.</p>
+          
+          <div class="product-model-selection">
+            <label for="onetouch-model">Select Model:</label>
+            <select id="onetouch-model" class="model-select" data-product="onetouch">
+              <option value="">-- Select Model --</option>
+              <option value="ultra-100" data-price="25" data-expiry="10+ mos">One Touch Ultra 100ct Retail - $25.00 (10+ mos)</option>
+              <option value="ultra-50-mail" data-price="7" data-expiry="10+ mos">One Touch Ultra 50ct Mail Order - $7.00 (10+ mos)</option>
+              <option value="ultra-50" data-price="14" data-expiry="10+ mos">One Touch Ultra 50ct Retail - $14.00 (10+ mos)</option>
+              <option value="verio-100" data-price="17" data-expiry="10+ mos">One Touch Verio 100ct Retail - $17.00 (10+ mos)</option>
+              <option value="verio-50" data-price="8" data-expiry="10+ mos">One Touch Verio 50ct Retail - $8.00 (10+ mos)</option>
+            </select>
+          </div>
+          
+          <div class="product-price" id="onetouch-price">Select a model to see price</div>
+          <div class="product-expiry" id="onetouch-expiry"></div>
+          
+          <div class="quantity-control">
+            <button class="quantity-btn minus" data-product="onetouch" disabled>-</button>
+            <input type="number" min="0" value="0" class="quantity-input" data-product="onetouch" disabled>
+            <button class="quantity-btn plus" data-product="onetouch" disabled>+</button>
+          </div>
+          
+          <div class="product-subtotal">Subtotal: $<span class="subtotal-amount">0.00</span></div>
+          <button class="add-to-cart-btn" data-product="onetouch" disabled>Add to Cart</button>
+          <button class="clear-selection-btn" data-product="onetouch">Clear Selection</button>
+        </div>
+
+        <!-- Omnipod -->
+        <div class="product-card" data-category="cgms" data-product="omnipod">
+          <img src="assets/products/Omnipod_5_5.png" alt="Omnipod">
+          <h3>Omnipod</h3>
+          <p>We buy unopened Omnipod supplies.</p>
+          
+          <div class="product-model-selection">
+            <label for="omnipod-model">Select Model:</label>
+            <select id="omnipod-model" class="model-select" data-product="omnipod">
+              <option value="">-- Select Model --</option>
+              <!-- Regular Omnipod Products -->
+              <option value="omnipod-10" data-price="N/A" data-expiry="7+ mos" data-category="cgms">Omnipod 10 pack - N/A (7+ mos)</option>
+              <option value="omnipod-5-full" data-price="150" data-expiry="6+ mos" data-category="cgms">Omnipod 5 Full Kit - $150.00 (6+ mos)</option>
+              <option value="omnipod-5-pdm" data-price="50" data-expiry="No Exp" data-category="cgms">Omnipod 5 PDM - $50.00 (No Exp)</option>
+              <option value="omnipod-5-classic" data-price="50" data-expiry="7+ mos" data-category="cgms">Omnipod 5 pack Classic - $50.00 (7+ mos)</option>
+              <option value="omnipod-5-purple" data-price="75" data-expiry="7+ mos" data-category="cgms">Omnipod 5 (Purple Box) - $75.00 (7+ mos)</option>
+              
+              <!-- Expired/Damaged Omnipod Products -->
+              <option value="omnipod-10-expired" data-price="10" data-expiry="Expired" data-category="expired">Omnipod 10 pack Expired - $10.00 (Expired)</option>
+              <option value="omnipod-5-purple-expired" data-price="25" data-expiry="Expired" data-category="expired">Omnipod 5 (Purple Box) Expired - $25.00 (Expired)</option>
+              <option value="omnipod-dash-10-expired" data-price="20" data-expiry="Expired" data-category="expired">Omnipod Dash Pod 10 pack Expired - $20.00 (Expired)</option>
+              <option value="dash-pod-5-less" data-price="20" data-expiry="<6 mos" data-category="expired">Dash Pod 5 pack (less 6 months) - $20.00 (<6 mos)</option>
+            </select>
+          </div>
+          
+          <div class="product-price" id="omnipod-price">Select a model to see price</div>
+          <div class="product-expiry" id="omnipod-expiry"></div>
+          
+          <div class="quantity-control">
+            <button class="quantity-btn minus" data-product="omnipod" disabled>-</button>
+            <input type="number" min="0" value="0" class="quantity-input" data-product="omnipod" disabled>
+            <button class="quantity-btn plus" data-product="omnipod" disabled>+</button>
+          </div>
+          
+          <div class="product-subtotal">Subtotal: $<span class="subtotal-amount">0.00</span></div>
+          <button class="add-to-cart-btn" data-product="omnipod" disabled>Add to Cart</button>
+          <button class="clear-selection-btn" data-product="omnipod">Clear Selection</button>
+        </div>
+
+        <!-- Dexcom G6 -->
+        <div class="product-card" data-category="cgms" data-product="dexcomg6">
+          <img src="assets/products/dexcom_g6_3.png" alt="Dexcom G6">
+          <h3>Dexcom G6</h3>
+          <p>We buy unopened Dexcom G6 supplies.</p>
+          
+          <div class="product-model-selection">
+            <label for="dexcomg6-model">Select Model:</label>
+            <select id="dexcomg6-model" class="model-select" data-product="dexcomg6">
+              <option value="">-- Select Model --</option>
+              <option value="g6-receiver" data-price="65" data-expiry="No Exp">Dexcom G6 Receiver - $65.00 (No Exp)</option>
+              <option value="g6-receiver-dme" data-price="40" data-expiry="No Exp">Dexcom G6 Receiver DME - $40.00 (No Exp)</option>
+              <option value="g6-sensor-1" data-price="30" data-expiry="6+ mos">Dexcom G6 Sensor 1 Pack (Boxed) - $30.00 (6+ mos)</option>
+              <option value="g6-sensor-3" data-price="150" data-expiry="6+ mos">Dexcom G6 Sensor 3 Pack - $150.00 (6+ mos)</option>
+            </select>
+          </div>
+          
+          <div class="product-price" id="dexcomg6-price">Select a model to see price</div>
+          <div class="product-expiry" id="dexcomg6-expiry"></div>
+          
+          <div class="quantity-control">
+            <button class="quantity-btn minus" data-product="dexcomg6" disabled>-</button>
+            <input type="number" min="0" value="0" class="quantity-input" data-product="dexcomg6" disabled>
+            <button class="quantity-btn plus" data-product="dexcomg6" disabled>+</button>
+          </div>
+          
+          <div class="product-subtotal">Subtotal: $<span class="subtotal-amount">0.00</span></div>
+          <button class="add-to-cart-btn" data-product="dexcomg6" disabled>Add to Cart</button>
+          <button class="clear-selection-btn" data-product="dexcomg6">Clear Selection</button>
+        </div>
+
+        <!-- Dexcom G7 -->
+        <div class="product-card" data-category="cgms" data-product="dexcomg7">
+          <img src="assets/products/dexcom-g7-sensor.png" alt="Dexcom G7">
+          <h3>Dexcom G7</h3>
+          <p>We buy unopened Dexcom G7 supplies.</p>
+          
+          <div class="product-model-selection">
+            <label for="dexcomg7-model">Select Model:</label>
+            <select id="dexcomg7-model" class="model-select" data-product="dexcomg7">
+              <option value="">-- Select Model --</option>
+              <option value="g7-receiver" data-price="75" data-expiry="No Exp">Dexcom G7 Receiver 1pk - $75.00 (No Exp)</option>
+              <option value="g7-sensor-011" data-price="35" data-expiry="6+ mos">Dexcom G7 Sensor (STP-AT-011) - $35.00 (6+ mos)</option>
+              <option value="g7-sensor-012" data-price="40" data-expiry="6+ mos">Dexcom G7 Sensor (STP-AT-012) - $40.00 (6+ mos)</option>
+              <option value="g7-sensor-013" data-price="25" data-expiry="6+ mos">Dexcom G7 Sensor (STP-AT-013) DME - $25.00 (6+ mos)</option>
+              <option value="g7-sensor-030" data-price="5" data-expiry="6+ mos">Dexcom G7 Sensor (STP-AT-030) - $5.00 (6+ mos)</option>
+            </select>
+          </div>
+          
+          <div class="product-price" id="dexcomg7-price">Select a model to see price</div>
+          <div class="product-expiry" id="dexcomg7-expiry"></div>
+          
+          <div class="quantity-control">
+            <button class="quantity-btn minus" data-product="dexcomg7" disabled>-</button>
+            <input type="number" min="0" value="0" class="quantity-input" data-product="dexcomg7" disabled>
+            <button class="quantity-btn plus" data-product="dexcomg7" disabled>+</button>
+          </div>
+          
+          <div class="product-subtotal">Subtotal: $<span class="subtotal-amount">0.00</span></div>
+          <button class="add-to-cart-btn" data-product="dexcomg7" disabled>Add to Cart</button>
+          <button class="clear-selection-btn" data-product="dexcomg7">Clear Selection</button>
+        </div>
+      </div> <!-- Close the products-grid div -->
+    </section> <!-- Close the product-categories section -->
+    
+    <!-- Footer -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-column">
+          <h4>About Us</h4>
+          <ul>
+            <li><a href="about.html">Our Story</a></li>
+            <li><a href="about.html">Our Mission</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Sell to Us</h4>
+          <ul>
+            <li><a href="how-it-works.html">How It Works</a></li>
+            <li><a href="sell.html">Sell Your Supplies</a></li>
+            <li><a href="faqs.html">FAQs</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Get in Touch</h4>
+          <ul>
+            <li><a href="tel:+18001234567">405-459-0973</a></li>
+            <li><a href="mailto:info@wbtsok.com">webuydiabeticteststripsOK@gmail.com</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <div class="footer-logo">
+          <img src="assets/WBSTOK-Logo_3.png" alt="We Buy Test Strips Oklahoma Logo">
+        </div>
+        
+        <div class="copyright">
+          &copy; 2025 We Buy Test Strips Oklahoma. All rights reserved.
+        </div>
+        
+        <div class="social-icons">
+          <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </footer>
+    
+  </div> <!-- Close the page-container div -->
+
+  <!-- Add Font Awesome for social icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Your JavaScript -->
+  <script src="js/script.js"></script>
+  <script src="footer.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get all model select dropdowns
+      const modelSelects = document.querySelectorAll('.model-select');
+      
+      // Add change event listeners to all model selects
+      modelSelects.forEach(select => {
+        select.addEventListener('change', function() {
+          const productId = this.dataset.product;
+          const selectedOption = this.options[this.selectedIndex];
+          const price = selectedOption.dataset.price;
+          const expiry = selectedOption.dataset.expiry;
+          
+          // Update price and expiry display
+          document.getElementById(`${productId}-price`).textContent = price === 'N/A' ? 'Price: N/A' : `Price: $${price}`;
+          document.getElementById(`${productId}-expiry`).textContent = `Expiration: ${expiry}`;
+          
+          // Enable/disable quantity controls
+          const quantityBtns = document.querySelectorAll(`.quantity-btn[data-product="${productId}"]`);
+          const quantityInput = document.querySelector(`.quantity-input[data-product="${productId}"]`);
+          const addToCartBtn = document.querySelector(`.add-to-cart-btn[data-product="${productId}"]`);
+          
+          if (this.value && price !== 'N/A') {
+            quantityBtns.forEach(btn => btn.disabled = false);
+            quantityInput.disabled = false;
+            addToCartBtn.disabled = false;
+          } else {
+            quantityBtns.forEach(btn => btn.disabled = true);
+            quantityInput.disabled = true;
+            addToCartBtn.disabled = true;
+            quantityInput.value = 0;
+            updateSubtotal(productId, 0, 0);
+          }
+        });
+      });
+      
+      // Quantity button functionality
+      const quantityBtns = document.querySelectorAll('.quantity-btn');
+      quantityBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          const productId = this.dataset.product;
+          const input = document.querySelector(`.quantity-input[data-product="${productId}"]`);
+          const currentValue = parseInt(input.value);
+          
+          if (this.classList.contains('plus')) {
+            input.value = currentValue + 1;
+          } else if (this.classList.contains('minus') && currentValue > 0) {
+            input.value = currentValue - 1;
+          }
+          
+          // Update subtotal
+          const select = document.querySelector(`.model-select[data-product="${productId}"]`);
+          const selectedOption = select.options[select.selectedIndex];
+          const price = selectedOption.dataset.price === 'N/A' ? 0 : parseFloat(selectedOption.dataset.price);
+          
+          updateSubtotal(productId, price, input.value);
+        });
+      });
+      
+      // Quantity input change
+      const quantityInputs = document.querySelectorAll('.quantity-input');
+      quantityInputs.forEach(input => {
+        input.addEventListener('change', function() {
+          const productId = this.dataset.product;
+          const select = document.querySelector(`.model-select[data-product="${productId}"]`);
+          const selectedOption = select.options[select.selectedIndex];
+          const price = selectedOption.dataset.price === 'N/A' ? 0 : parseFloat(selectedOption.dataset.price);
+          
+          updateSubtotal(productId, price, this.value);
+        });
+      });
+      
+      // Add to cart functionality
+      const addToCartBtns = document.querySelectorAll('.add-to-cart-btn');
+      addToCartBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          const productId = this.dataset.product;
+          const select = document.querySelector(`.model-select[data-product="${productId}"]`);
+          const selectedOption = select.options[select.selectedIndex];
+          const model = selectedOption.value;
+          const price = selectedOption.dataset.price === 'N/A' ? 0 : parseFloat(selectedOption.dataset.price);
+          const quantity = parseInt(document.querySelector(`.quantity-input[data-product="${productId}"]`).value);
+          const category = selectedOption.dataset.category || getProductCategory(productId);
+          
+          if (quantity > 0) {
+            // Add to cart using the global function
+            if (typeof window.addToCart === 'function') {
+              const product = {
+                id: productId,
+                name: getProductName(productId),
+                model: model,
+                price: price,
+                quantity: quantity,
+                category: category
+              };
+              
+              window.addToCart(product);
+              
+              // Update cart count
+              updateCartCount();
+              
+              // Update cart total
+              updateCartTotal();
+              
+              // Clear selection
+              clearSelection(productId);
+            } else {
+              console.error('addToCart function is not defined globally');
+            }
+          }
+        });
+      });
+      
+      // Clear selection buttons
+      const clearBtns = document.querySelectorAll('.clear-selection-btn');
+      clearBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          const productId = this.dataset.product;
+          clearSelection(productId);
+        });
+      });
+      
+      // Category tabs
+      const categoryTabs = document.querySelectorAll('.category-tab');
+      categoryTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+          // Remove active class from all tabs
+          categoryTabs.forEach(t => t.classList.remove('active'));
+          
+          // Add active class to clicked tab
+          this.classList.add('active');
+          
+          const category = this.dataset.category;
+          filterProductsByCategory(category);
+        });
+      });
+      
+      // Mobile menu toggle functionality
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      
+      if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', function() {
+          navLinks.classList.toggle('active');
+          menuToggle.classList.toggle('active');
+        });
+      }
+      
+      // Helper functions
+      function updateSubtotal(productId, price, quantity) {
+        const subtotal = price * quantity;
+        const subtotalElement = document.querySelector(`.product-card[data-product="${productId}"] .subtotal-amount`);
+        subtotalElement.textContent = subtotal.toFixed(2);
+      }
+      
+      function clearSelection(productId) {
+        const select = document.querySelector(`.model-select[data-product="${productId}"]`);
+        const quantityInput = document.querySelector(`.quantity-input[data-product="${productId}"]`);
+        const quantityBtns = document.querySelectorAll(`.quantity-btn[data-product="${productId}"]`);
+        const addToCartBtn = document.querySelector(`.add-to-cart-btn[data-product="${productId}"]`);
+        
+        select.selectedIndex = 0;
+        quantityInput.value = 0;
+        quantityBtns.forEach(btn => btn.disabled = true);
+        quantityInput.disabled = true;
+        addToCartBtn.disabled = true;
+        
+        document.getElementById(`${productId}-price`).textContent = 'Select a model to see price';
+        document.getElementById(`${productId}-expiry`).textContent = '';
+        updateSubtotal(productId, 0, 0);
+      }
+      
+      function filterProductsByCategory(category) {
+        const productCards = document.querySelectorAll('.product-card');
+        
+        productCards.forEach(card => {
+          if (category === 'all' || card.dataset.category === category) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      }
+      
+      function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+        
+        const cartCount = document.querySelector('.cart-count');
+        if (cartCount) {
+          cartCount.textContent = totalItems;
+        }
+      }
+      
+      function getProductName(productId) {
+        switch(productId) {
+          case 'accu-chek': return 'Accu-Chek';
+          case 'contour': return 'Contour';
+          case 'freestyle': return 'FreeStyle';
+          case 'onetouch': return 'One Touch';
+          case 'omnipod': return 'Omnipod';
+          case 'dexcomg6': return 'Dexcom G6';
+          case 'dexcomg7': return 'Dexcom G7';
+          default: return 'Unknown Product';
+        }
+      }
+      
+      function getProductCategory(productId) {
+        if (productId.includes('dexcom') || productId === 'omnipod') {
+          return 'cgms';
+        } else {
+          return 'test-strips';
+        }
+      }
+      
+      function updateCartTotal() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        const cartTotalElement = document.querySelector('.cart-total');
+        
+        if (cartTotalElement) {
+          cartTotalElement.textContent = `Total: $${total.toFixed(2)}`;
+        }
+        
+        // Enable/disable checkout button
+        const checkoutBtn = document.getElementById('checkout-btn');
+        if (checkoutBtn) {
+          checkoutBtn.disabled = cart.length === 0;
+        }
+      }
+      
+      // Initialize cart count and total
+      updateCartCount();
+      updateCartTotal();
+    });
+  </script>
+  <script>
+    // Override the global addToCart function for the sell page
+    window.addToCart = function(product) {
+      console.log("Adding to cart:", product);
+    
+      // Get existing cart from localStorage or initialize empty array
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+      // Check if product already exists in cart
+      const existingProductIndex = cart.findIndex(item =>
+        item.id === product.id && item.model === product.model
+      );
+    
+      if (existingProductIndex >= 0) {
+        // Update quantity if product already in cart
+        cart[existingProductIndex].quantity += product.quantity;
+      } else {
+        // Add new product to cart
+        cart.push(product);
+      }
+    
+      // Save updated cart to localStorage
+      localStorage.setItem('cart', JSON.stringify(cart));
+    
+      // Show confirmation message
+      showMessage(`Added ${product.quantity} ${product.name} to your cart.`, 'success');
+    
+      // Update cart count
+      updateCartCount();
+    
+      // Update cart total - IMPORTANT: Call this function
+      updateSellPageTotal();
+    
+      // Also call with a slight delay to ensure DOM updates
+      setTimeout(updateSellPageTotal, 100);
+    };
+    
+    // Add direct event listeners to all add-to-cart buttons
+    document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        // Call after a slight delay to ensure cart has been updated
+        setTimeout(updateSellPageTotal, 200);
+      });
+    });
+    
+    // Call updateSellPageTotal on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      updateSellPageTotal();
+    });
+  </script>
+  <script>
+    // Function to update the cart total on the sell page
+    function updateSellPageTotal() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      
+      // Update the sell page cart total
+      const sellPageTotalElement = document.getElementById('sell-page-cart-total');
+      if (sellPageTotalElement) {
+        sellPageTotalElement.textContent = `$${total.toFixed(2)}`;
+      }
+      
+      // Also update the checkout button state
+      const checkoutBtn = document.getElementById('sell-page-checkout-btn');
+      if (checkoutBtn) {
+        if (total > 0) {
+          checkoutBtn.disabled = false;
+          checkoutBtn.textContent = 'Proceed to Checkout';
+          
+          // Update checkout button click handler
+          checkoutBtn.onclick = function() {
+            window.location.href = 'checkout.html';
+          };
+        } else {
+          checkoutBtn.disabled = true;
+          checkoutBtn.textContent = 'Cart Empty';
+        }
+      }
+    }
+  </script>
+</body>
+</html>

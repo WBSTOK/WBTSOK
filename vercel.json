@@ -1,0 +1,13 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/index.html" },
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/checkout", "destination": "/checkout.html" },
+    { "source": "/faq", "destination": "/faq.html" },
+    { "source": "/terms-of-service", "destination": "/terms-of-service.html" },
+    { "source": "/privacy-policy", "destination": "/privacy-policy.html" },
+    { "source": "/signup", "destination": "/signup.html" },
+    { "source": "/thank-you", "destination": "/thank-you.html" },
+    { "source": "/login", "destination": "/login.html" }
+  ]
+}

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Your Cart – We Buy Test Strips Oklahoma</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/footer-styles.css"> <!-- Add this line to all pages -->
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/faq.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <!-- Page-specific CSS -->
+    <link rel="stylesheet" href="css/cart-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Review your cart at We Buy Test Strips Oklahoma." />
+</head>
+<body class="cart-page">
+    <div class="page-container">
+      <!-- Navigation -->
+      <nav class="nav">
+        <div class="nav-wrapper">
+          <a href="index.html" class="logo">
+            <img src="assets/WBSTOK-Logo_2.png" alt="We Buy Test Strips Oklahoma Logo" />
+          </a>
+          <button class="menu-toggle" aria-label="Toggle menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </button>
+          <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="how-it-works.html">How it Works</a>
+            <a href="sell.html">Sell</a>
+            <a href="contact.html">Contact</a>
+            <a href="faqs.html">FAQs</a>
+          </div>
+          <div class="user-actions">
+            <a href="login.html" class="login-link">
+              <i class="fas fa-user"></i>
+              <span>Sign In</span>
+            </a>
+            <a href="cart.html" class="cart-link">
+              <i class="fas fa-shopping-cart"></i>
+              <span class="cart-count">0</span>
+            </a>
+          </div>
+        </div>
+      </nav>
+      <!-- Cart Section -->
+      <section class="cart-section">
+        <div class="cart-container">
+          <h1>Your Cart</h1>
+          <p class="cart-subtitle">Review your items before checkout</p>
+          
+          <!-- Cart Items -->
+          <div class="cart-items"></div>
+          <div id="empty-cart-message">Your cart is empty</div>
+          <!-- Cart Summary -->
+          <div class="cart-summary">
+            <div class="cart-total">
+              <span>Total:</span>
+              <span>$<span id="cart-total-amount">0.00</span></span>
+            </div>
+            <button class="checkout-btn">Proceed to Checkout</button>
+          </div>
+        </div>
+      </section>
+      <!-- Footer -->
+      <footer>
+        <div class="footer-container">
+          <div class="footer-column">
+            <h4>About Us</h4>
+            <ul>
+              <li><a href="about.html">Our Story</a></li>
+              <li><a href="about.html">Our Mission</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-column">
+            <h4>Sell to Us</h4>
+            <ul>
+              <li><a href="how-it-works.html">How It Works</a></li>
+              <li><a href="sell.html">Sell Your Supplies</a></li>
+              <li><a href="faqs.html">FAQs</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-column">
+            <h4>Resources</h4>
+            <ul>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms of Service</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-column">
+            <h4>Get in Touch</h4>
+            <ul>
+              <li><a href="tel:+18001234567">405-459-0973</a></li>
+              <li><a href="mailto:webuydiabeticteststripsOK@gmail.com">webuydiabeticteststripsOK@gmail.com</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="footer-bottom">
+          <div class="footer-logo">
+            <img src="assets/WBSTOK-Logo_3.png" alt="We Buy Test Strips Oklahoma Logo">
+          </div>
+          
+          <div class="copyright">
+            &copy; 2025 We Buy Test Strips Oklahoma. All rights reserved.
+          </div>
+          
+          <div class="social-icons">
+            <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="js/script.js"></script>
+    <script src="footer.js"></script>
+    <!-- No need for cart.js anymore -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Menu toggle functionality
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (menuToggle && navLinks) {
+          menuToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+          });
+        }
+        
+        // Initialize cart
+        renderCart();
+        updateCartCount();
+      });
+      
+      // Add missing functions if they're not in script.js
+      function addToCart(item) {
+        // Get current cart
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        // Check if item already exists in cart
+        const existingItemIndex = cart.findIndex(cartItem => cartItem.id === item.id);
+        
+        if (existingItemIndex >= 0) {
+          // Update quantity if item exists
+          cart[existingItemIndex].quantity += item.quantity;
+        } else {
+          // Add new item
+          cart.push(item);
+        }
+        
+        // Save updated cart
+        localStorage.setItem('cart', JSON.stringify(cart));
+        
+        // Show success message
+        showMessage(`${item.name} added to cart`, 'success');
+      }
+      
+      function setupCartItemRemoval() {
+        const removeButtons = document.querySelectorAll('.cart-item-remove');
+        removeButtons.forEach(button => {
+          button.addEventListener('click', function() {
+            const itemId = this.dataset.id;
+            removeCartItem(itemId);
+          });
+        });
+      }
+      
+      function setupCartQuantityControls() {
+        // Handle quantity increase/decrease
+        const quantityBtns = document.querySelectorAll('.quantity-btn');
+        quantityBtns.forEach(btn => {
+          btn.addEventListener('click', function() {
+            const itemId = this.dataset.id;
+            const isIncrease = this.classList.contains('increase');
+            updateCartItemQuantity(itemId, isIncrease);
+          });
+        });
+        
+        // Handle direct quantity input
+        const quantityInputs = document.querySelectorAll('.cart-item .quantity-input');
+        quantityInputs.forEach(input => {
+          input.addEventListener('change', function() {
+            const itemId = this.dataset.id;
+            const newQuantity = parseInt(this.value) || 1;
+            setCartItemQuantity(itemId, newQuantity);
+          });
+        });
+      }
+      
+      function updateCartItemQuantity(itemId, isIncrease) {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const itemIndex = cart.findIndex(item => item.id === itemId);
+        
+        if (itemIndex >= 0) {
+          if (isIncrease) {
+            cart[itemIndex].quantity += 1;
+          } else {
+            cart[itemIndex].quantity = Math.max(1, cart[itemIndex].quantity - 1);
+          }
+          
+          localStorage.setItem('cart', JSON.stringify(cart));
+          renderCart();
+          updateCartCount();
+        }
+      }
+      
+      function setCartItemQuantity(itemId, quantity) {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const itemIndex = cart.findIndex(item => item.id === itemId);
+        
+        if (itemIndex >= 0) {
+          cart[itemIndex].quantity = Math.max(1, quantity);
+          localStorage.setItem('cart', JSON.stringify(cart));
+          renderCart();
+          updateCartCount();
+        }
+      }
+      
+      function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+        
+        const cartCountElement = document.querySelector('.cart-count');
+        if (cartCountElement) {
+          cartCountElement.textContent = cartCount;
+          cartCountElement.style.display = cartCount > 0 ? 'inline-block' : 'none';
+        }
+      }
+      
+      // These functions might be needed depending on your implementation
+      function updateSubtotal(productId) {
+        // Implementation depends on your product page structure
+        console.log(`Updating subtotal for product ${productId}`);
+      }
+      
+      function updateAddToCartButton(productId) {
+        // Implementation depends on your product page structure
+        console.log(`Updating add to cart button for product ${productId}`);
+      }
+    </script>
+</body>
+</html>

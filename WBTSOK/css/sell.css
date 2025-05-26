@@ -1,0 +1,492 @@
+/* ==========================================================================
+   SELL PAGE STYLES
+   ========================================================================== */
+/* Update the sell-page class to ensure proper spacing */
+.sell-page {
+  background-color: #f9f9f9;
+  padding-top: 60px; /* Reduced from 80px to be more consistent with header padding */
+  margin-top: 0;
+}
+
+/* Navigation styles for sell page */
+/* Make sure the navigation is properly positioned */
+.sell-page .nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.sell-page .nav-wrapper {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  justify-content: space-between;
+}
+
+/* Logo positioning */
+.sell-page .logo {
+  flex: 0 0 auto;
+  margin-right: 40px;
+}
+
+/* Center the nav links */
+.sell-page .nav-links {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex: 1;
+}
+
+/* Position user actions at the far right */
+.sell-page .user-actions {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex: 0 0 auto;
+  margin-left: 40px;
+}
+
+/* Page header styling */
+/* Ensure the page header starts at the right position */
+.page-header {
+  margin-top: 0;
+  padding-top: 30px; /* Increased from 20px for better spacing */
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.page-header h1 {
+  font-size: 3rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.page-header p {
+  font-size: 1.2rem;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Product Categories */
+.product-categories {
+  padding: 40px 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+
+.category-tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.category-tab {
+  background: none;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-bottom: 2px solid transparent;
+}
+
+.category-tab.active, 
+.category-tab:hover {
+  color: #4CAF50;
+  border-bottom: 2px solid #4CAF50;
+}
+
+/* Products Grid */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px 80px;
+}
+
+.product-card {
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+}
+
+.product-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.product-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: contain;
+  background-color: #f9f9f9;
+  padding: 20px;
+}
+
+.product-card h3 {
+  font-size: 1.4rem;
+  margin: 20px 20px 10px;
+  color: #333;
+}
+
+.product-card p {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0 20px 15px;
+  line-height: 1.5;
+}
+
+/* Product Price Styling */
+.product-price {
+  font-weight: 600;
+  color: #4CAF50;
+  margin: 15px 0;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  text-align: center;
+}
+
+/* Product Model Selection Styling */
+.product-model-selection {
+  margin-bottom: 15px;
+}
+
+.model-select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background-color: white;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* Product Subtotal Styling */
+.product-subtotal {
+  margin-top: 10px;
+  font-weight: 500;
+  color: #4CAF50;
+}
+
+/* Product Expiry Styling */
+.product-expiry {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 15px;
+  font-style: italic;
+}
+
+/* Quantity Control Styling */
+.quantity-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.quantity-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  background-color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.quantity-btn:hover:not(:disabled) {
+  background-color: #f0f0f0;
+}
+
+.quantity-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.quantity-input {
+  width: 50px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+/* Clear Selection Button Styling */
+.clear-selection-btn {
+  background: none;
+  border: none;
+  color: #666;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+.clear-selection-btn:hover {
+  color: #333;
+}
+
+/* Add to Cart Button */
+.add-to-cart-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 15px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 15px;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.add-to-cart-btn:hover:not(:disabled) {
+  background-color: #45a049;
+}
+
+.add-to-cart-btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Selling Process */
+.selling-process {
+  padding: 60px 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  border-radius: 10px;
+  max-width: 1200px;
+  margin: 40px auto 0;
+}
+
+.selling-process h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  color: #222;
+}
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.process-step {
+  background: #fff;
+  padding: 30px 20px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  position: relative;
+}
+
+.step-number {
+  width: 40px;
+  height: 40px;
+  background-color: #ff6f61;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.process-step h3 {
+  margin-top: 15px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.process-step p {
+  color: #666;
+}
+
+/* Enhanced Cart Summary Container */
+.cart-summary-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  box-shadow: 0 -4px 12px rgba(0,0,0,0.15);
+  padding: 18px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  border-top: 1px solid #eaeaea;
+  transition: transform 0.3s ease;
+}
+
+/* Cart summary hover effect - subtle lift */
+.cart-summary-container:hover {
+  transform: translateY(-2px);
+}
+
+.cart-summary {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.cart-total {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #4CAF50;
+  transition: color 0.2s ease;
+}
+
+.view-cart-btn {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  background-color: #f5f5f5;
+  padding: 8px 15px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.view-cart-btn:hover {
+  background-color: #e0e0e0;
+  transform: translateY(-2px);
+}
+
+.view-cart-btn:before {
+  content: '\f07a'; /* Shopping cart icon */
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  margin-right: 8px;
+}
+
+.checkout-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 28px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 220px;
+  box-shadow: 0 4px 8px rgba(76, 175, 80, 0.2);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkout-btn:hover:not(:disabled) {
+  background-color: #45a049;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(76, 175, 80, 0.3);
+}
+
+.checkout-btn:active:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(76, 175, 80, 0.2);
+}
+
+.checkout-btn:after {
+  content: '\f054'; /* Arrow right icon */
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  margin-left: 10px;
+  font-size: 0.8em;
+}
+
+.checkout-btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Add some padding to the bottom of the page to account for the fixed cart summary */
+.sell-page {
+  padding-bottom: 80px;
+}
+
+/* Responsive adjustments for cart summary */
+@media (max-width: 768px) {
+  .cart-summary-container {
+    padding: 15px 20px;
+  }
+  
+  .checkout-btn {
+    min-width: 180px;
+    padding: 10px 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .cart-summary-container {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px 15px 20px;
+  }
+  
+  .cart-summary {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .cart-buttons {
+    width: 100%;
+  }
+  
+  .checkout-btn {
+    width: 100%;
+    min-width: unset;
+  }
+  
+  /* Increase bottom padding on small screens */
+  .sell-page {
+    padding-bottom: 120px;
+  }
+}
+
+/* Add to cart-styles.css and sell-page CSS */
+.cart-page footer, 
+.sell-page footer {
+  width: 100vw; /* Use viewport width to ensure full width */
+  margin-left: calc(-50vw + 50%); /* Center the footer */
+  margin-right: calc(-50vw + 50%);
+  padding-left: 20px;
+  padding-right: 20px;
+  box-sizing: border-box;
+}

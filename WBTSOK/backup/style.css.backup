@@ -1,0 +1,1809 @@
+<UPDATED_CODE>body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #394d6c;
+  color: #333;  margin: 0;  font-family: 'Segoe UI', sans-serif;
+  background-color: #394d6c;
+  color: #333;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #394d6c;
+  color: #333;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #394d6c;
+  color: #333;
+margin: 0;  font-family: 'Segoe UI', sans-serif;
+  background-color: #394d6c;
+  color: #333;
+margin: 0;  font-family: 'Segoe UI', sans-serif;
+  background-color: #394d6c;
+  color: #333;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #394d6c;
+  color: #333;
+margin: 0;  font-family: 'Segoe UI', sans-serif;
+  background-color: #394d6c;
+  color: #333;
+margin: 0;  font-family: 'Segoe UI', sans-serif;
+  background-color: #394d6c;
+  color: #333;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #394d6c;
+  color: #333;
+margin: 0;  font-family: 'Segoe UI', sans-serif;
+  background-color: #394d6c;
+  color: #333;
+margin: 0;  font-family: 'Segoe UI', sans-serif;
+  background-color: #394d6c;
+  color: #333;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #394d6c;
+  color: #333;
+}  
+  .nav {
+  background-color: #fff;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.nav-wrapper {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  justify-content: space-between;
+}
+
+/* Logo positioning */
+.logo {
+  flex: 0 0 auto;
+  margin-right: 40px;
+}
+
+.logo img {
+  height: 30px;
+}
+
+/* Center the nav links */
+.nav-links {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex: 1;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  color: #ff6f61;
+}
+
+/* Position user actions at the far right with clear separation */
+.user-actions {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex: 0 0 auto;
+  margin-left: 40px; /* Create separation from nav links */
+}
+
+.login-link,
+.cart-link {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.login-link:hover,
+.cart-link:hover {
+  color: #ff6f61;
+}
+
+.cart-count {
+  background-color: #ff6f61;
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .nav-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .logo {
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+  
+  .nav-links {
+    margin: 10px 0;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .user-actions {
+    margin-left: 0;
+    margin-top: 15px;
+  }
+}
+  .hero {
+    background: linear-gradient(to right, #394d6c, #fef6f3);
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px;
+  }
+  
+  .hero-inner {
+    max-width: 600px;
+  }
+  
+  .hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+    color: #222;
+  }
+  
+  .hero p {
+    font-size: 1.25rem;
+    margin-bottom: 25px;
+    color: #555;
+  }
+  
+  .btn {
+    background-color: #ff6f61;
+    padding: 14px 28px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    border-radius: 10px;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: #e25e50;
+  }  
+  
+  .btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #ff6f61;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+  }
+  
+  .brand-grid {
+    padding: 40px 20px;
+    background: #fff;
+  }
+  
+  .brand-grid h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+  
+  .grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .card {
+    background: #fff5f1;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  }
+  
+  /* Modern Footer Styling - Vibrance Template Style */
+footer {
+    background-color: #000;
+    color: #fff;
+    padding: 80px 20px 40px;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Add dividers between footer columns */
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    margin-bottom: 60px;
+    position: relative;
+}
+
+/* Add vertical dividers between columns */
+.footer-column {
+    position: relative;
+    padding: 0 20px;
+}
+
+.footer-column:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 10%;
+    right: 0;
+    height: 80%;
+    width: 1px;
+    background-color: #333; /* Subtle divider color */
+    opacity: 0.5;
+}
+
+.footer-column h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    color: #999;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.footer-column ul li a:hover {
+    color: #fff;
+}
+
+/* Add horizontal divider above the footer bottom section */
+.footer-bottom {
+    border-top: 1px solid #333; /* This creates the horizontal line */
+    padding-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-logo img {
+    height: 30px;
+}
+
+.copyright {
+    color: #999;
+    font-size: 0.85rem;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a {
+    color: #fff;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #ff6f61;
+}
+
+/* Make dividers responsive */
+@media (max-width: 768px) {
+    .footer-column:not(:last-child)::after {
+        display: none; /* Remove vertical dividers on mobile */
+    }
+    
+    .footer-bottom {
+        border-top: 1px solid #333; /* Keep the horizontal divider */
+    }
+}
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  input, textarea {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+  button[type="submit"] {
+    border: none;
+    cursor: pointer;
+  }
+  
+  .card img {
+    max-width: 100px;
+    margin-bottom: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .card p {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-top: 5px;
+  }
+
+  .btn {
+    background-color: #4CAF50; /* green accent */
+  }
+  .nav {
+    background-color: #ffffff;
+  }
+  
+  .faq-item {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .faq-question {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 12px 0;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    color: #333;
+    transition: color 0.3s ease;
+  }
+  
+  .faq-question:hover {
+    color: #ff6f61;
+  }
+  
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  
+  .faq-answer p {
+    padding: 0 0 12px 0;
+  }
+  .faq-item.open .faq-answer {
+    max-height: 150px;
+  }
+  
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .faq-icon {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .faq-item.open .faq-icon {
+    transform: rotate(45deg); /* changes + to an X look */
+  }
+
+  .faq {
+    margin-top: 30px;
+  }
+  
+  .faq-item {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .faq-question {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 12px 0;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    color: #333;
+    transition: color 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .faq-question:hover {
+    color: #ff6f61;
+  }
+  
+  .faq-icon {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  
+  .faq-answer p {
+    padding: 0 0 12px 0;
+    margin: 0;
+  }
+  
+  .faq-item.open .faq-answer {
+    max-height: 150px;
+  }
+  
+  .faq-item.open .faq-icon {
+    transform: rotate(45deg); /* converts + to × visually */
+  }
+  
+  .hero {
+    background: url("assets/Homepage.png") no-repeat center center;
+    background-size: cover;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px;
+    opacity: 0; /* Start invisible */
+    transition: opacity 1.5s ease-out; /* Smooth transition */
+  }
+  
+  .hero.fade-in {
+    opacity: 1;
+  }
+  
+  .hero.fade-out {
+    opacity: 0.2; /* Fade to 20% opacity when scrolled past */
+    transition: opacity 0.8s ease-out;
+  }
+  
+  .hero-inner {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 30px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+  
+  .logo img {
+    height: 40px; /* Adjust size as needed */
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+  }
+  
+  .nav-links a:hover {
+    color: #ff6f61;
+  }
+  
+  @media (max-width: 768px) {
+    .logo img {
+      height: 30px;
+    }
+  
+    .nav-links {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+  }
+  
+/* Add this to your existing CSS */
+.nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* Ensures it uses full width */
+    padding: 10px 20px; /* Adjust for proper spacing */
+  }
+  
+  .logo {
+    margin-right: 20px; /* Adjust the space between the logo and categories */
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 20px; /* Controls the space between the nav items */
+  }
+  
+  /* Updated .nav class */
+.nav {
+    background-color: #fff;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: center; /* Center the entire content */
+    align-items: center; /* Vertically center */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+  }
+  
+  /* .nav-wrapper class for flex layout */
+  .nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px; /* Add max-width to prevent the layout from being too stretched */
+  }
+  
+  /* Adjust the logo */
+  .logo img {
+    height: 40px; /* Adjust logo size */
+  }
+  
+  /* .nav-links class for horizontal layout */
+  .nav-links {
+    display: flex;
+    gap: 20px; /* Space between links */
+  }
+  
+  /* Styling for nav links */
+  .nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+  }
+  
+  .nav-links a:hover {
+    color: #ff6f61; /* Hover color for links */
+  }
+  
+  /* For responsiveness: Adjust logo size and nav links */
+  @media (max-width: 768px) {
+    .logo img {
+      height: 30px; /* Smaller logo on mobile */
+    }
+  
+    .nav-links {
+      gap: 15px; /* Slightly reduced space on mobile */
+    }
+  }
+  
+  /* General Body and Page Settings */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #394d6c;
+    color: #333;
+  }
+  
+  /* Navigation Bar */
+  .nav {
+    background-color: #fff;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: center; /* Center the logo and links */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+  }
+  
+  /* Wrapper for logo and links */
+  .nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px; /* Ensure proper width control */
+  }
+  
+  /* Logo */
+  .logo img {
+    height: 40px;
+  }
+  
+  /* Navigation Links */
+  .nav-links {
+    display: flex;
+    gap: 20px; /* Space between links */
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+  }
+  
+  .nav-links a:hover {
+    color: #ff6f61;
+  }
+  
+  /* Hero Section */
+  .hero {
+    background: url("assets/Homepage.png") no-repeat center center;
+    background-size: cover;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px;
+    opacity: 0; /* Start invisible */
+    transition: opacity 1.5s ease-out; /* Smooth transition */
+  }
+  
+  .hero.fade-in {
+    opacity: 1;
+  }
+  
+  .hero.fade-out {
+    opacity: 0.2; /* Fade to 20% opacity when scrolled past */
+    transition: opacity 0.8s ease-out; /* Slightly faster fade out */
+  }
+  
+  .hero-inner {
+    max-width: 600px;
+  }
+  
+  .hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+    color: #222;
+  }
+  
+  .hero p {
+    font-size: 1.25rem;
+    margin-bottom: 25px;
+    color: #555;
+  }
+  
+  /* Button */
+  .btn {
+    background-color: #ff6f61;
+    padding: 14px 28px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    border-radius: 10px;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: #e25e50;
+  }
+  
+  /* Brands Section */
+  .brand-grid {
+    padding: 40px 20px;
+    background: #fff;
+  }
+  
+  .brand-grid h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+  
+  .grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .card {
+    background: #fff5f1;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Footer */
+  footer {
+    background-color: #394d6c;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+  }
+  
+  /* Mobile Responsiveness */
+  @media (max-width: 768px) {
+    .logo img {
+      height: 30px; /* Smaller logo for mobile */
+    }
+  
+    .nav-links {
+      gap: 15px;
+    }
+  }
+  
+  /* Navigation Bar - Consolidated Styles */
+.nav {
+    background-color: #fff;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+    width: 100%;
+  }
+  
+  .nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+  }
+  
+  .logo img {
+    height: 40px;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+  }
+  
+  .nav-links a:hover {
+    color: #ff6f61;
+  }
+  
+  /* Mobile Responsiveness */
+  @media (max-width: 768px) {
+    .logo img {
+      height: 30px;
+    }
+    
+    .nav-links {
+      gap: 15px;
+    }
+  }
+  
+  /* Adjust the logo size */
+.logo img {
+    height: 30px; /* Shrink the logo to 30px to match the Vibrance reference */
+  }
+  
+  /* Navigation bar adjustments for centering */
+  .nav-wrapper {
+    display: flex;
+    justify-content: center; /* Center the entire nav */
+    align-items: center; /* Vertically align */
+    width: 100%;
+    max-width: 1200px;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 20px; /* Space between nav items */
+    justify-content: center; /* Ensure the nav links are centered */
+  }
+
+  /* Adjust the navigation bar layout */
+.nav-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px; /* Control width for better alignment */
+    justify-content: center; /* Center the nav links */
+  }
+  
+  /* Adjust the logo to be aligned on the left */
+  .logo {
+    position: absolute; /* Position logo independently */
+    left: 250px; /* Adjust distance from left side */
+  }
+  
+  /* Navigation links */
+  .nav-links {
+    display: flex;
+    gap: 20px; /* Space between nav items */
+    justify-content: center; /* Keep the links centered */
+  }
+  
+  /* Ensure mobile responsiveness */
+  @media (max-width: 768px) {
+    .logo img {
+      height: 30px; /* Adjust logo size on mobile */
+    }
+  
+    .nav-links {
+      gap: 15px; /* Adjust space on mobile */
+    }
+  }
+  
+  /* Product Card Image Styling */
+.product-card img {
+    width: 100%;
+    max-width: 220px;
+    height: 220px;
+    object-fit: contain; /* This ensures the image maintains its aspect ratio */
+    margin-bottom: 25px;
+    transition: transform 0.3s;
+  }
+  
+  .product-card:hover img {
+    transform: scale(1.05);
+  }
+  
+  /* We Buy These Brands Section */
+.brand-grid {
+    background-image: url('assets/Brand-grid_image_2.jpg?v=123'); /* Add random version number */
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    position: relative; /* For the overlay */
+}
+
+/* Add an overlay to ensure text is readable */
+.brand-grid::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 0;
+}
+
+/* Ensure content is above the overlay */
+.brand-grid .section-text,
+.brand-grid .grid {
+    position: relative;
+    z-index: 1;
+}
+
+/* Heading styling */
+.brand-grid h2 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: black;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Paragraph styling */
+.brand-grid p {
+    font-size: 1.1rem;
+    color: black;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+}
+  
+  /* We Buy These Brands Section */
+.brand-grid {
+    background-image: url('assets/Brand-grid_image.png'); /* Path to your background image */
+    background-position: center center; /* Centers the image */
+    background-size: cover; /* Ensures the image covers the section */
+    background-repeat: no-repeat; /* Prevents repeating the background */
+    min-height: 100vh; /* Ensures the section takes up at least the full viewport height */
+    padding: 0 20px; /* Adjust padding as needed */
+    display: flex;
+    justify-content: center; /* Centers the content horizontally */
+    align-items: center; /* Centers the content vertically */
+    text-align: center;
+    color: white; /* Optional: Change text color for better visibility against the image */
+  }
+  
+  .brand-grid .section-text {
+    z-index: 1; /* Ensure text is above the background image */
+    margin-top: 20px; /* Adjust distance from the top */
+    padding-top: 20px; /* Optional: Add space between top of the section and text */
+  }
+  
+  /* Optional: Style the heading and paragraph */
+  .brand-grid h2 {
+    font-size: 2rem; /* Adjust size for the heading */
+    margin-bottom: 10px;
+  }
+  
+  .brand-grid p {
+    font-size: 1.1rem; /* Adjust size for the paragraph */
+    margin-bottom: 30px;
+  }
+  
+  /* We Buy These Brands Section */
+.brand-grid {
+    background-image: url('assets/Brand-grid_image.png'); /* Path to your background image */
+    background-position: center center; /* Centers the image */
+    background-size: cover; /* Ensures the image covers the section */
+    background-repeat: no-repeat; /* Prevents repeating the background */
+    min-height: 100vh; /* Ensures the section takes up at least the full viewport height */
+    padding: 0 20px; /* Adjust horizontal padding */
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: flex-start; /* Align the content to the top */
+    align-items: center; /* Centers the content horizontally */
+    text-align: center;
+    color: white; /* Optional: Change text color for better visibility */
+  }
+  
+  .brand-grid .section-text {
+    z-index: 1; /* Ensure text is above the background image */
+    margin-top: 20px; /* Adjust distance from the top */
+    padding-top: 20px; /* Optional: Add space between top of the section and text */
+  }
+  
+  /* Adjust the "We Buy These Brands" heading */
+  .brand-grid h2 {
+    font-size: 3rem; /* Increase font size for the heading */
+    color: black; /* Change the color to black */
+    margin-bottom: 10px; /* Adjust spacing between heading and paragraph */
+  }
+  
+  /* Optional: Style for the paragraph */
+  .brand-grid p {
+    font-size: 1.1rem; /* Adjust size for the paragraph */
+    margin-bottom: 30px;
+  }
+  
+  /* We Buy These Brands Section */
+.brand-grid {
+    background-image: url('assets/Brand-grid_image.png'); /* Path to your background image */
+    background-position: center center; /* Centers the image */
+    background-size: cover; /* Ensures the image covers the section */
+    background-repeat: no-repeat; /* Prevents repeating the background */
+    min-height: 100vh; /* Ensures the section takes up at least the full viewport height */
+    padding: 0 20px; /* Adjust horizontal padding */
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: flex-start; /* Align the content to the top */
+    align-items: center; /* Centers the content horizontally */
+    text-align: center;
+    color: white; /* Optional: Change text color for better visibility */
+  }
+  
+  .brand-grid .section-text {
+    z-index: 1; /* Ensure text is above the background image */
+    margin-top: 20px; /* Adjust distance from the top */
+    padding-top: 20px; /* Optional: Add space between top of the section and text */
+  }
+  
+  /* Adjust the "We Buy These Brands" heading */
+  .brand-grid h2 {
+    font-size: 3rem; /* Increase font size for the heading */
+    color: black; /* Change the heading color to black */
+    margin-bottom: 10px; /* Adjust spacing between heading and paragraph */
+  }
+  
+  /* Change the font color for the paragraph */
+  .brand-grid p {
+    font-size: 1.1rem; /* Adjust size for the paragraph */
+    color: black; /* Change the paragraph color to black */
+    margin-bottom: 30px; /* Adjust spacing below the paragraph */
+  }
+  
+  .about-section {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .about-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #222;
+  }
+  
+  .about-section h2 {
+    font-size: 2rem;
+    margin-top: 20px;
+    color: #222;
+  }
+  
+  .about-section ul {
+    list-style: none;
+    padding-left: 0;
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .about-section ul li {
+    margin-bottom: 10px;
+  }
+
+  /* Style for the About Us page background */
+.about-section {
+    background-image: url('assets/About_Us_image.png'); /* Replace with your image path */
+    background-position: center center; /* Centers the image */
+    background-size: cover; /* Ensures the image covers the entire section */
+    background-attachment: fixed; /* Keeps the background fixed when scrolling */
+    background-repeat: no-repeat; /* Prevents repeating the image */
+    min-height: 100vh; /* Ensures the section takes up at least the full viewport height */
+    padding: 100px 400px; /* Padding for content */
+    color: #333; /* Default text color */
+    text-align: center; /* Centering the text */
+  }
+  
+  /* Text styles */
+  .about-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #222; /* Dark color for header */
+  }
+  
+  .about-section h2 {
+    font-size: 2rem;
+    margin-top: 20px;
+    color: #222; /* Dark color for header */
+  }
+  
+  .about-section p,
+  .about-section ul {
+    color: #555; /* Lighter color for paragraph text */
+  }
+  
+  .about-section ul {
+    list-style: none;
+    padding-left: 0;
+    font-size: 1rem;
+  }
+  
+  .about-section ul li {
+    margin-bottom: 10px;
+  }
+  
+  /* Style for the How It Works page background */
+.how-it-works-section {
+    background-image: url('assets/How_it_Works_image.png'); /* Replace with your image path */
+    background-position: center center; /* Centers the image */
+    background-size: cover; /* Ensures the image covers the entire section */
+    background-attachment: fixed; /* Keeps the background fixed when scrolling */
+    background-repeat: no-repeat; /* Prevents repeating the image */
+    min-height: 100vh; /* Ensures the section takes up at least the full viewport height */
+    padding: 100px 400px; /* Padding for content */
+    color: #fff; /* White text color */
+    text-align: center; /* Centering the text */
+}
+
+/* Text styles for the section */
+.how-it-works-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #fff; /* White color for the heading */
+}
+
+.how-it-works-section h2 {
+    font-size: 2rem;
+    margin-top: 20px;
+    color: #fff; /* White color for subheadings */
+}
+
+.how-it-works-section p,
+.how-it-works-section ul {
+    color: #fff; /* White color for paragraph text */
+}
+
+.how-it-works-section ul {
+    list-style: none;
+    padding-left: 0;
+    font-size: 1rem;
+}
+
+.how-it-works-section ul li {
+    margin-bottom: 10px;
+}
+
+footer {
+    background-color: #000; /* Set footer background to black */
+    color: #fff; /* Set text color to white */
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+}
+
+/* Hero Section Fade-In */
+.hero {
+    background: url("assets/Homepage.png") no-repeat center center;
+    background-size: cover;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px;
+    opacity: 0; /* Start invisible */
+    transition: opacity 1.5s ease-out; /* Smooth transition */
+}
+
+.hero.fade-in {
+    opacity: 1;
+}
+
+.hero.fade-out {
+    opacity: 0.2; /* Fade to 20% opacity when scrolled past */
+    transition: opacity 0.8s ease-out; /* Slightly faster fade out */
+}
+
+/* Optional: Smooth Transition for Text or Elements within the Hero */
+.hero-inner {
+    max-width: 600px;
+}
+
+/* Fade-in effect for the hero section */
+.fade-in {
+    opacity: 1;
+    transition: opacity 1s ease-out;
+  }
+  
+  .hero {
+    opacity: 0; /* Set initial opacity to 0 */
+  }
+
+/* Define the fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Create a class for elements that should fade in */
+.fade-in {
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* For elements that should fade in when they enter the viewport */
+.fade-in-scroll {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.fade-in-scroll.visible {
+  opacity: 1;
+}
+
+/* Fade in/out for scrolling elements */
+.fade-scroll {
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.fade-scroll.visible {
+  opacity: 1;
+}
+
+/* Optional: You can add different transition speeds for different elements */
+.fade-scroll.slow {
+  transition: opacity 1.2s ease-in-out;
+}
+
+.fade-scroll.fast {
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* Staggered animations for cards */
+.grid .card:nth-child(1) { transition-delay: 0.1s; }
+.grid .card:nth-child(2) { transition-delay: 0.2s; }
+.grid .card:nth-child(3) { transition-delay: 0.3s; }
+.grid .card:nth-child(4) { transition-delay: 0.4s; }
+.grid .card:nth-child(5) { transition-delay: 0.5s; }
+.grid .card:nth-child(6) { transition-delay: 0.6s; }
+
+/* Staggered animations for steps */
+.steps-container .step:nth-child(1) { transition-delay: 0.1s; }
+.steps-container .step:nth-child(2) { transition-delay: 0.3s; }
+.steps-container .step:nth-child(3) { transition-delay: 0.5s; }
+/* Hero section with smooth transitions */
+.hero {
+  opacity: 0; /* Start invisible */
+  transition: opacity 1.5s ease-out; /* Smooth fade in transition */
+  will-change: opacity; /* Optimize for animations */
+}
+
+/* Other fade elements */
+.fade-scroll {
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  will-change: opacity;
+}
+
+.fade-scroll.visible {
+  opacity: 1;
+}
+
+/* Smooth transitions for all major sections */
+.hero, 
+.brand-grid,
+.how-it-works {
+  opacity: 0; /* Start invisible */
+  transition: opacity 1.5s ease-out; /* Smooth fade transition */
+  will-change: opacity; /* Optimize for animations */
+}
+
+/* Individual fade elements within sections */
+.fade-scroll {
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  will-change: opacity;
+}
+
+.fade-scroll.visible {
+  opacity: 1;
+}
+
+/* Optional: Add staggered animations for cards */
+.grid .card:nth-child(1) { transition-delay: 0.1s; }
+.grid .card:nth-child(2) { transition-delay: 0.2s; }
+.grid .card:nth-child(3) { transition-delay: 0.3s; }
+.grid .card:nth-child(4) { transition-delay: 0.4s; }
+.grid .card:nth-child(5) { transition-delay: 0.5s; }
+.grid .card:nth-child(6) { transition-delay: 0.6s; }
+
+/* Sell Page Styles */
+.page-header {
+  text-align: center;
+  padding: 60px 20px 40px;
+  background-color: #f9f9f9;
+}
+
+.page-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #222;
+}
+
+.page-header p {
+  font-size: 1.2rem;
+  color: #555;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Product Categories */
+.product-categories {
+  padding: 40px 20px;
+  background-color: #fff;
+}
+
+.category-tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.category-tab {
+  background: none;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #555;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.category-tab:hover {
+  color: #ff6f61;
+}
+
+.category-tab.active {
+  color: #ff6f61;
+  border-bottom: 2px solid #ff6f61;
+  font-weight: 600;
+}
+
+/* Products Grid */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.product-card {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.product-card img {
+  width: 100%;
+  max-width: 220px;
+  height: 220px;
+  object-fit: contain;
+  margin-bottom: 25px;
+  transition: transform 0.3s;
+}
+
+.product-card:hover img {
+  transform: scale(1.05);
+}
+
+.product-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.product-card p {
+  color: #666;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.product-card .btn {
+  margin-top: auto;
+}
+
+/* Product Price Styling */
+.product-price {
+  font-weight: 600;
+  color: #4CAF50; /* Green color for prices as requested earlier */
+  margin: 15px 0;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  text-align: center;
+}
+
+/* Product Model Selection Styling */
+.product-model-selection {
+  margin-bottom: 15px;
+}
+
+.model-select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: white;
+  font-size: 0.9rem;
+}
+
+/* Product Subtotal Styling */
+.product-subtotal {
+  margin-top: 10px;
+  font-weight: 500;
+  color: #4CAF50; /* Green color for subtotals as well */
+}
+
+/* Cart Total Styling */
+.cart-total {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #4CAF50; /* Green color for cart total */
+  margin-bottom: 15px;
+}
+
+/* Selling Process */
+.selling-process {
+  padding: 60px 20px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.selling-process h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  color: #222;
+}
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.process-step {
+  background: #fff;
+  padding: 30px 20px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  position: relative;
+}
+
+.step-number {
+  width: 40px;
+  height: 40px;
+  background-color: #ff6f61;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.process-step h3 {
+  margin-top: 15px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.process-step p {
+  color: #666;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .category-tabs {
+    gap: 10px;
+  }
+  
+  .category-tab {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+  
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+  }
+  
+  .product-card img {
+    height: 180px;
+  }
+}
+
+/* Product Expiry Styling */
+.product-expiry {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 15px;
+  font-style: italic;
+}
+
+/* Sell Page Background - styled like How it Works page */
+.sell-page {
+    background-image: url('assets/sellpagebg.png'); /* Replace with your actual image */
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+/* Ensure content remains readable against the background */
+.sell-page .page-header,
+.sell-page .product-categories,
+.sell-page .product-card {
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.sell-page .page-header,
+.sell-page .product-categories {
+    padding: 20px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Brand-specific card styling */
+.card.accu-chek {
+  background: #e31837; /* Accu-Chek red */
+  color: white;
+}
+
+.card.contour {
+  background: #00a0df; /* Contour blue */
+  color: white;
+}
+
+.card.freestyle {
+  background: #0066cc; /* FreeStyle blue */
+  color: white;
+}
+
+.card.onetouch {
+  background: #0033a0; /* OneTouch blue */
+  color: white;
+}
+
+.card.dexcom {
+  background: #00a64f; /* Dexcom green */
+  color: white;
+}
+
+.card.omnipod {
+  background: #7c2855; /* Omnipod purple */
+  color: white;
+}
+
+.card.medtronic {
+  background: #0075c9; /* Medtronic blue */
+  color: white;
+}
+
+.card.dash {
+  background: #ff6f00; /* Dash orange */
+  color: white;
+}
+
+/* Add hover effect to make cards pop */
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Ensure text is readable on colored backgrounds */
+.card p {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-top: 5px;
+  color: inherit; /* This will inherit the color from the parent (white for most cards) */
+}
+
+/* Make brand logos stand out against colored backgrounds */
+.card img {
+  max-width: 100px;
+  margin-bottom: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  padding: 10px;
+  border-radius: 50%;
+}
+
+/* Improved Brand Cards */
+.grid {
+  display: grid;
+  gap: 25px; /* Increased gap between cards */
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Slightly larger cards */
+  max-width: 1000px; /* Increased max-width for better spacing */
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.card {
+  background: #fff;
+  padding: 25px; /* More padding inside cards */
+  border-radius: 15px; /* Rounder corners */
+  text-align: center;
+  font-weight: bold;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* More pronounced shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid #f0f0f0; /* Light border */
+}
+
+.card:hover {
+  transform: translateY(-10px); /* More pronounced lift effect on hover */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15); /* Stronger shadow on hover */
+}
+
+.card img {
+  max-width: 120px; /* Larger images */
+  height: auto;
+  margin-bottom: 15px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  transition: transform 0.3s ease; /* Smooth transition for image */
+}
+
+.card:hover img {
+  transform: scale(1.1); /* Slightly enlarge image on hover */
+}
+
+.card p {
+  font-weight: 700; /* Bolder text */
+  font-size: 1.2rem; /* Larger text */
+  margin-top: 10px;
+  color: #333; /* Darker text for better contrast */
+}
+
+/* Make the heading more prominent */
+.brand-grid h2 {
+  font-size: 3.5rem; /* Larger heading */
+  margin-bottom: 40px; /* More space below heading */
+  color: black; /* Ensure heading is black for visibility */
+  font-weight: 700; /* Make heading bolder */
+}
+
+/* Ensure the section has proper spacing */
+.brand-grid {
+  padding: 60px 20px; /* More vertical padding */
+}
+
+/* Add a subtle background pattern or texture for more visual interest */
+.brand-grid {
+    background-image: url('assets/Brand-grid_image.png');
+    background-position: center center;
+    background-size: cover;
+    position: relative;
+}
+
+/* Add an overlay to ensure text is readable against the background */
+.brand-grid::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85); /* Semi-transparent white overlay */
+    z-index: 0;
+}
+
+/* Ensure content is above the overlay */
+.brand-grid .section-text,
+.brand-grid .grid {
+    position: relative;
+    z-index: 1;
+}
+
+/* Increase spacing between heading and cards */
+.brand-grid h2 {
+    margin-bottom: 60px; /* Increase from 40px to 60px */
+}
+
+/* Add more space around the section-text container */
+.brand-grid .section-text {
+    margin-bottom: 50px; /* Add additional bottom margin */
+    padding-top: 30px; /* Add some top padding */
+}
+
+/* Ensure proper spacing in the grid container */
+.grid {
+    margin-top: 30px; /* Add top margin to the grid */
+}
+
+/* Make the heading stand out more */
+.brand-grid h2 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: black;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.1); /* Subtle text shadow for depth */
+    padding-bottom: 15px; /* Add padding below the text */
+    position: relative; /* For the decorative line below */
+}
+
+/* Remove the decorative line under the heading */
+.brand-grid h2:after {
+    display: none; /* This will hide the line */
+}
+
+.brand-cta {
+    margin-top: 50px;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.brand-cta p {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.brand-info {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 60px;
+    position: relative;
+    z-index: 1;
+}
+
+.info-item {
+    text-align: center;
+    max-width: 150px;
+}
+
+.info-icon {
+    width: 50px;
+    height: 50px;
+    background-color: #ff6f61;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.info-item p {
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.featured-brands {
+    margin-top: 60px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.featured-brands h3 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    color: white; /* Change to white */
+    text
