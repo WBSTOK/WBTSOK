@@ -7,5 +7,10 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "main": "animations.js",
+  "dependencies": {
+    "google-auth-library": "^9.15.1",
+    "googleapis": "^149.0.0"
+  }
 }
