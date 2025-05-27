@@ -361,5 +361,21 @@
       transition: opacity 0.3s ease;
     }
   </style>
+  <style>
+    /* Force content to be visible - override fade animations */
+    .hero {
+      opacity: 1 !important;
+    }
+
+    .fade-scroll {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+
+    .step, .brand-card, .feature-card {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+  </style>
 </body>
 </html>
