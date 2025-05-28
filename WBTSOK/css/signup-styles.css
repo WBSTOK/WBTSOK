@@ -25,6 +25,7 @@
   border-radius: 6px;
   font-size: 16px;
   transition: border-color 0.3s;
+  box-sizing: border-box; /* Ensure consistent sizing */
 }
 
 .signup-form .form-group input:focus {
@@ -34,6 +35,12 @@
 
 .signup-form .password-container {
   position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.signup-form .password-container input {
+  padding-right: 45px; /* Make room for the eye icon */
 }
 
 .signup-form .toggle-password {
@@ -43,6 +50,15 @@
   transform: translateY(-50%);
   cursor: pointer;
   color: #777;
+  font-size: 16px;
+  padding: 5px;
+  user-select: none;
+  transition: color 0.3s;
+  z-index: 10;
+}
+
+.signup-form .toggle-password:hover {
+  color: var(--accent);
 }
 
 .signup-form .password-requirements {
@@ -55,15 +71,25 @@
   display: flex;
   align-items: center;
   margin-bottom: 4px;
+  transition: color 0.3s;
 }
 
 .signup-form .requirement i {
   margin-right: 8px;
   font-size: 12px;
+  transition: all 0.3s;
+}
+
+.signup-form .requirement.met {
+  color: var(--button-green);
 }
 
 .signup-form .requirement.met i {
   color: var(--button-green);
+}
+
+.signup-form .requirement.unmet {
+  color: #ccc;
 }
 
 .signup-form .requirement.unmet i {
@@ -79,6 +105,7 @@
 .signup-form .terms-checkbox input {
   margin-top: 5px;
   margin-right: 10px;
+  flex-shrink: 0; /* Prevent checkbox from shrinking */
 }
 
 .signup-btn {
@@ -94,13 +121,14 @@
   transition: background-color 0.3s;
 }
 
-.signup-btn:hover {
+.signup-btn:hover:not(:disabled) {
   background-color: var(--button-green-hover);
 }
 
 .signup-btn:disabled {
   background-color: #cccccc;
   cursor: not-allowed;
+  opacity: 0.7;
 }
 
 /* Rename to avoid conflicts with navigation .login-link */
@@ -113,8 +141,52 @@
   color: var(--accent);
   text-decoration: none;
   font-weight: 500;
+  transition: all 0.3s;
 }
 
 .signup-form .signup-login-link a:hover {
   text-decoration: underline;
+  color: var(--button-green);
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .signup-form {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+  
+  .signup-form .form-group input {
+    font-size: 16px; /* Prevent zoom on iOS */
+  }
+}
+
+/* Loading state for form */
+.signup-form.loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+/* Error message styling */
+.error-message {
+  background-color: #fee;
+  color: #c33;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  border: 1px solid #fcc;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Success message styling */
+.success-message {
+  background-color: #efe;
+  color: #363;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  border: 1px solid #cfc;
+  text-align: center;
+  font-weight: 500;
 }
