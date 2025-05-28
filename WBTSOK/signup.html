@@ -196,32 +196,39 @@
   <script src="js/auth.js"></script>
   <script src="footer.js"></script>
   <script>
-// Password toggle functionality
 document.addEventListener('DOMContentLoaded', function() {
-  // Set up password toggles
-  const toggleButtons = document.querySelectorAll('.toggle-password');
+  // Navigation toggle
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
   
-  toggleButtons.forEach(function(toggle) {
-    toggle.addEventListener('click', function() {
-      // Find the password input in the same container
-      const passwordContainer = this.parentElement;
-      const passwordInput = passwordContainer.querySelector('input[type="password"], input[type="text"]');
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener('click', function() {
+      navLinks.classList.toggle('active');
+      menuToggle.classList.toggle('active');
+    });
+  }
+
+  // Password toggle functionality (working version)
+  const toggles = document.querySelectorAll('.toggle-password');
+  
+  toggles.forEach((toggle, index) => {
+    toggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      const container = this.parentElement;
+      const input = container.querySelector('input');
       const icon = this.querySelector('i');
       
-      if (passwordInput) {
-        if (passwordInput.type === 'password') {
-          // Show password
-          passwordInput.type = 'text';
-          icon.className = 'far fa-eye-slash';
-        } else {
-          // Hide password
-          passwordInput.type = 'password';
-          icon.className = 'far fa-eye';
-        }
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.className = 'far fa-eye-slash';
+      } else {
+        input.type = 'password';
+        icon.className = 'far fa-eye';
       }
     });
   });
-  
+
   // Password requirements validation
   const passwordInput = document.getElementById('password');
   const confirmPasswordInput = document.getElementById('confirm-password');

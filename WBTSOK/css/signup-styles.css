@@ -35,12 +35,17 @@
 
 .signup-form .password-container {
   position: relative;
-  display: flex;
-  align-items: center;
+  display: block; /* Changed from flex */
 }
 
 .signup-form .password-container input {
-  padding-right: 45px; /* Make room for the eye icon */
+  width: 100%;
+  padding: 12px 50px 12px 15px; /* More right padding */
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+  box-sizing: border-box;
 }
 
 .signup-form .toggle-password {
@@ -50,11 +55,16 @@
   transform: translateY(-50%);
   cursor: pointer;
   color: #777;
-  font-size: 16px;
-  padding: 5px;
+  font-size: 18px; /* Slightly larger */
+  padding: 8px; /* More clickable area */
   user-select: none;
   transition: color 0.3s;
-  z-index: 10;
+  z-index: 100; /* Higher z-index */
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .signup-form .toggle-password:hover {
