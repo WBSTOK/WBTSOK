@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - We Buy Test Strips Oklahoma</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/navigation.css">
+  <link rel="stylesheet" href="css/footer-styles.css">
+  <link rel="stylesheet" href="css/orders.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/page-layout.css">
+  <link rel="stylesheet" href="css/mobile-responsive.css">
+  
+  <style>
+    .admin-panel {
+      padding-top: 80px;
+      min-height: 100vh;
+      background: #f8f9fa;
+    }
+    
+    .admin-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    .admin-header {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    
+    .admin-header h1 {
+      color: #2c5aa0;
+      margin-bottom: 0.5rem;
+    }
+    
+    .admin-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .stat-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    
+    .stat-card .number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #2c5aa0;
+      margin-bottom: 0.5rem;
+    }
+    
+    .stat-card .label {
+      color: #666;
+      font-size: 0.9rem;
+    }
+    
+    .pending-orders {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    
+    .pending-orders-header {
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid #e9ecef;
+      background: #f8f9fa;
+    }
+    
+    .pending-orders-header h2 {
+      color: #2c5aa0;
+      margin: 0;
+    }
+    
+    .orders-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    
+    .orders-table th,
+    .orders-table td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid #e9ecef;
+    }
+    
+    .orders-table th {
+      background: #f8f9fa;
+      font-weight: 600;
+      color: #2c5aa0;
+    }
+    
+    .orders-table tr:hover {
+      background: #f8f9fa;
+    }
+    
+    .action-btn {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      transition: all 0.3s ease;
+    }
+    
+    .action-btn.approve {
+      background: #28a745;
+      color: white;
+    }
+    
+    .action-btn.approve:hover {
+      background: #1e7e34;
+    }
+    
+    .status-badge {
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+    
+    .status-confirmed {
+      background: #fff3cd;
+      color: #856404;
+    }
+    
+    .no-orders {
+      text-align: center;
+      padding: 3rem;
+      color: #666;
+    }
+  </style>
+</head>
+
+<body class="admin-panel">
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-wrapper">
+      <a href="index.html" class="logo">
+        <img src="assets/WBSTOK-Logo_2.png" alt="We Buy Test Strips Oklahoma Logo">
+      </a>
+      
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="how-it-works.html">How it Works</a>
+        <a href="sell.html">Sell</a>
+        <a href="contact.html">Contact</a>
+        <a href="faqs.html">FAQs</a>
+      </div>
+      
+      <div class="user-actions">
+        <a href="index.html" class="btn-secondary">
+          <i class="fas fa-arrow-left"></i> Back to Site
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Admin Content -->
+  <main class="admin-container">
+    <!-- Admin Header -->
+    <section class="admin-header">
+      <h1><i class="fas fa-cog"></i> Admin Panel</h1>
+      <p>Manage orders and review pending approvals</p>
+    </section>
+
+    <!-- Admin Stats -->
+    <section class="admin-stats">
+      <div class="stat-card">
+        <div class="number" id="total-orders-stat">0</div>
+        <div class="label">Total Orders</div>
+      </div>
+      
+      <div class="stat-card">
+        <div class="number" id="pending-orders-stat">0</div>
+        <div class="label">Pending Approval</div>
+      </div>
+      
+      <div class="stat-card">
+        <div class="number" id="approved-orders-stat">0</div>
+        <div class="label">Approved Orders</div>
+      </div>
+      
+      <div class="stat-card">
+        <div class="number" id="completed-orders-stat">0</div>
+        <div class="label">Completed Orders</div>
+      </div>
+    </section>
+
+    <!-- Pending Orders -->
+    <section class="pending-orders">
+      <div class="pending-orders-header">
+        <h2>Orders Requiring Approval</h2>
+      </div>
+      
+      <div class="orders-table-container">
+        <table class="orders-table">
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Customer</th>
+              <th>Email</th>
+              <th>Total</th>
+              <th>Date</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="pending-orders-list">
+            <!-- Orders will be loaded here -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <!-- Footer content will be inserted by footer.js -->
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/orders-api.js"></script>
+  <script src="js/global.js"></script>
+  <script src="js/admin-panel.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="footer.js"></script>
+  <script src="js/mobile-navigation-fix.js"></script>
+  <script src="js/mobile-complete.js"></script>
+</body>
+</html>
