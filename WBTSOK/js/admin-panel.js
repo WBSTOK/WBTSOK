@@ -28,9 +28,13 @@ async function loadAdminStats() {
 async function loadPendingOrders() {
   try {
     const orders = await window.ordersAPI.getOrders();
+    console.log('All orders loaded:', orders);
+    console.log('Order statuses:', orders.map(o => ({id: o.id, status: o.status})));
+    
     const pendingOrders = orders.filter(order => 
       order.status === 'confirmed' || order.status === 'pending_approval'
     );
+    console.log('Pending orders:', pendingOrders);
   
     const pendingOrdersList = document.getElementById('pending-orders-list');
     
