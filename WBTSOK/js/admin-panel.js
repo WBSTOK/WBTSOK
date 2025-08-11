@@ -11,7 +11,7 @@ async function loadAdminStats() {
     const orders = await window.ordersAPI.getOrders();
     
     const totalOrders = orders.length;
-    const pendingOrders = orders.filter(order => order.status === 'confirmed' || order.status === 'pending_approval').length;
+    const pendingOrders = orders.filter(order => order.status === 'confirmed' || order.status === 'pending_approval' || order.status === 'processing').length;
     const approvedOrders = orders.filter(order => order.status === 'approved').length;
     const completedOrders = orders.filter(order => order.status === 'delivered' || order.status === 'completed').length;
     
@@ -32,7 +32,9 @@ async function loadPendingOrders() {
     console.log('Order statuses:', orders.map(o => ({id: o.id, status: o.status})));
     
     const pendingOrders = orders.filter(order => 
-      order.status === 'confirmed' || order.status === 'pending_approval'
+      order.status === 'confirmed' || 
+      order.status === 'pending_approval' || 
+      order.status === 'processing'
     );
     console.log('Pending orders:', pendingOrders);
   
