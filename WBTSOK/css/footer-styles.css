@@ -77,9 +77,24 @@ footer {
   color: #ff6f61;
 }
 
-/* Override any conflicting styles */
-.footer-column:not(:last-child)::after {
-  display: none !important;
+/* Add vertical lines between footer columns only for specific pages */
+body.contact-page .footer-column:not(:last-child)::after,
+body.faq-page .footer-column:not(:last-child)::after,
+body.signup-page .footer-column:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: -20px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-color: #333;
+  display: block !important;
+}
+
+body.contact-page .footer-column,
+body.faq-page .footer-column,
+body.signup-page .footer-column {
+  position: relative;
 }
 
 footer {

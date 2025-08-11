@@ -1,24 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MMKVNSCZY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0MMKVNSCZY');
+  </script>
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1458457668401844');
+  fbq('track', 'PageView');
+  </script>
+  <noscript>
+  <img height="1" width="1" src="https://www.facebook.com/tr?id=1458457668401844&ev=PageView&noscript=1"/>
+  </noscript>
+  <!-- End Meta Pixel Code -->
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Checkout – We Buy Test Strips Oklahoma</title>
   
-  <!-- Global styles first -->
   <link rel="stylesheet" href="css/global.css">
-  <link rel="stylesheet" href="css/footer-styles.css">
-  
-  <!-- Page-specific CSS -->
-  <link rel="stylesheet" href="css/checkout.css">
-  
-  <!-- Navigation styles last to override any conflicts -->
   <link rel="stylesheet" href="css/navigation.css">
-  <link rel="stylesheet" href="css/navigation-override.css">
-  <link rel="stylesheet" href="css/navigation-fix.css">
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/footer-styles.css">
+  <link rel="stylesheet" href="css/checkout.css">
+  <link rel="stylesheet" href="css/faq.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/page-layout.css">
+  <link rel="stylesheet" href="css/mobile-responsive.css">
   <meta name="description" content="Complete your transaction and sell your test strips to We Buy Test Strips Oklahoma." />
 </head>
 <body class="checkout-page">
@@ -29,6 +45,13 @@
       <a href="index.html" class="logo">
         <img src="assets/WBSTOK-Logo_2.png" alt="We Buy Test Strips Oklahoma Logo" />
       </a>
+      
+      <button class="menu-toggle" aria-label="Toggle menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="about.html">About Us</a>
@@ -37,11 +60,28 @@
         <a href="contact.html">Contact</a>
         <a href="faqs.html">FAQs</a>
       </div>
+      
       <div class="user-actions">
-        <a href="login.html" class="login-link">
-          <i class="fas fa-user"></i>
-          <span>Sign In</span>
-        </a>
+        <!-- Show when user is NOT logged in -->
+        <div class="auth-buttons" id="auth-buttons" style="display: none;">
+          <a href="login.html" class="btn-secondary">Sign In</a>
+          <a href="signup.html" class="btn-primary">Sign Up</a>
+        </div>
+        
+        <!-- Show when user IS logged in -->
+        <div class="user-menu" id="user-menu" style="display: none;">
+          <a href="dashboard.html" class="user-profile-link">
+            <i class="fas fa-user"></i>
+            <span class="user-name" id="nav-user-name">User</span>
+          </a>
+
+          <button class="logout-btn" id="logout-btn">
+            <i class="fas fa-sign-out-alt"></i>
+            Logout
+          </button>
+        </div>
+        
+        <!-- Cart icon (always visible) -->
         <a href="cart.html" class="cart-link">
           <i class="fas fa-shopping-cart"></i>
           <span class="cart-count">0</span>
@@ -70,16 +110,21 @@
           <div class="progress-connector"></div>
           <div class="progress-step">
             <div class="step-number">2</div>
-            <div class="step-label">Shipping</div>
+            <div class="step-label">Photo Verification</div>
           </div>
           <div class="progress-connector"></div>
           <div class="progress-step">
             <div class="step-number">3</div>
-            <div class="step-label">Payment</div>
+            <div class="step-label">Shipping</div>
           </div>
           <div class="progress-connector"></div>
           <div class="progress-step">
             <div class="step-number">4</div>
+            <div class="step-label">Payment</div>
+          </div>
+          <div class="progress-connector"></div>
+          <div class="progress-step">
+            <div class="step-number">5</div>
             <div class="step-label">Confirmation</div>
           </div>
         </div>
@@ -112,12 +157,56 @@
             
             <div class="checkout-actions">
               <a href="cart.html" class="btn secondary-btn">Back to Cart</a>
-              <button class="btn primary-btn next-step" data-next="2">Continue to Shipping</button>
+              <button class="btn primary-btn next-step" data-next="2">Continue to Photo Verification</button>
             </div>
           </div>
           
-          <!-- Step 2: Shipping Information -->
+          <!-- Step 2: Photo Verification (NEW) -->
           <div class="checkout-step" id="step-2">
+            <h2>Photo Verification</h2>
+            <p class="step-description">Please upload at least 3 clear photos of your test strips from different angles. This helps us verify the condition and authenticity of your items.</p>
+            
+            <div class="photo-upload-section">
+              <div class="upload-requirements">
+                <h3>Photo Requirements:</h3>
+                <ul>
+                  <li>At least 3 photos from different angles</li>
+                  <li>Clear, well-lit images</li>
+                  <li>Show expiration dates clearly</li>
+                  <li>Include packaging/boxes if available</li>
+                  <li>Maximum file size: 5MB per photo</li>
+                  <li>Accepted formats: JPG, PNG, HEIC</li>
+                </ul>
+              </div>
+              
+              <div class="photo-upload-container">
+                <div class="upload-area" id="photo-upload-area">
+                  <div class="upload-prompt">
+                    <i class="fas fa-camera"></i>
+                    <p>Click to upload multiple photos or drag and drop</p>
+                    <small style="color: #666; display: block; margin-top: 0.5rem;">You can select multiple photos at once</small>
+                    <input type="file" id="photo-input" multiple accept="image/*" style="display: none;">
+                  </div>
+                </div>
+                
+                <div class="uploaded-photos" id="uploaded-photos">
+                  <!-- Uploaded photos will appear here -->
+                </div>
+                
+                <div class="upload-status">
+                  <span id="photo-count">0</span> of 3+ photos uploaded
+                </div>
+              </div>
+            </div>
+            
+            <div class="checkout-actions">
+              <button class="btn secondary-btn prev-step" data-prev="1">Back</button>
+              <button class="btn primary-btn next-step" data-next="3" id="continue-to-shipping" disabled>Continue to Shipping</button>
+            </div>
+          </div>
+          
+          <!-- Step 3: Shipping Information -->
+          <div class="checkout-step" id="step-3">
             <h2>Shipping Information</h2>
             <p class="step-description">Please provide your shipping address where we'll send the prepaid shipping label.</p>
             
@@ -141,8 +230,8 @@
                     <input type="email" id="email" name="email" required>
                   </div>
                   <div class="form-group">
-                    <label for="phone">Phone</label>
-                    <input type="tel" id="phone" name="phone" required>
+                    <label for="phone">Phone (optional)</label>
+                    <input type="tel" id="phone" name="phone">
                   </div>
                 </div>
               </div>
@@ -162,10 +251,57 @@
                   <div class="form-group">
                     <label for="state">State</label>
                     <select id="state" name="state" required>
-                      <!-- State options -->
+                      <option value="">Select State</option>
                       <option value="AL">Alabama</option>
                       <option value="AK">Alaska</option>
-                      <!-- Add all states -->
+                      <option value="AZ">Arizona</option>
+                      <option value="AR">Arkansas</option>
+                      <option value="CA">California</option>
+                      <option value="CO">Colorado</option>
+                      <option value="CT">Connecticut</option>
+                      <option value="DE">Delaware</option>
+                      <option value="FL">Florida</option>
+                      <option value="GA">Georgia</option>
+                      <option value="HI">Hawaii</option>
+                      <option value="ID">Idaho</option>
+                      <option value="IL">Illinois</option>
+                      <option value="IN">Indiana</option>
+                      <option value="IA">Iowa</option>
+                      <option value="KS">Kansas</option>
+                      <option value="KY">Kentucky</option>
+                      <option value="LA">Louisiana</option>
+                      <option value="ME">Maine</option>
+                      <option value="MD">Maryland</option>
+                      <option value="MA">Massachusetts</option>
+                      <option value="MI">Michigan</option>
+                      <option value="MN">Minnesota</option>
+                      <option value="MS">Mississippi</option>
+                      <option value="MO">Missouri</option>
+                      <option value="MT">Montana</option>
+                      <option value="NE">Nebraska</option>
+                      <option value="NV">Nevada</option>
+                      <option value="NH">New Hampshire</option>
+                      <option value="NJ">New Jersey</option>
+                      <option value="NM">New Mexico</option>
+                      <option value="NY">New York</option>
+                      <option value="NC">North Carolina</option>
+                      <option value="ND">North Dakota</option>
+                      <option value="OH">Ohio</option>
+                      <option value="OK">Oklahoma</option>
+                      <option value="OR">Oregon</option>
+                      <option value="PA">Pennsylvania</option>
+                      <option value="RI">Rhode Island</option>
+                      <option value="SC">South Carolina</option>
+                      <option value="SD">South Dakota</option>
+                      <option value="TN">Tennessee</option>
+                      <option value="TX">Texas</option>
+                      <option value="UT">Utah</option>
+                      <option value="VT">Vermont</option>
+                      <option value="VA">Virginia</option>
+                      <option value="WA">Washington</option>
+                      <option value="WV">West Virginia</option>
+                      <option value="WI">Wisconsin</option>
+                      <option value="WY">Wyoming</option>
                     </select>
                   </div>
                   <div class="form-group">
@@ -174,84 +310,16 @@
                   </div>
                 </div>
               </div>
-              
-              <!-- Payment Method -->
-              <div class="form-section">
-                <h2>Payment Method</h2>
-                <div class="form-group">
-                  <label for="payment-method">Select Payment Method</label>
-                  <select id="payment-method" name="paymentMethod" required>
-                    <option value="">Select a payment method</option>
-                    <option value="paypal">PayPal</option>
-                    <option value="venmo">Venmo</option>
-                    <option value="zelle">Zelle</option>
-                    <option value="cashapp">Cash App</option>
-                  </select>
-                </div>
-                
-                <!-- PayPal Details -->
-                <div id="paypal-details" class="payment-details">
-                  <div class="form-group">
-                    <label for="paypal-email">PayPal Email</label>
-                    <input type="email" id="paypal-email" name="paypalEmail">
-                  </div>
-                </div>
-                
-                <!-- Venmo Details -->
-                <div id="venmo-details" class="payment-details">
-                  <div class="form-group">
-                    <label for="venmo-username">Venmo Username</label>
-                    <input type="text" id="venmo-username" name="venmoUsername">
-                  </div>
-                </div>
-                
-                <!-- Zelle Details -->
-                <div id="zelle-details" class="payment-details">
-                  <div class="form-group">
-                    <label for="zelle-email">Zelle Email</label>
-                    <input type="email" id="zelle-email" name="zelleEmail">
-                  </div>
-                  <div class="form-group">
-                    <label for="zelle-phone">Zelle Phone</label>
-                    <input type="tel" id="zelle-phone" name="zellePhone">
-                  </div>
-                </div>
-                
-                <!-- Cash App Details -->
-                <div id="cashapp-details" class="payment-details">
-                  <div class="form-group">
-                    <label for="cashapp-tag">Cash App $Cashtag</label>
-                    <input type="text" id="cashapp-tag" name="cashAppTag">
-                  </div>
-                </div>
-              </div>
-              
-              <!-- Order Summary -->
-              <div class="form-section">
-                <h2>Order Summary</h2>
-                <div id="checkout-cart-summary">
-                  <!-- Cart items will be displayed here -->
-                </div>
-                <div class="checkout-total">
-                  <span>Total:</span>
-                  <span id="checkout-total-amount">$0.00</span>
-                </div>
-              </div>
-              
-              <!-- Submit Button -->
-              <div class="form-actions">
-                <button type="submit" id="checkout-submit" class="checkout-submit-btn">Place Order</button>
-              </div>
             </form>
             
             <div class="checkout-actions">
-              <button class="btn secondary-btn prev-step" data-prev="1">Back</button>
-              <button class="btn primary-btn next-step" data-next="3">Continue to Payment</button>
+              <button class="btn secondary-btn prev-step" data-prev="2">Back</button>
+              <button class="btn primary-btn next-step" data-next="4">Continue to Payment</button>
             </div>
           </div>
           
-          <!-- Step 3: Payment Information -->
-          <div class="checkout-step" id="step-3">
+          <!-- Step 4: Payment Information -->
+          <div class="checkout-step" id="step-4">
             <h2>Payment Information</h2>
             <p class="step-description">Please select how you would like to receive payment for your test strips.</p>
             
@@ -280,6 +348,14 @@
                     <span>Zelle</span>
                   </label>
                 </div>
+                
+                <div class="payment-option">
+                  <input type="radio" id="cashapp" name="paymentMethod" value="cashapp">
+                  <label for="cashapp">
+                    <img src="assets/cashapp-logo.png" alt="Cash App" class="payment-logo">
+                    <span>Cash App</span>
+                  </label>
+                </div>
               </div>
               
               <div class="payment-details" id="paypal-details">
@@ -303,6 +379,13 @@
                 </div>
               </div>
               
+              <div class="payment-details" id="cashapp-details" style="display: none;">
+                <div class="form-group">
+                  <label for="cashappTag">Cash App $Cashtag</label>
+                  <input type="text" id="cashappTag" name="cashappTag" placeholder="$yourname">
+                </div>
+              </div>
+              
               <div class="form-group terms-agreement">
                 <input type="checkbox" id="termsAgree" name="termsAgree" required>
                 <label for="termsAgree">I agree to the <a href="terms-of-service.html" target="_blank">Terms of Service</a> and <a href="privacy-policy.html" target="_blank">Privacy Policy</a></label>
@@ -310,13 +393,13 @@
             </form>
             
             <div class="checkout-actions">
-              <button class="btn secondary-btn prev-step" data-prev="2">Back</button>
-              <button class="btn primary-btn next-step" data-next="4" id="complete-order-btn">Complete Order</button>
+              <button class="btn secondary-btn prev-step" data-prev="3">Back</button>
+              <button class="btn primary-btn next-step" data-next="5" id="complete-order-btn">Complete Order</button>
             </div>
           </div>
           
-          <!-- Step 4: Confirmation -->
-          <div class="checkout-step" id="step-4">
+          <!-- Step 5: Confirmation -->
+          <div class="checkout-step" id="step-5">
             <div class="confirmation-message">
               <i class="fas fa-check-circle confirmation-icon"></i>
               <h2>Thank You for Your Order!</h2>
@@ -350,9 +433,19 @@
     <!-- Footer content will be inserted by footer.js -->
   </footer>
   
-  <script src="js/script.js"></script>
+  <!-- JavaScript -->
+  <!-- EmailJS Library (MUST be loaded first) -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  
+  <script src="js/orders-api.js"></script>
+  <script src="js/global.js"></script>
+  <script src="js/email-service.js"></script>
+  <script src="js/admin-notifications.js"></script>
+  <script src="js/order-notification-service.js"></script>
   <script src="js/checkout.js"></script>
+  <script src="js/navigation.js"></script>
   <script src="footer.js"></script>
-  <script src="shipping.js"></script>
+  <!-- Add this before closing </body> tag in ALL HTML files -->
+  <script src="js/mobile-complete.js"></script>
 </body>
 </html>

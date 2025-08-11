@@ -1,18 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MMKVNSCZY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0MMKVNSCZY');
+  </script>
+  
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1458457668401844');
+  fbq('track', 'PageView');
+  </script>
+  <noscript>
+  <img height="1" width="1" src="https://www.facebook.com/tr?id=1458457668401844&ev=PageView&noscript=1"/>
+  </noscript>
+  <!-- End Meta Pixel Code -->
+  
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact Us – We Buy Test Strips Oklahoma</title>
-  <!-- For all pages -->
-  <link rel="stylesheet" href="css/global.css">
-  <link rel="stylesheet" href="css/footer-styles.css"> <!-- Add this line to all pages -->
-  <link rel="stylesheet" href="css/contact.css">
-  <link rel="stylesheet" href="css/navigation.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="facebook-domain-verification" content="43ymi6imhv6gjzclion3lq3cnmvz3r" />
 
-  <!-- Page-specific CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Contact Us – We Buy Test Strips Oklahoma</title>
+  
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/navigation.css">
+  <link rel="stylesheet" href="css/footer-styles.css">
+  <link rel="stylesheet" href="css/contact.css">
+  <link rel="stylesheet" href="css/faq.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/page-layout.css">
+  <link rel="stylesheet" href="css/mobile-only-nav.css">
+  <link rel="stylesheet" href="css/desktop-navigation-override.css">
+  <link rel="stylesheet" href="css/mobile-responsive.css">
+  
   <meta name="description" content="Contact We Buy Test Strips Oklahoma for any questions or inquiries." />
 </head>
 <body class="contact-page">
@@ -21,8 +50,15 @@
     <nav class="nav">
       <div class="nav-wrapper">
         <a href="index.html" class="logo">
-          <img src="assets/WBSTOK-Logo_2.png" alt="We Buy Test Strips Oklahoma Logo" />
+          <img src="assets/WBSTOK-Logo_2.png" alt="Sell Dexcom G6 sensors, Omnipod 5 pods, and Freestyle Libre supplies in Oklahoma for cash" />
         </a>
+        
+        <button class="menu-toggle" aria-label="Toggle menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+        
         <div class="nav-links">
           <a href="index.html">Home</a>
           <a href="about.html">About Us</a>
@@ -33,10 +69,25 @@
           <a href="faqs.html">FAQs</a>
         </div>
         <div class="user-actions">
-          <a href="login.html" class="login-link">
-            <i class="fas fa-user"></i>
-            <span>Sign In</span>
-          </a>
+          <!-- Show when user is NOT logged in -->
+          <div class="auth-buttons" id="auth-buttons" style="display: none;">
+            <a href="login.html" class="btn-secondary">Sign In</a>
+            <a href="signup.html" class="btn-primary">Sign Up</a>
+          </div>
+          
+          <!-- Show when user IS logged in -->
+          <div class="user-menu" id="user-menu">
+            <a href="dashboard.html" class="user-profile-link">
+              <i class="fas fa-user"></i>
+              <span class="user-name" id="nav-user-name">User</span>
+            </a>
+            <button class="logout-btn" id="logout-btn">
+              <i class="fas fa-sign-out-alt"></i>
+              Logout
+            </button>
+          </div>
+          
+          <!-- Cart icon (always visible) -->
           <a href="cart.html" class="cart-link">
             <i class="fas fa-shopping-cart"></i>
             <span class="cart-count">0</span>
@@ -101,7 +152,7 @@
             </div>
             <div class="contact-text">
               <h3>Mailing Address</h3>
-              <p>1316 NW Sheridan Rd PMB 293<br>Lawton, OK 73505</p>
+              <p>1316 NW Sheridan Rd PMB 293 (private mailbox only)<br>Lawton, OK 73505</p>
             </div>
           </div>
           
@@ -145,13 +196,85 @@
 
     <!-- Footer -->
     <footer>
-      <!-- Footer content will be inserted by footer.js -->
+      <div class="footer-container">
+        <div class="footer-column">
+          <h4>About Us</h4>
+          <ul>
+            <li><a href="about.html">Our Story</a></li>
+            <li><a href="about.html">Our Mission</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Sell to Us</h4>
+          <ul>
+            <!-- Change this line in ALL HTML files -->
+            <li><a href="how-it-works.html">How It Works</a></li>
+            <li><a href="sell.html">Sell Your Supplies</a></li>
+            <li><a href="faqs.html">FAQs</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Get in Touch</h4>
+          <ul>
+            <li><a href="tel:+1405-459-0973">405-459-0973</a></li>
+            <li><a href="mailto:webuydiabeticteststripsOK@gmail.com">webuydiabeticteststripsOK@gmail.com</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <div class="footer-logo">
+          <img src="assets/WBSTOK-Logo_3.png" alt="We Buy Test Strips Oklahoma Logo">
+        </div>
+        
+        <div class="copyright">
+          &copy; 2025 We Buy Test Strips Oklahoma. All rights reserved.
+        </div>
+        
+        <div class="social-icons">
+          <a href="https://facebook.com" target="_blank" aria-label="Follow us on Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://instagram.com" target="_blank" aria-label="Follow us on Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
     </footer>
 
   </div>
   <!-- In your HTML files, make sure you only have this script reference -->
+  <script src="js/global.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/mobile-complete.js"></script>
   <script src="js/contact.js"></script>
-  <script src="js/script.js"></script>
-  <script src="footer.js"></script>
+  
+  <script>
+    // Update cart counter on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      updateCartCount();
+    });
+    
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+      
+      const cartCountElements = document.querySelectorAll('.cart-count');
+      cartCountElements.forEach(element => {
+        element.textContent = cartCount;
+        element.setAttribute('data-count', cartCount);
+        
+        // Always show cart counter
+        element.style.display = 'inline-flex';
+      });
+    }
+  </script>
 </body>
 </html>

@@ -8,47 +8,25 @@
   margin-top: 0;
 }
 
-/* Navigation styles for sell page */
-/* Make sure the navigation is properly positioned */
-.sell-page .nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.sell-page .nav-wrapper {
-  display: flex;
-  width: 100%;
-  max-width: 1200px;
-  justify-content: space-between;
-}
-
-/* Logo positioning */
-.sell-page .logo {
-  flex: 0 0 auto;
-  margin-right: 40px;
-}
-
-/* Center the nav links */
-.sell-page .nav-links {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  flex: 1;
-}
-
-/* Position user actions at the far right */
-.sell-page .user-actions {
-  display: flex;
-  gap: 20px;
+.sell-page .cart-count {
+  background: #e74c3c !important;
+  color: white !important;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+  min-width: 18px;
+  text-align: center;
+  line-height: 1;
+  display: inline-flex !important;
   align-items: center;
-  flex: 0 0 auto;
-  margin-left: 40px;
+  justify-content: center;
+  font-weight: 700;
+  margin-left: 4px;
+  border: 2px solid white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
+
+
 
 /* Page header styling */
 /* Ensure the page header starts at the right position */
@@ -295,9 +273,9 @@
 
 .process-steps {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: 1fr;
   gap: 30px;
-  max-width: 1200px;
+  max-width: 800px;
   margin: 0 auto;
 }
 

@@ -1,11 +1,10 @@
 /* =========================================
-  HOME PAGE SPECIFIC STYLES
-  Avoids any navigation-related styling
+   HOME PAGE SPECIFIC STYLES
+   NO NAVIGATION STYLES - navigation.css handles all nav
 ========================================= */
 
 /* General home page styles */
 .home-page {
-  /* No padding-top here - navigation.css will handle this */
   color: #333;
   font-family: 'Inter', sans-serif;
 }
@@ -23,8 +22,8 @@
   justify-content: center;
   text-align: center;
   color: white;
-  margin-top: 0; /* Remove any margin that might affect the navigation */
-  opacity: 1; /* Changed from 0 to 1 */
+  margin-top: 0;
+  opacity: 1;
   transition: opacity 1s ease;
 }
 
@@ -52,7 +51,7 @@
 
 .btn-sell {
   display: inline-block;
-  background-color: var(--accent, #ff6f61);
+  background-color: #4CAF50;
   color: white;
   padding: 12px 30px;
   font-size: 1.1rem;
@@ -64,7 +63,7 @@
 }
 
 .btn-sell:hover {
-  background-color: #e85a4f;
+  background-color: #45a049;
   transform: translateY(-2px);
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
@@ -293,23 +292,23 @@
 }
 
 .brand-card.onetouch .brand-color-block {
-  background-color: #0057b8; /* OneTouch blue */
+  background-color: #00a651; /* OneTouch green */
 }
 
 .brand-card.contour .brand-color-block {
-  background-color: #00a651; /* Contour green */
+  background-color: #2e77e4; /* Contour blue */
 }
 
 .brand-card.freestyle .brand-color-block {
-  background-color: #0073cf; /* FreeStyle blue */
+  background-color: #eed70d; /* FreeStyle yellow */
 }
 
-.brand-card.true-metrix .brand-color-block {
-  background-color: #6a2c91; /* True Metrix purple */
+.brand-card.omnipod .brand-color-block {
+  background-color: #3030e5; /* Omnipod purple */
 }
 
 .brand-card.dexcom .brand-color-block {
-  background-color: #00a0df; /* Dexcom blue */
+  background-color: #39a726; /* Dexcom green */
 }
 
 .brand-card h3 {
@@ -676,6 +675,151 @@
   color: #666;
 }
 
+/* Announcement Popup */
+.announcement-popup {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  max-width: 380px;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.9));
+  border: 2px solid rgba(255, 158, 128, 0.4);
+  border-radius: 16px;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 
+              0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  z-index: 10000;
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: block;
+}
+
+.announcement-popup.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.announcement-popup.hide {
+  transform: translateY(100px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.popup-content {
+  padding: 20px;
+  position: relative;
+}
+
+.popup-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.popup-close:hover {
+  color: #ff9e80;
+  background: rgba(255, 158, 128, 0.1);
+  transform: scale(1.1);
+}
+
+.popup-header h3 {
+  color: #ff9e80;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  padding-right: 30px;
+}
+
+.popup-subtitle {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  margin: 0 0 15px 0;
+  font-weight: 500;
+}
+
+.popup-body {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.popup-body p {
+  margin: 0 0 12px 0;
+}
+
+.rewards-list {
+  margin: 12px 0;
+  padding-left: 15px;
+  list-style: none;
+}
+
+.rewards-list li {
+  margin: 6px 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 13px;
+}
+
+.popup-note {
+  background: rgba(255, 158, 128, 0.1);
+  border: 1px solid rgba(255, 158, 128, 0.2);
+  border-radius: 8px;
+  padding: 10px;
+  margin: 15px 0 0 0;
+}
+
+.popup-note p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 12px;
+  font-style: italic;
+}
+
+.popup-footer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.popup-got-it {
+  background: linear-gradient(135deg, #ff9e80, #ff6b35);
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 158, 128, 0.3);
+}
+
+.popup-got-it:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 158, 128, 0.4);
+  background: linear-gradient(135deg, #ffb199, #ff7f4a);
+}
+
+/* Mobile responsive popup */
+@media (max-width: 768px) {
+  .announcement-popup {
+    bottom: 10px;
+    right: 10px;
+    left: 10px;
+    max-width: none;
+  }
+}
+
 /* Mission Statement Styling */
 .mission-statement {
   max-width: 800px;
@@ -718,23 +862,4 @@
 .testimonial-attribution, 
 .testimonial-location {
   transition: opacity 0.3s ease;
-}
-
-/* Target potential separator between logo and nav links */
-.nav-wrapper > *,
-.nav-wrapper > *::before,
-.nav-wrapper > *::after {
-  border: none !important;
-  border-left: none !important;
-  border-right: none !important;
-  box-shadow: none !important;
-}
-
-/* Target the menu-toggle button which is between logo and nav links */
-.menu-toggle,
-.menu-toggle::before,
-.menu-toggle::after {
-  border: none !important;
-  box-shadow: none !important;
-  background-image: none !important;
 }

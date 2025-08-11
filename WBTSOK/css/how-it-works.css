@@ -19,48 +19,7 @@ body.how-it-works-page {
   color: white; /* Set default text color to white */
 }
 
-/* Navigation Fixes
-   ========================================================================== */
-.how-it-works-page .nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  background-color: #fff;
-  padding: 10px 20px;
-  display: flex;
-  justify-content: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  margin-bottom: 0;
-}
 
-.how-it-works-page .nav-wrapper {
-  display: flex;
-  width: 100%;
-  max-width: 1200px;
-  justify-content: space-between;
-}
-
-.how-it-works-page .logo {
-  flex: 0 0 auto;
-  margin-right: 40px;
-}
-
-.how-it-works-page .nav-links {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  flex: 1;
-}
-
-.how-it-works-page .user-actions {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-  flex: 0 0 auto;
-  margin-left: 40px;
-}
 
 /* Text color overrides for the how-it-works page */
 .how-it-works-page .about-section h1 {
@@ -159,9 +118,799 @@ body.how-it-works-page {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+/* Force vertical layout for process steps */
+.how-it-works-page .process-steps {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 40px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.how-it-works-page .step-card {
+  width: 100% !important;
+  box-sizing: border-box;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 20px !important;
+  padding: 40px 30px !important;
+  backdrop-filter: blur(10px);
+  transform: translateY(0px);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 
+              0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+}
+
+.how-it-works-page .step-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.how-it-works-page .step-card:hover {
+  transform: translateY(-8px) scale(1.02) !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.08)) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 
+              0 0 0 1px rgba(255, 255, 255, 0.2) inset,
+              0 0 80px rgba(255, 158, 128, 0.1);
+  border-color: rgba(255, 158, 128, 0.3);
+}
+
+.how-it-works-page .step-card:hover::before {
+  left: 100%;
+}
+
+.how-it-works-page .step-card:nth-child(odd) {
+  animation: slideInLeft 0.8s ease-out;
+}
+
+.how-it-works-page .step-card:nth-child(even) {
+  animation: slideInRight 0.8s ease-out;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+  }
+}
+
+.how-it-works-page .step-number {
+  background: linear-gradient(135deg, #ff9e80, #ff6b35) !important;
+  color: white !important;
+  width: 60px !important;
+  height: 60px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  margin: 0 auto 20px !important;
+  box-shadow: 0 4px 15px rgba(255, 158, 128, 0.4);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.how-it-works-page .step-card:hover .step-number {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 8px 25px rgba(255, 158, 128, 0.6);
+}
+
+.how-it-works-page .step-title {
+  color: #ff9e80 !important;
+  text-align: center !important;
+  font-size: 24px !important;
+  font-weight: 600 !important;
+  margin-bottom: 20px !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.how-it-works-page .step-card:hover .step-title {
+  color: #ffb199 !important;
+  transform: translateY(-2px);
+}
+
+.how-it-works-page .step-text {
+  color: rgba(255, 255, 255, 0.9) !important;
+  line-height: 1.6 !important;
+  font-size: 16px !important;
+}
+
+.how-it-works-page .step-text p {
+  color: rgba(255, 255, 255, 0.9) !important;
+  margin-bottom: 15px !important;
+}
+
+.how-it-works-page .step-text ul {
+  margin: 15px 0 !important;
+  padding-left: 20px !important;
+}
+
+.how-it-works-page .step-text li {
+  color: rgba(255, 255, 255, 0.85) !important;
+  margin-bottom: 8px !important;
+  transition: color 0.3s ease;
+}
+
+.how-it-works-page .step-card:hover .step-text li {
+  color: rgba(255, 255, 255, 0.95) !important;
+}
+
+.how-it-works-page .highlight-box,
+.how-it-works-page .warning-box {
+  background: linear-gradient(135deg, rgba(255, 158, 128, 0.15), rgba(255, 158, 128, 0.08)) !important;
+  border: 1px solid rgba(255, 158, 128, 0.3) !important;
+  border-radius: 15px !important;
+  padding: 20px !important;
+  margin: 20px 0 !important;
+  transition: all 0.3s ease;
+}
+
+.how-it-works-page .step-card:hover .highlight-box,
+.how-it-works-page .step-card:hover .warning-box {
+  background: linear-gradient(135deg, rgba(255, 158, 128, 0.2), rgba(255, 158, 128, 0.1)) !important;
+  border-color: rgba(255, 158, 128, 0.4) !important;
+  transform: translateY(-2px);
+}
+
 .how-it-works-page .contact-cta h2,
 .how-it-works-page .contact-cta p {
   color: white;
+}
+
+/* Enhanced What We Accept Section */
+.how-it-works-page .about-section {
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+  padding: 60px 40px !important;
+}
+
+/* What We Accept & Brands We Buy Sections */
+.how-it-works-page h2 {
+  font-size: 36px !important;
+  text-align: center !important;
+  margin-bottom: 40px !important;
+  background: linear-gradient(135deg, #ff9e80, #ffb199) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  text-shadow: none !important;
+}
+
+/* Create dynamic grid layout for categories */
+.how-it-works-page .brands-grid,
+.how-it-works-page .acceptance-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)) !important;
+  gap: 30px !important;
+  margin: 40px 0 !important;
+  max-width: 1200px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Style individual category cards */
+.how-it-works-page .category-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06)) !important;
+  border: 1px solid rgba(255, 158, 128, 0.3) !important;
+  border-radius: 20px !important;
+  padding: 30px 25px !important;
+  backdrop-filter: blur(15px) !important;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+  transform: translateY(0px) !important;
+  cursor: pointer !important;
+}
+
+.how-it-works-page .category-card::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: linear-gradient(90deg, transparent, rgba(255, 158, 128, 0.1), transparent) !important;
+  transition: left 0.6s ease !important;
+}
+
+.how-it-works-page .category-card:hover {
+  transform: translateY(-10px) scale(1.03) !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.08)) !important;
+  border-color: rgba(255, 158, 128, 0.5) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 
+              0 0 80px rgba(255, 158, 128, 0.15) !important;
+}
+
+.how-it-works-page .category-card:hover::before {
+  left: 100% !important;
+}
+
+/* Category icons/emojis */
+.how-it-works-page .category-icon {
+  font-size: 32px !important;
+  margin-bottom: 15px !important;
+  display: block !important;
+  text-align: center !important;
+  transition: all 0.3s ease !important;
+}
+
+.how-it-works-page .category-card:hover .category-icon {
+  transform: scale(1.2) rotate(5deg) !important;
+}
+
+/* Category titles */
+.how-it-works-page .category-title {
+  color: #ff9e80 !important;
+  font-size: 22px !important;
+  font-weight: 600 !important;
+  text-align: center !important;
+  margin-bottom: 20px !important;
+  transition: all 0.3s ease !important;
+}
+
+.how-it-works-page .category-card:hover .category-title {
+  color: #ffb199 !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Category descriptions */
+.how-it-works-page .category-description {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+  text-align: center !important;
+  margin-bottom: 20px !important;
+}
+
+/* Brand lists styling */
+.how-it-works-page .brand-list {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.how-it-works-page .brand-item {
+  background: rgba(255, 158, 128, 0.1) !important;
+  border: 1px solid rgba(255, 158, 128, 0.2) !important;
+  border-radius: 8px !important;
+  padding: 8px 12px !important;
+  margin: 8px 0 !important;
+  color: rgba(255, 255, 255, 0.95) !important;
+  font-size: 14px !important;
+  transition: all 0.3s ease !important;
+  position: relative !important;
+}
+
+.how-it-works-page .category-card:hover .brand-item {
+  background: rgba(255, 158, 128, 0.15) !important;
+  border-color: rgba(255, 158, 128, 0.3) !important;
+  transform: translateX(3px) !important;
+}
+
+/* Staggered animation for cards */
+.how-it-works-page .category-card:nth-child(1) { animation: slideInUp 0.8s ease-out 0.1s both !important; }
+.how-it-works-page .category-card:nth-child(2) { animation: slideInUp 0.8s ease-out 0.2s both !important; }
+.how-it-works-page .category-card:nth-child(3) { animation: slideInUp 0.8s ease-out 0.3s both !important; }
+.how-it-works-page .category-card:nth-child(4) { animation: slideInUp 0.8s ease-out 0.4s both !important; }
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Center the photo guidelines text */
+.how-it-works-page h2 + p {
+  text-align: center !important;
+  max-width: 800px !important;
+  margin: 0 auto 40px !important;
+  font-size: 16px !important;
+}
+
+/* Photo Requirements section with black transparency styling */
+.how-it-works-page .photo-requirements-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)) !important;
+  gap: 30px !important;
+  margin: 40px 0 !important;
+  max-width: 1200px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.how-it-works-page .photo-card {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)) !important;
+  border: 1px solid rgba(255, 158, 128, 0.3) !important;
+  border-radius: 20px !important;
+  padding: 30px 25px !important;
+  backdrop-filter: blur(15px) !important;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
+  transform: translateY(0px) !important;
+  cursor: pointer !important;
+  text-align: center !important;
+}
+
+.how-it-works-page .photo-card::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: linear-gradient(90deg, transparent, rgba(255, 158, 128, 0.1), transparent) !important;
+  transition: left 0.6s ease !important;
+}
+
+.how-it-works-page .photo-card:hover {
+  transform: translateY(-10px) scale(1.03) !important;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)) !important;
+  border-color: rgba(255, 158, 128, 0.5) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 
+              0 0 80px rgba(255, 158, 128, 0.15) !important;
+}
+
+.how-it-works-page .photo-card:hover::before {
+  left: 100% !important;
+}
+
+.how-it-works-page .photo-card .category-icon {
+  font-size: 32px !important;
+  margin-bottom: 15px !important;
+  display: block !important;
+  text-align: center !important;
+  transition: all 0.3s ease !important;
+}
+
+.how-it-works-page .photo-card:hover .category-icon {
+  transform: scale(1.2) rotate(5deg) !important;
+}
+
+.how-it-works-page .photo-card .category-title {
+  color: #ff9e80 !important;
+  font-size: 22px !important;
+  font-weight: 600 !important;
+  text-align: center !important;
+  margin-bottom: 20px !important;
+  transition: all 0.3s ease !important;
+}
+
+.how-it-works-page .photo-card:hover .category-title {
+  color: #ffb199 !important;
+  transform: translateY(-2px) !important;
+}
+
+.how-it-works-page .photo-card .category-description {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+  text-align: center !important;
+}
+
+.how-it-works-page .photo-card .category-description ul {
+  text-align: left !important;
+  display: inline-block !important;
+  margin: 0 auto !important;
+  padding-left: 20px !important;
+}
+
+.how-it-works-page .photo-card .category-description li {
+  color: rgba(255, 255, 255, 0.85) !important;
+  margin-bottom: 8px !important;
+  transition: color 0.3s ease !important;
+}
+
+.how-it-works-page .photo-card:hover .category-description li {
+  color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Staggered animation for photo cards */
+.how-it-works-page .photo-card:nth-child(1) { animation: slideInUp 0.8s ease-out 0.1s both !important; }
+.how-it-works-page .photo-card:nth-child(2) { animation: slideInUp 0.8s ease-out 0.2s both !important; }
+.how-it-works-page .photo-card:nth-child(3) { animation: slideInUp 0.8s ease-out 0.3s both !important; }
+.how-it-works-page .photo-card:nth-child(4) { animation: slideInUp 0.8s ease-out 0.4s both !important; }
+
+/* Center the CTA button */
+.how-it-works-page .cta-button-container {
+  text-align: center !important;
+  margin-top: 8px !important;
+}
+
+.how-it-works-page .cta-button-container .btn-sell {
+  display: inline-block !important;
+  font-size: 14px !important;
+  padding: 12px 24px !important;
+  border-radius: 8px !important;
+  transition: all 0.3s ease !important;
+  text-transform: uppercase !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+}
+
+.how-it-works-page .cta-button-container .btn-sell:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Announcement Popup */
+.announcement-popup {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  max-width: 380px;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.9));
+  border: 2px solid rgba(255, 158, 128, 0.4);
+  border-radius: 16px;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 
+              0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  z-index: 10000;
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: block;
+}
+
+.announcement-popup.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.announcement-popup.hide {
+  transform: translateY(100px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.popup-content {
+  padding: 20px;
+  position: relative;
+}
+
+.popup-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.popup-close:hover {
+  color: #ff9e80;
+  background: rgba(255, 158, 128, 0.1);
+  transform: scale(1.1);
+}
+
+.popup-header h3 {
+  color: #ff9e80;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  padding-right: 30px;
+}
+
+.popup-subtitle {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  margin: 0 0 15px 0;
+  font-weight: 500;
+}
+
+.popup-body {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* Condition Requirements Section */
+.how-it-works-page .condition-requirements-container {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)) !important;
+  gap: 30px !important;
+  margin: 40px 0 !important;
+  max-width: 1200px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.how-it-works-page .condition-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06)) !important;
+  border: 2px solid !important;
+  border-radius: 20px !important;
+  padding: 30px 25px !important;
+  backdrop-filter: blur(15px) !important;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+  transform: translateY(0px) !important;
+  text-align: center !important;
+}
+
+/* Individual condition card colors */
+.how-it-works-page .condition-card.mint {
+  border-color: rgba(76, 175, 80, 0.6) !important;
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.15), rgba(76, 175, 80, 0.08)) !important;
+}
+
+.how-it-works-page .condition-card.dinged {
+  border-color: rgba(255, 193, 7, 0.6) !important;
+  background: linear-gradient(135deg, rgba(255, 193, 7, 0.15), rgba(255, 193, 7, 0.08)) !important;
+}
+
+.how-it-works-page .condition-card.damaged {
+  border-color: rgba(244, 67, 54, 0.6) !important;
+  background: linear-gradient(135deg, rgba(244, 67, 54, 0.15), rgba(244, 67, 54, 0.08)) !important;
+}
+
+.how-it-works-page .condition-card::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent) !important;
+  transition: left 0.6s ease !important;
+}
+
+.how-it-works-page .condition-card:hover {
+  transform: translateY(-10px) scale(1.03) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4) !important;
+}
+
+.how-it-works-page .condition-card:hover::before {
+  left: 100% !important;
+}
+
+.how-it-works-page .condition-card.mint:hover {
+  border-color: rgba(76, 175, 80, 0.8) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 40px rgba(76, 175, 80, 0.2) !important;
+}
+
+.how-it-works-page .condition-card.dinged:hover {
+  border-color: rgba(255, 193, 7, 0.8) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 40px rgba(255, 193, 7, 0.2) !important;
+}
+
+.how-it-works-page .condition-card.damaged:hover {
+  border-color: rgba(244, 67, 54, 0.8) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 40px rgba(244, 67, 54, 0.2) !important;
+}
+
+.how-it-works-page .condition-icon {
+  font-size: 40px !important;
+  margin-bottom: 15px !important;
+  display: block !important;
+  text-align: center !important;
+  transition: all 0.3s ease !important;
+}
+
+.how-it-works-page .condition-card:hover .condition-icon {
+  transform: scale(1.2) rotate(5deg) !important;
+}
+
+.how-it-works-page .condition-title {
+  font-size: 24px !important;
+  font-weight: 600 !important;
+  text-align: center !important;
+  margin-bottom: 20px !important;
+  transition: all 0.3s ease !important;
+}
+
+.how-it-works-page .condition-card.mint .condition-title {
+  color: #4caf50 !important;
+}
+
+.how-it-works-page .condition-card.dinged .condition-title {
+  color: #ffc107 !important;
+}
+
+.how-it-works-page .condition-card.damaged .condition-title {
+  color: #f44336 !important;
+}
+
+.how-it-works-page .condition-description {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+  text-align: center !important;
+  margin-bottom: 20px !important;
+}
+
+.how-it-works-page .condition-description p {
+  margin: 10px 0 !important;
+}
+
+.how-it-works-page .condition-description strong {
+  color: rgba(255, 255, 255, 1) !important;
+}
+
+.how-it-works-page .condition-price {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+  padding: 12px 20px !important;
+  border-radius: 10px !important;
+  margin-top: 20px !important;
+  transition: all 0.3s ease !important;
+}
+
+.how-it-works-page .condition-card.mint .condition-price {
+  background: rgba(76, 175, 80, 0.2) !important;
+  color: #4caf50 !important;
+  border: 1px solid rgba(76, 175, 80, 0.4) !important;
+}
+
+.how-it-works-page .condition-card.dinged .condition-price {
+  background: rgba(255, 193, 7, 0.2) !important;
+  color: #ffc107 !important;
+  border: 1px solid rgba(255, 193, 7, 0.4) !important;
+}
+
+.how-it-works-page .condition-card.damaged .condition-price {
+  background: rgba(244, 67, 54, 0.2) !important;
+  color: #f44336 !important;
+  border: 1px solid rgba(244, 67, 54, 0.4) !important;
+}
+
+.how-it-works-page .condition-note {
+  background: linear-gradient(135deg, rgba(255, 158, 128, 0.15), rgba(255, 158, 128, 0.08)) !important;
+  border: 1px solid rgba(255, 158, 128, 0.3) !important;
+  border-radius: 15px !important;
+  padding: 20px !important;
+  margin: 40px auto !important;
+  max-width: 800px !important;
+  text-align: center !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+.how-it-works-page .condition-note p {
+  color: rgba(255, 255, 255, 0.9) !important;
+  margin: 0 !important;
+  font-size: 16px !important;
+}
+
+.how-it-works-page .condition-note strong {
+  color: #ff9e80 !important;
+}
+
+/* Staggered animation for condition cards */
+.how-it-works-page .condition-card:nth-child(1) { animation: slideInUp 0.8s ease-out 0.1s both !important; }
+.how-it-works-page .condition-card:nth-child(2) { animation: slideInUp 0.8s ease-out 0.2s both !important; }
+.how-it-works-page .condition-card:nth-child(3) { animation: slideInUp 0.8s ease-out 0.3s both !important; }
+
+.popup-body p {
+  margin: 0 0 12px 0;
+}
+
+.rewards-list {
+  margin: 12px 0;
+  padding-left: 15px;
+  list-style: none;
+}
+
+.rewards-list li {
+  margin: 6px 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 13px;
+}
+
+.popup-note {
+  background: rgba(255, 158, 128, 0.1);
+  border: 1px solid rgba(255, 158, 128, 0.2);
+  border-radius: 8px;
+  padding: 10px;
+  margin: 15px 0 0 0;
+}
+
+.popup-note p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 12px;
+  font-style: italic;
+}
+
+.popup-footer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.popup-got-it {
+  background: linear-gradient(135deg, #ff9e80, #ff6b35);
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 158, 128, 0.3);
+}
+
+.popup-got-it:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 158, 128, 0.4);
+  background: linear-gradient(135deg, #ffb199, #ff7f4a);
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .how-it-works-page .brands-grid,
+  .how-it-works-page .acceptance-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+    padding: 0 20px !important;
+  }
+  
+  .how-it-works-page .about-section {
+    padding: 40px 20px !important;
+  }
+  
+  .announcement-popup {
+    bottom: 10px;
+    right: 10px;
+    left: 10px;
+    max-width: none;
+  }
 }
 
 /* FAQ section styling */

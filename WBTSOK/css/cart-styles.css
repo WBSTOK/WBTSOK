@@ -3,6 +3,33 @@
   background-color: #f5f5f5;
 }
 
+/* Ensure cart counter is always visible on cart page */
+.cart-page .cart-count {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Green Start Selling button on cart page */
+.cart-page .btn-primary {
+  background-color: #4CAF50 !important;
+}
+
+.cart-page .btn-primary:hover {
+  background-color: #45a049 !important;
+}
+
+/* Green Sign In button on cart page */
+.cart-page .btn-secondary {
+  border-color: #4CAF50 !important;
+  color: #4CAF50 !important;
+}
+
+.cart-page .btn-secondary:hover {
+  background-color: #4CAF50 !important;
+  color: white !important;
+}
+
 .page-container {
   display: flex;
   flex-direction: column;
@@ -133,14 +160,27 @@
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
+.cart-total h3 {
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  color: #333;
+}
+
 .cart-total {
+  margin-bottom: 25px;
+}
+
+.total-line {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   font-size: 1.4rem;
   font-weight: 600;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   color: #333;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .cart-total span:first-child {
@@ -252,29 +292,3 @@
   box-sizing: border-box;
 }
 
-/* Reset the previous aggressive fix */
-.cart-page .cart-count {
-  /* Remove the absolute positioning that might be causing issues */
-  position: static !important;
-  transform: none !important;
-  
-  /* Basic centering */
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  
-  /* Ensure text is centered */
-  text-align: center !important;
-  
-  /* Adjust vertical alignment */
-  line-height: normal !important;
-  
-  /* Make sure padding and margins aren't causing issues */
-  padding: 0 !important;
-  margin: auto !important;
-}
-
-/* Remove this rule that might be causing the icon to disappear */
-.cart-page .cart-link {
-  position: static !important;
-}

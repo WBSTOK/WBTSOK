@@ -1,283 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>How It Works – We Buy Test Strips Oklahoma</title>
-  <!-- For all pages -->
-  <link rel="stylesheet" href="css/global.css">
-  <link rel="stylesheet" href="css/footer-styles.css"> <!-- Add this line to all pages -->
-  <!-- Other CSS files -->
-  <link rel="stylesheet" href="css/faq.css">
-  <link rel="stylesheet" href="css/navigation.css">
-  <!-- Page-specific CSS -->
-  <link rel="stylesheet" href="css/how-it-works.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MMKVNSCZY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0MMKVNSCZY');
+  </script>
   
-  <style>
-    /* Enhanced styles for the How It Works page - based on About Us page */
-    .about-section {
-      width: 100%;
-      padding: 40px 10%;
-      box-sizing: border-box;
-      margin-top: 60px; /* Added space between nav and content */
-    }
-    
-    .about-section h1 {
-      color: #8c2d38;
-      font-size: 2.5rem;
-      margin-bottom: 30px;
-      text-align: center;
-      position: relative;
-      padding-bottom: 15px;
-    }
-    
-    .about-section h1:after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 3px;
-      background-color: #8c2d38;
-    }
-    
-    .about-section h2 {
-      color: #8c2d38;
-      font-size: 1.8rem;
-      margin: 40px 0 20px;
-      /* Removed the red line before heading */
-    }
-    
-    .about-section p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      margin-bottom: 20px;
-      color: #333;
-    }
-    
-    .about-section ul {
-      margin-bottom: 30px;
-      padding-left: 20px;
-      list-style-type: none; /* Remove default bullets */
-    }
-    
-    .about-section li {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      margin-bottom: 15px;
-      /* Removed the checkmark icon */
-    }
-    
-    .commitment-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      margin: 40px 0;
-    }
-    
-    .commitment-card {
-      background-color: #f9f9f9;
-      border-radius: 10px;
-      padding: 25px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    
-    .commitment-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    }
-    
-    .commitment-icon {
-      font-size: 2.5rem;
-      color: #8c2d38;
-      margin-bottom: 15px;
-      text-align: center;
-    }
-    
-    .commitment-title {
-      font-size: 1.3rem;
-      font-weight: 600;
-      margin-bottom: 15px;
-      color: #333;
-      text-align: center;
-    }
-    
-    .commitment-text {
-      font-size: 1rem;
-      line-height: 1.5;
-      color: #555;
-    }
-    
-    .process-steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      margin: 40px 0;
-    }
-    
-    .step-card {
-      background-color: #f9f9f9;
-      border-radius: 10px;
-      padding: 25px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      position: relative;
-    }
-    
-    .step-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    }
-    
-    .step-number {
-      position: absolute;
-      top: -15px;
-      left: -15px;
-      background-color: #8c2d38;
-      color: white;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
-    
-    .step-title {
-      font-size: 1.3rem;
-      font-weight: 600;
-      margin-bottom: 15px;
-      color: #333;
-      padding-left: 10px;
-    }
-    
-    .step-text {
-      font-size: 1rem;
-      line-height: 1.5;
-      color: #555;
-    }
-    
-    .contact-cta {
-      background-color: #f5e6e8;
-      border-radius: 10px;
-      padding: 25px; /* Reduced padding */
-      text-align: center;
-      margin: 50px 0 30px;
-      max-width: 600px; /* Added max-width to make it shorter */
-      margin-left: auto;
-      margin-right: auto;
-    }
-    
-    .contact-cta h2 {
-      color: #333;
-      margin-top: 0;
-      margin-bottom: 10px; /* Reduced margin */
-      font-size: 1.6rem; /* Slightly smaller heading */
-    }
-    
-    .contact-cta p {
-      margin: 0 auto 15px; /* Reduced margin */
-      font-size: 1rem; /* Slightly smaller text */
-    }
-    
-    .cta-button {
-      display: inline-block;
-      background-color: #8c2d38;
-      color: white;
-      padding: 10px 25px; /* Reduced padding */
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: background-color 0.3s ease;
-    }
-    
-    .cta-button:hover {
-      background-color: #6d2129;
-    }
-    
-    .faq-preview {
-      background-color: #f9f9f9;
-      border-radius: 10px;
-      padding: 30px;
-      margin: 40px 0;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    }
-    
-    .faq-preview h3 {
-      color: #8c2d38;
-      margin-top: 0;
-      margin-bottom: 20px;
-      font-size: 1.4rem;
-    }
-    
-    .faq-item {
-      margin-bottom: 20px;
-    }
-    
-    .faq-question {
-      font-weight: 600;
-      color: #333;
-      margin-bottom: 8px;
-      font-size: 1.1rem;
-    }
-    
-    .faq-answer {
-      color: #555;
-      line-height: 1.5;
-    }
-    
-    /* Ensure full width and proper centering */
-    body, html {
-      width: 100%;
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-    }
-    
-    main {
-      width: 100%;
-      max-width: 100%;
-      padding: 0;
-      margin: 0 auto;
-      box-sizing: border-box;
-      overflow-x: hidden;
-    }
-    
-    .page-container {
-      width: 100%;
-      max-width: 100%;
-      padding: 0;
-      margin: 0 auto;
-      box-sizing: border-box;
-      overflow-x: hidden;
-    }
-    
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-      .about-section {
-        padding: 30px 5%;
-        margin-top: 40px;
-      }
-      
-      .commitment-cards,
-      .process-steps {
-        grid-template-columns: 1fr;
-      }
-      
-      .about-section h1 {
-        font-size: 2rem;
-      }
-      
-      .about-section h2 {
-        font-size: 1.5rem;
-      }
-    }
-  </style>
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1458457668401844');
+  fbq('track', 'PageView');
+  </script>
+  <noscript>
+  <img height="1" width="1" src="https://www.facebook.com/tr?id=1458457668401844&ev=PageView&noscript=1"/>
+  </noscript>
+  <!-- End Meta Pixel Code -->
+  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>How It Works – We Buy Test Strips Oklahoma</title>
+  
+  <!-- UPDATED: Proper CSS order for navigation consistency -->
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/navigation.css">
+  <link rel="stylesheet" href="css/footer-styles.css">
+  <link rel="stylesheet" href="css/how-it-works.css"> <!-- Your beautiful background design -->
+  <link rel="stylesheet" href="css/faq.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/page-layout.css">
+  <link rel="stylesheet" href="css/mobile-responsive.css">
 </head>
 <body class="how-it-works-page">
   <div class="page-container">
@@ -287,24 +47,42 @@
         <a href="index.html" class="logo">
           <img src="assets/WBSTOK-Logo_2.png" alt="We Buy Test Strips Oklahoma Logo" />
         </a>
+        
         <button class="menu-toggle" aria-label="Toggle menu">
           <span class="bar"></span>
           <span class="bar"></span>
           <span class="bar"></span>
         </button>
+        
         <div class="nav-links">
           <a href="index.html">Home</a>
           <a href="about.html">About Us</a>
-          <a href="how-it-works.html">How it Works</a>
+          <a href="how-it-works.html" class="active">How it Works</a>
           <a href="sell.html">Sell</a>
           <a href="contact.html">Contact</a>
           <a href="faqs.html">FAQs</a>
         </div>
+        
         <div class="user-actions">
-          <a href="login.html" class="login-link">
-            <i class="fas fa-user"></i>
-            <span>Sign In</span>
-          </a>
+          <!-- Show when user is NOT logged in -->
+          <div class="auth-buttons" id="auth-buttons" style="display: none;">
+            <a href="login.html" class="btn-secondary">Sign In</a>
+            <a href="signup.html" class="btn-primary">Sign Up</a>
+          </div>
+          
+          <!-- Show when user IS logged in -->
+          <div class="user-menu" id="user-menu">
+            <a href="dashboard.html" class="user-profile-link">
+              <i class="fas fa-user"></i>
+              <span class="user-name" id="nav-user-name">User</span>
+            </a>
+            <button class="logout-btn" id="logout-btn">
+              <i class="fas fa-sign-out-alt"></i>
+              Logout
+            </button>
+          </div>
+          
+          <!-- Cart icon (always visible) -->
           <a href="cart.html" class="cart-link">
             <i class="fas fa-shopping-cart"></i>
             <span class="cart-count">0</span>
@@ -317,28 +95,46 @@
       <section class="about-section">
         <h1>How It Works – We Buy Test Strips Oklahoma</h1>
         
-        <p>Selling your extra diabetic supplies to WBTSOK is fast, secure, and fully transparent. We've created a smooth, 4-step process — with upfront pricing, free shipping, no label removal required, and a clear confirmation once your sell order is submitted.</p>
+        <p>Selling your extra diabetic supplies to WBTSOK is fast, secure, and fully transparent. We've streamlined our process with a modern online checkout system that includes upfront pricing, free shipping, automated order processing, and instant confirmation once your sell order is submitted.</p>
         
-        <h2>Our Simple 4-Step Process</h2>
+        <h2>Our Simple 5-Step Process</h2>
         
         <div class="process-steps">
           <div class="step-card">
             <div class="step-number">1</div>
-            <div class="step-title">Check Our Prices</div>
+            <div class="step-title">Browse & Add Items to Cart</div>
             <div class="step-text">
-              <p>Go to our <a href="sell.html">Sell Page</a> to view our current payouts. We offer top-dollar rates for all major diabetic brands, including:</p>
+              <p>Visit our <a href="sell.html">Sell Page</a> to view our current payouts and browse available items. We offer top-dollar rates for all major diabetic brands, including:</p>
               <ul>
                 <li>Dexcom G6 & G7 sensors and transmitters</li>
                 <li>Freestyle Libre 2 & 3</li>
                 <li>Omnipod Dash & Omnipod 5 pods</li>
                 <li>Accu-Chek, Contour, OneTouch, and more</li>
               </ul>
-              <p>You'll know exactly what you're earning before you ship. No quotes, no waiting.</p>
+              <p>Select your items, choose quantities, and add them to your cart. You'll see exactly what you're earning before checkout.</p>
             </div>
           </div>
           
           <div class="step-card">
             <div class="step-number">2</div>
+            <div class="step-title">Complete Secure Checkout</div>
+            <div class="step-text">
+              <p>Our streamlined checkout process guides you through 4 simple steps:</p>
+              <ul>
+                <li><strong>Step 1:</strong> Review your cart items and total payout</li>
+                <li><strong>Step 2:</strong> Enter your shipping information</li>
+                <li><strong>Step 3:</strong> Choose your payment method (PayPal, Venmo, or Zelle)</li>
+                <li><strong>Step 4:</strong> Review and confirm your order</li>
+              </ul>
+              <div class="highlight-box">
+                <h3>🟢 Fast Order Confirmation</h3>
+                <p>Once you complete checkout, your order is quickly and efficiently approved and confirmed. No long waits for approvals!</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="step-card">
+            <div class="step-number">3</div>
             <div class="step-title">Prepare Your Supplies</div>
             <div class="step-text">
               <p>Before shipping, make sure your items meet these basic requirements:</p>
@@ -347,46 +143,63 @@
                 <li>✅ No damage, tears, or excessive stickers</li>
                 <li>✅ At least 10 months before expiration (unless otherwise approved)</li>
               </ul>
-              <p><strong>⚠️ Do not remove prescription labels or pharmacy stickers.</strong></p>
-              <p>Attempting to peel off labels may damage the box and reduce your payout. WBTSOK safely removes all labels for you, protecting your privacy with secure, professional handling.</p>
-            </div>
-          </div>
-          
-          <div class="step-card">
-            <div class="step-number">3</div>
-            <div class="step-title">Ship It for Free</div>
-            <div class="step-text">
-              <p>Once you've selected your items and submitted the sell form:</p>
-              <ul>
-                <li>You'll receive a prepaid USPS shipping label via email</li>
-                <li>Pack your items securely (we provide packing tips if needed)</li>
-                <li>Drop off your box at any USPS location or schedule a pickup</li>
-              </ul>
-              <p>All shipping is 100% free — we cover the cost.</p>
+              <div class="warning-box">
+                <h3>⚠️ Important: Do Not Remove Labels</h3>
+                <p><strong>Do not remove prescription labels or pharmacy stickers.</strong> Attempting to peel off labels may damage the box and reduce your payout. WBTSOK safely removes all labels for you, protecting your privacy with secure, professional handling.</p>
+              </div>
             </div>
           </div>
           
           <div class="step-card">
             <div class="step-number">4</div>
-            <div class="step-title">Sell Order Confirmation & Fast Payment</div>
+            <div class="step-title">Ship It for Free</div>
             <div class="step-text">
-              <p><strong>🟢 Order Submitted? You're Approved!</strong></p>
-              <p>Once you finish your sell order on our website, you'll receive an instant confirmation email with:</p>
+              <p>After completing your order, you'll receive an automated email with:</p>
               <ul>
-                <li>✅ A summary of the items you're sending</li>
-                <li>✅ Your expected payout amount</li>
-                <li>✅ A prepaid USPS shipping label</li>
-                <li>✅ A unique order ID for tracking</li>
+                <li>✅ Order confirmation with your unique order ID</li>
+                <li>✅ Prepaid USPS shipping label (ready to print)</li>
+                <li>✅ Packing instructions and tips</li>
+                <li>✅ Tracking information for your shipment</li>
               </ul>
-              <p>No waiting for approval — your order is confirmed immediately.</p>
-              <p><strong>💰 Payment Processing</strong></p>
-              <p>As soon as your package arrives and passes inspection, we process your payout within 24–48 hours. Choose:</p>
+              <p>Simply pack your items securely and drop off your box at any USPS location or schedule a pickup. All shipping is 100% free — we cover the cost.</p>
+              <div class="highlight-box">
+                <h3>📧 Automated Email Updates</h3>
+                <p>You'll receive email notifications when your order is:</p>
+                <ul>
+                  <li>Confirmed and shipping label generated</li>
+                  <li>Being processed at our facility</li>
+                  <li>Shipped and payment sent</li>
+                  <li>Delivered and completed</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <div class="step-card">
+            <div class="step-number">5</div>
+            <div class="step-title">Fast Payment & Order Tracking</div>
+            <div class="step-text">
+              <p><strong>💰 Quick Payment Processing</strong></p>
+              <p>Upon approval, and as soon as your package arrives and passes inspection, we process your payout within 24–48 hours via your chosen method:</p>
               <ul>
-                <li>PayPal</li>
-                <li>Zelle</li>
-                <li>Venmo</li>
+                <li>PayPal (instant transfer)</li>
+                <li>Zelle (same-day transfer)</li>
+                <li>Venmo (instant transfer)</li>
+                <li>Cashapp (instant transfer)</li>
               </ul>
-              <p>We'll notify you once payment is sent — no guessing, no delays.</p>
+              <p><strong>📱 Track Your Order</strong></p>
+              <p>Create an account to access your personal dashboard where you can:</p>
+              <ul>
+                <li>View all your orders and their status</li>
+                <li>Track shipments in real-time</li>
+                <li>Download shipping labels</li>
+                <li>View payment history and earnings</li>
+                <li>Manage your account settings</li>
+              </ul>
+              <div class="highlight-box">
+                <h3>🎯 Member Benefits</h3>
+                <p>Registered members get priority processing, order history, rewards system and more!.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -394,143 +207,282 @@
         <h2>What We Accept</h2>
         <p class="center-text">We purchase a wide variety of diabetic supplies, with the following requirements:</p>
         
-        <div class="commitment-cards">
-          <div class="commitment-card">
-            <div class="commitment-icon">
-              <i class="fas fa-box"></i>
-            </div>
-            <div class="commitment-title">Test Strips</div>
-            <div class="commitment-text">We accept unopened boxes of test strips from major brands including OneTouch, Freestyle, Contour, Accu-Chek, and more. Boxes must be factory sealed with at least 10 months until expiration.</div>
+        <div class="acceptance-grid">
+          <div class="category-card">
+            <div class="category-icon">🩸</div>
+            <div class="category-title">Test Strips</div>
+            <div class="category-description">We accept unopened boxes of test strips from major brands including OneTouch, Freestyle, Contour, Accu-Chek, and more. Boxes must be factory sealed with at least 10 months until expiration.</div>
           </div>
           
-          <div class="commitment-card">
-            <div class="commitment-icon">
-              <i class="fas fa-broadcast-tower"></i>
-            </div>
-            <div class="commitment-title">CGM Sensors</div>
-            <div class="commitment-text">We buy Dexcom G6, Dexcom G7, Freestyle Libre 2 & 3, Guardian sensors and other CGM supplies. Packaging must be unopened with valid expiration dates.</div>
+          <div class="category-card">
+            <div class="category-icon">📡</div>
+            <div class="category-title">CGM Sensors</div>
+            <div class="category-description">We buy Dexcom G6, Dexcom G7, Freestyle Libre 2 & 3, Guardian sensors and other CGM supplies. Packaging must be unopened with valid expiration dates.</div>
           </div>
           
-          <div class="commitment-card">
-            <div class="commitment-icon">
-              <i class="fas fa-pump-medical"></i>
-            </div>
-            <div class="commitment-title">Insulin Pumps & Supplies</div>
-            <div class="commitment-text">We purchase Omnipod Dash, Omnipod 5, Medtronic, and other insulin pump supplies. Items must be in original packaging and unexpired.</div>
+          <div class="category-card">
+            <div class="category-icon">💉</div>
+            <div class="category-title">Insulin Pumps & Supplies</div>
+            <div class="category-description">We purchase Omnipod Dash, Omnipod 5, Medtronic, and other insulin pump supplies. Items must be in original packaging and unexpired.</div>
           </div>
           
-          <div class="commitment-card">
-            <div class="commitment-icon">
-              <i class="fas fa-prescription-bottle"></i>
-            </div>
-            <div class="commitment-title">Lancets & Accessories</div>
-            <div class="commitment-text">We also buy lancets, control solution, and other diabetic accessories when sold along with test strips or sensors.</div>
+          <div class="category-card">
+            <div class="category-icon">🏥</div>
+            <div class="category-title">Lancets & Accessories</div>
+            <div class="category-description">We also buy lancets, control solution, and other diabetic accessories when sold along with test strips or sensors.</div>
           </div>
+        </div>
+        
+        <h2>Condition Requirements</h2>
+        <p class="center-text">Understanding our condition grades helps ensure fair pricing and faster processing:</p>
+        
+        <div class="condition-requirements-container">
+          <div class="condition-card mint">
+            <div class="condition-icon">✨</div>
+            <div class="condition-title">Mint Condition</div>
+            <div class="condition-description">
+              <p><strong>Perfect box, no dings, dents, small tears.</strong></p>
+              <p>This is our standard pricing tier - items must be in pristine condition with no visible damage to packaging.</p>
+            </div>
+            <div class="condition-price">Full Listed Price</div>
+          </div>
+          
+          <div class="condition-card dinged">
+            <div class="condition-icon">⚠️</div>
+            <div class="condition-title">Dinged Condition</div>
+            <div class="condition-description">
+              <p><strong>Small dents, small tears.</strong></p>
+              <p>Minor packaging damage that doesn't affect the product inside. Still acceptable but priced accordingly.</p>
+            </div>
+            <div class="condition-price">Listed Price -$5</div>
+          </div>
+          
+          <div class="condition-card damaged">
+            <div class="condition-icon">❌</div>
+            <div class="condition-title">Damaged Condition</div>
+            <div class="condition-description">
+              <p><strong>Badly damaged box, big tears, big dents.</strong></p>
+              <p>Significant packaging damage. Please send a message with pictures and ask if we even have a price for those!</p>
+            </div>
+            <div class="condition-price">Contact Us First</div>
+          </div>
+        </div>
+        
+        <div class="condition-note">
+          <p><strong>💡 Pro Tip:</strong> If you're unsure about your item's condition, feel free to contact us with photos before placing your order. We're here to help ensure you get the best possible payout!</p>
+        </div>
+        
+        <h2>Photo Requirements & Tips</h2>
+        <p>To ensure fast processing and accurate payouts, please follow these photo guidelines:</p>
+
+        <div class="photo-requirements-grid">
+          <div class="photo-card">
+            <div class="category-icon">📷</div>
+            <div class="category-title">Clear & Well-Lit Photos</div>
+            <div class="category-description">
+              <ul>
+                <li>Use good lighting (natural light works best)</li>
+                <li>Ensure photos are in focus and not blurry</li>
+                <li>Take photos straight-on, not at an angle</li>
+                <li>Make sure text and dates are clearly readable</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="photo-card">
+            <div class="category-icon">📅</div>
+            <div class="category-title">Show Expiration Dates</div>
+            <div class="category-description">
+              <ul>
+                <li>Clearly capture expiration dates on packaging</li>
+                <li>If dates are on multiple sides, take multiple photos</li>
+                <li>Ensure dates are at least 10 months in the future</li>
+                <li>Zoom in on dates if they're small or hard to read</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="photo-card">
+            <div class="category-icon">📦</div>
+            <div class="category-title">Package Condition</div>
+            <div class="category-description">
+              <ul>
+                <li>Show that boxes are unopened and sealed</li>
+                <li>Capture any damage or wear on packaging</li>
+                <li>Include prescription labels in photos (don't remove them)</li>
+                <li>Show quantity information clearly</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="photo-card">
+            <div class="category-icon">🛡️</div>
+            <div class="category-title">Privacy & Security</div>
+            <div class="category-description">
+              <ul>
+                <li>Photos are encrypted and securely stored</li>
+                <li>Only used for order verification purposes</li>
+                <li>Automatically deleted after order completion</li>
+                <li>Your personal information remains protected</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="warning-box">
+          <h3>📱 Photo Upload Tips</h3>
+          <p><strong>For best results:</strong></p>
+          <ul>
+            <li>Use your phone's camera app for highest quality</li>
+            <li>Take photos in JPEG or PNG format</li>
+            <li>Keep file sizes under 10MB per photo</li>
+            <li>You can upload multiple photos per item if needed</li>
+            <li>If you have trouble uploading, try reducing photo size</li>
+          </ul>
         </div>
         
         <h2 id="brands-we-buy">Brands We Buy</h2>
         <p class="center-text">We purchase a wide variety of diabetic supplies from these trusted brands:</p>
         
-        <div class="commitment-cards">
+        <div class="brands-grid">
           <!-- Test Strips Category -->
-          <div class="commitment-card">
-            <div class="commitment-icon">
-              <i class="fas fa-tint"></i>
-            </div>
-            <div class="commitment-title">Test Strips</div>
-            <div class="commitment-text">
-              <ul>
-                <li><strong>Accu-Chek:</strong> Aviva Plus (50ct, 100ct), Guide (50ct, 100ct), SmartView (50ct, 100ct)</li>
-                <li><strong>Contour:</strong> Next (50ct, 100ct)</li>
-                <li><strong>FreeStyle:</strong> Regular (50ct, 100ct), Lite (50ct, 100ct)</li>
-                <li><strong>One Touch:</strong> Ultra (50ct, 100ct), Verio (50ct, 100ct)</li>
+          <div class="category-card">
+            <div class="category-icon">🩸</div>
+            <div class="category-title">Test Strips</div>
+            <div class="category-description">
+              <ul class="brand-list">
+                <li class="brand-item"><strong>Accu-Chek:</strong> Aviva Plus (50ct, 100ct), Guide (50ct, 100ct), SmartView (50ct, 100ct)</li>
+                <li class="brand-item"><strong>Contour:</strong> Next (50ct, 100ct)</li>
+                <li class="brand-item"><strong>FreeStyle:</strong> Regular (50ct, 100ct), Lite (50ct, 100ct)</li>
+                <li class="brand-item"><strong>One Touch:</strong> Ultra (50ct, 100ct), Verio (50ct, 100ct)</li>
               </ul>
             </div>
           </div>
           
           <!-- CGM Systems Category -->
-          <div class="commitment-card">
-            <div class="commitment-icon">
-              <i class="fas fa-mobile-alt"></i>
-            </div>
-            <div class="commitment-title">CGM Systems</div>
-            <div class="commitment-text">
-              <ul>
-                <li><strong>Dexcom G6:</strong> Sensors (1-pack, 3-pack), Receivers</li>
-                <li><strong>Dexcom G7:</strong> Sensors (all models), Receivers</li>
-                <li><strong>Freestyle Libre:</strong> 2 & 3 Sensors</li>
+          <div class="category-card">
+            <div class="category-icon">📱</div>
+            <div class="category-title">CGM Systems</div>
+            <div class="category-description">
+              <ul class="brand-list">
+                <li class="brand-item"><strong>Dexcom G6:</strong> Sensors (1-pack, 3-pack), Receivers</li>
+                <li class="brand-item"><strong>Dexcom G7:</strong> Sensors (all models), Receivers</li>
+                <li class="brand-item"><strong>Freestyle Libre:</strong> 2 & 3 Sensors</li>
               </ul>
             </div>
           </div>
           
           <!-- Insulin Pumps Category -->
-          <div class="commitment-card">
-            <div class="commitment-icon">
-              <i class="fas fa-pump-medical"></i>
-            </div>
-            <div class="commitment-title">Insulin Pumps & Supplies</div>
-            <div class="commitment-text">
-              <ul>
-                <li><strong>Omnipod:</strong> Dash, 5 (Purple Box), Classic</li>
-                <li><strong>Medtronic:</strong> Infusion Sets, Reservoirs</li>
-                <li><strong>Tandem:</strong> Infusion Sets, Cartridges</li>
+          <div class="category-card">
+            <div class="category-icon">💉</div>
+            <div class="category-title">Insulin Pumps & Supplies</div>
+            <div class="category-description">
+              <ul class="brand-list">
+                <li class="brand-item"><strong>Omnipod:</strong> Dash, 5 (Purple Box), Classic</li>
+                <li class="brand-item"><strong>Medtronic:</strong> Infusion Sets, Reservoirs</li>
+                <li class="brand-item"><strong>Tandem:</strong> Infusion Sets, Cartridges</li>
               </ul>
             </div>
           </div>
           
           <!-- Other Supplies Category -->
-          <div class="commitment-card">
-            <div class="commitment-icon">
-              <i class="fas fa-first-aid"></i>
-            </div>
-            <div class="commitment-title">Additional Supplies</div>
-            <div class="commitment-text">
+          <div class="category-card">
+            <div class="category-icon">🏥</div>
+            <div class="category-title">Additional Supplies</div>
+            <div class="category-description">
               <p>We also buy other diabetic supplies including lancets, control solutions, pen needles, and more.</p>
             </div>
           </div>
         </div>
         
-        <h2>Why Sell to WBTSOK?</h2>
-        <div class="commitment-cards">
-          <div class="commitment-card">
-            <div class="commitment-icon">
-              <i class="fas fa-home"></i>
-            </div>
-            <div class="commitment-title">Oklahoma-based</div>
-            <div class="commitment-text">We're a local, community-focused business serving Oklahoma and beyond.</div>
+        <h2>Why Choose Our New Online System?</h2>
+        <div class="brands-grid">
+          <div class="category-card">
+            <div class="category-icon">🛒</div>
+            <div class="category-title">Easy Shopping Cart</div>
+            <div class="category-description">Add multiple items to your cart, adjust quantities, and see your total payout before checkout.</div>
           </div>
           
-          <div class="commitment-card">
-            <div class="commitment-icon">
-              <i class="fas fa-lock"></i>
-            </div>
-            <div class="commitment-title">Privacy-First Approach</div>
-            <div class="commitment-text">We handle label removal for you, protecting your personal information.</div>
+          <div class="category-card">
+            <div class="category-icon">✅</div>
+            <div class="category-title">Instant Approval</div>
+            <div class="category-description">No waiting for manual approval. Your order is confirmed immediately upon checkout completion.</div>
           </div>
           
-          <div class="commitment-card">
-            <div class="commitment-icon">
-              <i class="fas fa-truck"></i>
-            </div>
-            <div class="commitment-title">Free Shipping</div>
-            <div class="commitment-text">We provide free, trackable shipping labels for all orders.</div>
+          <div class="category-card">
+            <div class="category-icon">📧</div>
+            <div class="category-title">Automated Emails</div>
+            <div class="category-description">Receive automatic updates at every step of your order process, from confirmation to payment.</div>
           </div>
           
-          <div class="commitment-card">
-            <div class="commitment-icon">
-              <i class="fas fa-comments"></i>
-            </div>
-            <div class="commitment-title">Local Support</div>
-            <div class="commitment-text">Get responsive, local customer support throughout the process.</div>
+          <div class="category-card">
+            <div class="category-icon">📊</div>
+            <div class="category-title">Member Dashboard</div>
+            <div class="category-description">Track all your orders, view payment history, and manage your account in one convenient location.</div>
           </div>
         </div>
         
-        <div class="contact-cta">
-          <h2>Ready to Sell Your Unused Supplies?</h2>
-          <p>Get started today and receive payment within days!</p>
-          <a href="sell.html" class="cta-button">Sell Your Supplies</a>
+        <h2>Why Sell to WBTSOK?</h2>
+        <div class="brands-grid">
+          <div class="category-card">
+            <div class="category-icon">🏠</div>
+            <div class="category-title">Oklahoma-based</div>
+            <div class="category-description">We're a local, community-focused business serving Oklahoma and beyond.</div>
+          </div>
+          
+          <div class="category-card">
+            <div class="category-icon">🔒</div>
+            <div class="category-title">Privacy-First Approach</div>
+            <div class="category-description">We handle label removal for you, protecting your personal information.</div>
+          </div>
+          
+          <div class="category-card">
+            <div class="category-icon">🚚</div>
+            <div class="category-title">Free Shipping</div>
+            <div class="category-description">We provide free, trackable shipping labels for all orders.</div>
+          </div>
+          
+          <div class="category-card">
+            <div class="category-icon">💬</div>
+            <div class="category-title">Local Support</div>
+            <div class="category-description">Get responsive, local customer support throughout the process.</div>
+          </div>
+        </div>
+        
+
+        <h2>Ready to Sell Your Unused Supplies?</h2>
+        <p>Get started today with our new streamlined checkout process and receive payment within days!</p>
+        <div class="cta-button-container">
+          <a href="sell.html" class="btn-sell">Start Selling Now</a>
         </div>
     </main>
+
+    <!-- Announcement Popup -->
+    <div class="announcement-popup" id="announcement-popup">
+      <div class="popup-content">
+        <button class="popup-close" id="popup-close">&times;</button>
+        <div class="popup-header">
+          <h3>🎉 Coming Soon: WBTSOK Rewards Program!</h3>
+          <p class="popup-subtitle">We're building something special for our loyal customers!</p>
+        </div>
+        <div class="popup-body">
+          <p>Soon, you'll be able to create an account and earn points with every shipment. Climb your way through Bronze, Silver, and Gold tiers, unlock exclusive perks like:</p>
+          <ul class="rewards-list">
+            <li>💸 Prepaid payouts</li>
+            <li>🎁 Milestone bonuses & gift kits</li>
+            <li>🎟️ Monthly raffle entries</li>
+            <li>⚡ Priority processing and faster payments</li>
+          </ul>
+          <p>Track your progress, get rewarded, and enjoy a smoother selling experience — all from your personalized dashboard.</p>
+          <div class="popup-note">
+            <p>🛠️ This feature is currently under development and will be launching soon. Stay tuned!</p>
+          </div>
+        </div>
+        <div class="popup-footer">
+          <button class="popup-got-it" id="popup-got-it">Got it ✖️</button>
+        </div>
+      </div>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -588,6 +540,90 @@
   </div>
 
   <script src="js/script.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="js/image-checker.js"></script>
+  <script src="js/product-images.js"></script>
   <script src="footer.js"></script>
+  <script src="js/global.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/mobile-complete.js"></script>
+  <script src="js/desktop-navigation.js"></script>
+  
+  <!-- Announcement Popup Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const popup = document.getElementById('announcement-popup');
+      const closeBtn = document.getElementById('popup-close');
+      const gotItBtn = document.getElementById('popup-got-it');
+      
+      console.log('Popup script loaded', popup); // Debug log
+      
+      // Show popup after 3 seconds with animation
+      setTimeout(() => {
+        if (popup) {
+          console.log('Showing popup'); // Debug log
+          popup.classList.add('show');
+        }
+      }, 3000);
+      
+      // Function to hide popup
+      function hidePopup() {
+        console.log('Hiding popup'); // Debug log
+        popup.classList.remove('show');
+        popup.classList.add('hide');
+        setTimeout(() => {
+          popup.style.display = 'none';
+        }, 500);
+      }
+      
+      // Close popup when X button is clicked
+      if (closeBtn) {
+        closeBtn.addEventListener('click', hidePopup);
+      }
+      
+      // Close popup when "Got it" button is clicked
+      if (gotItBtn) {
+        gotItBtn.addEventListener('click', hidePopup);
+      }
+      
+      // Close popup when pressing Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && popup && popup.classList.contains('show')) {
+          hidePopup();
+        }
+      });
+    });
+  </script>
+
+  <!-- Cart counter and mobile menu functionality -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      updateCartCount();
+      
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      
+      if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', function() {
+          navLinks.classList.toggle('active');
+          menuToggle.classList.toggle('active');
+        });
+      }
+    });
+    
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+      
+      const cartCountElements = document.querySelectorAll('.cart-count');
+      cartCountElements.forEach(element => {
+        element.textContent = cartCount;
+        element.setAttribute('data-count', cartCount);
+        
+        // Always show cart counter
+        element.style.display = 'inline-flex';
+      });
+    }
+  </script>
 </body>
 </html>

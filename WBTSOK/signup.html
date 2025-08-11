@@ -1,371 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MMKVNSCZY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0MMKVNSCZY');
+  </script>
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1458457668401844');
+  fbq('track', 'PageView');
+  </script>
+  <noscript>
+  <img height="1" width="1" src="https://www.facebook.com/tr?id=1458457668401844&ev=PageView&noscript=1"/>
+  </noscript>
+  <!-- End Meta Pixel Code -->
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sign Up - We Buy Test Strips Oklahoma</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Sign Up – We Buy Test Strips Oklahoma</title>
   
-  <!-- For all pages - EXACT SAME ORDER as about.html -->
   <link rel="stylesheet" href="css/global.css">
-  <link rel="stylesheet" href="css/footer-styles.css">
-  <link rel="stylesheet" href="css/faq.css">
   <link rel="stylesheet" href="css/navigation.css">
-  <link rel="stylesheet" href="css/about.css">
-  
-  <!-- Page-specific CSS -->
-  <link rel="stylesheet" href="css/login-styles.css">
+  <link rel="stylesheet" href="css/footer-styles.css">
   <link rel="stylesheet" href="css/signup-styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/faq.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/page-layout.css">
+  <link rel="stylesheet" href="css/mobile-only-nav.css">
+  <link rel="stylesheet" href="css/desktop-navigation-override.css">
+  <link rel="stylesheet" href="css/mobile-responsive.css">
+  
+  <meta name="description" content="Create your We Buy Test Strips Oklahoma account." />
 </head>
-<body class="about-page signup-page">
-  <div class="page-container">
-    <nav class="nav">
-      <div class="nav-wrapper">
-        <a href="index.html" class="logo">
-          <img src="assets/WBSTOK-Logo_2.png" alt="We Buy Test Strips Oklahoma Logo" />
-        </a>
-        <button class="menu-toggle" aria-label="Toggle menu">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </button>
-        <div class="nav-links">
-          <a href="index.html">Home</a>
-          <a href="about.html">About Us</a>
-          <a href="how-it-works.html">How it Works</a>
-          <a href="sell.html">Sell</a>
-          <a href="contact.html">Contact</a>
-          <a href="faqs.html">FAQs</a>
-        </div>
-        <div class="user-actions">
-          <a href="login.html" class="login-link">
-            <i class="fas fa-user"></i>
-            <span>Sign In</span>
+<body class="signup-page">
+    <div class="page-container">
+      <!-- Navigation -->
+      <nav class="nav">
+        <div class="nav-wrapper">
+          <a href="index.html" class="logo">
+            <img src="assets/WBSTOK-Logo_2.png" alt="We Buy Test Strips Oklahoma Logo">
           </a>
-          <a href="cart.html" class="cart-link">
-            <i class="fas fa-shopping-cart"></i>
-            <span class="cart-count">0</span>
-          </a>
-        </div>
-      </div>
-    </nav>
-    
-    <main>
-      <!-- Main Content -->
-      <section class="login-section">
-        <div class="login-container">
-          <h1>Create an Account</h1>
-          <p class="login-subtitle">Join us to track your orders and get faster checkout</p>
           
-          <form class="signup-form" id="signup-form">
+          <button class="menu-toggle" aria-label="Toggle menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </button>
+          
+          <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="how-it-works.html">How it Works</a>
+            <a href="sell.html">Sell</a>
+            <a href="contact.html">Contact</a>
+            <a href="faqs.html">FAQs</a>
+          </div>
+          
+          <div class="user-actions">
+            <!-- Show when user is NOT logged in -->
+            <div class="auth-buttons" id="auth-buttons" style="display: none;">
+              <a href="login.html" class="btn-secondary">Sign In</a>
+              <a href="signup.html" class="btn-primary active">Sign Up</a>
+            </div>
+            
+            <!-- Show when user IS logged in -->
+            <div class="user-menu" id="user-menu" style="display: none;">
+              <a href="dashboard.html" class="user-profile-link">
+                <i class="fas fa-user"></i>
+                <span class="user-name" id="nav-user-name">User</span>
+              </a>
+
+              <button class="logout-btn" id="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+              </button>
+            </div>
+            
+            <!-- Cart icon -->
+            <a href="cart.html" class="cart-link">
+              <i class="fas fa-shopping-cart"></i>
+              <span class="cart-count">0</span>
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Signup Section -->
+      <section class="signup-section">
+        <div class="signup-container">
+          <h1>Create an Account</h1>
+          <p class="signup-subtitle">Create your account to get started with We Buy Test Strips Oklahoma.</p>
+        
+          <form id="signup-form" class="signup-form">
             <div class="form-group">
               <label for="fullname">Full Name</label>
-              <input type="text" id="fullname" name="fullname" required>
+              <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
             </div>
-            
+          
             <div class="form-group">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" required>
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="Enter your email" required>
             </div>
-            
+          
             <div class="form-group">
               <label for="phone">Phone Number</label>
-              <input type="tel" id="phone" name="phone" required>
+              <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
             </div>
-            
+          
             <div class="form-group">
               <label for="password">Password</label>
               <div class="password-container">
-                <input type="password" id="password" name="password" required>
+                <input type="password" id="password" name="password" placeholder="Create a password" required>
                 <span class="toggle-password">
-                  <i class="far fa-eye"></i>
+                  <i class="fas fa-eye"></i>
                 </span>
               </div>
               <div class="password-requirements">
-                <div class="requirement unmet" id="req-length">
-                  <i class="fas fa-circle"></i> At least 8 characters
+                <div id="req-length" class="requirement unmet">
+                  <i class="fas fa-circle"></i>
+                  At least 8 characters
                 </div>
-                <div class="requirement unmet" id="req-uppercase">
-                  <i class="fas fa-circle"></i> At least one uppercase letter
+                <div id="req-uppercase" class="requirement unmet">
+                  <i class="fas fa-circle"></i>
+                  One uppercase letter
                 </div>
-                <div class="requirement unmet" id="req-lowercase">
-                  <i class="fas fa-circle"></i> At least one lowercase letter
+                <div id="req-lowercase" class="requirement unmet">
+                  <i class="fas fa-circle"></i>
+                  One lowercase letter
                 </div>
-                <div class="requirement unmet" id="req-number">
-                  <i class="fas fa-circle"></i> At least one number
+                <div id="req-number" class="requirement unmet">
+                  <i class="fas fa-circle"></i>
+                  One number
                 </div>
               </div>
             </div>
-            
+          
             <div class="form-group">
               <label for="confirm-password">Confirm Password</label>
               <div class="password-container">
-                <input type="password" id="confirm-password" name="confirm-password" required>
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
                 <span class="toggle-password">
-                  <i class="far fa-eye"></i>
+                  <i class="fas fa-eye"></i>
                 </span>
               </div>
             </div>
-            
-            <div class="terms-checkbox">
-              <input type="checkbox" id="terms" name="terms" required>
-              <label for="terms">I agree to the <a href="terms-of-service.html" target="_blank">Terms of Service</a> and <a href="privacy-policy.html" target="_blank">Privacy Policy</a></label>
+          
+            <div class="form-group">
+              <div class="terms-checkbox">
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">
+                  I agree to the <a href="terms.html" target="_blank">Terms of Service</a> and <a href="privacy.html" target="_blank">Privacy Policy</a>
+                </label>
+              </div>
             </div>
-            
-            <button type="submit" class="signup-btn" id="signup-btn" disabled>Create Account</button>
-            
-            <div class="signup-login-link">
-              Already have an account? <a href="login.html">Sign In</a>
+          
+            <button type="submit" id="signup-btn" class="btn signup-btn" disabled>Create Account</button>
+          
+            <div class="login-divider">
+              <span>Or continue with</span>
+            </div>
+          
+            <div class="social-login">
+              <button type="button" class="social-btn google-btn">
+                <i class="fab fa-google"></i>
+                Google
+              </button>
             </div>
           </form>
+        
+          <div class="login-link">
+            Already have an account? <a href="login.html">Sign In</a>
+          </div>
         </div>
       </section>
-    </main>
-    
-    <!-- Footer -->
-    <footer>
-      <div class="footer-container">
-        <div class="footer-column">
-          <h4>About Us</h4>
-          <ul>
-            <li><a href="about.html">Our Story</a></li>
-            <li><a href="about.html">Our Mission</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer-column">
-          <h4>Sell to Us</h4>
-          <ul>
-            <li><a href="how-it-works.html">How It Works</a></li>
-            <li><a href="sell.html">Sell Your Supplies</a></li>
-            <li><a href="faqs.html">FAQs</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer-column">
-          <h4>Resources</h4>
-          <ul>
-            <li><a href="privacy.html">Privacy Policy</a></li>
-            <li><a href="terms.html">Terms of Service</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer-column">
-          <h4>Get in Touch</h4>
-          <ul>
-            <li><a href="tel:+18001234567">405-459-0973</a></li>
-            <li><a href="mailto:info@wbtsok.com">webuydiabeticteststripsOK@gmail.com</a></li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="footer-bottom">
-        <div class="footer-logo">
-          <img src="assets/WBSTOK-Logo_3.png" alt="We Buy Test Strips Oklahoma Logo">
-        </div>
-        
-        <div class="copyright">
-          &copy; 2025 We Buy Test Strips Oklahoma. All rights reserved.
-        </div>
-        
-        <div class="social-icons">
-          <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        </div>
-      </div>
-    </footer>
-  </div>
-  
-  <!-- JavaScript -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const menuToggle = document.querySelector('.menu-toggle');
-      const navLinks = document.querySelector('.nav-links');
-      
-      if (menuToggle && navLinks) {
-        menuToggle.addEventListener('click', function() {
-          navLinks.classList.toggle('active');
-          menuToggle.classList.toggle('active');
-        });
-      }
-    });
-  </script>
-  <script src="js/global.js"></script>
-  <script src="js/script.js"></script>
-  <script src="js/auth.js"></script>
-  <script src="footer.js"></script>
-  <script>
-document.addEventListener('DOMContentLoaded', function() {
-  // Navigation toggle
-  const menuToggle = document.querySelector('.menu-toggle');
-  const navLinks = document.querySelector('.nav-links');
-  
-  if (menuToggle && navLinks) {
-    menuToggle.addEventListener('click', function() {
-      navLinks.classList.toggle('active');
-      menuToggle.classList.toggle('active');
-    });
-  }
 
-  // Password toggle functionality (working version)
-  const toggles = document.querySelectorAll('.toggle-password');
-  
-  toggles.forEach((toggle, index) => {
-    toggle.addEventListener('click', function(e) {
-      e.preventDefault();
+      <!-- Footer - EXACT SAME as login.html -->
+      <footer>
+        <div class="footer-container">
+          <div class="footer-column">
+            <h4>About Us</h4>
+            <ul>
+              <li><a href="about.html">Our Story</a></li>
+              <li><a href="about.html">Our Mission</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+        
+          <div class="footer-column">
+            <h4>Sell to Us</h4>
+            <ul>
+              <li><a href="how-it-works.html">How It Works</a></li>
+              <li><a href="sell.html">Sell Your Supplies</a></li>
+              <li><a href="faqs.html">FAQs</a></li>
+            </ul>
+          </div>
+        
+          <div class="footer-column">
+            <h4>Resources</h4>
+            <ul>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms of Service</a></li>
+            </ul>
+          </div>
+        
+          <div class="footer-column">
+            <h4>Get in Touch</h4>
+            <ul>
+              <li><a href="tel:+1405-459-0973">405-459-0973</a></li>
+              <li><a href="mailto:webuydiabeticteststripsOK@gmail.com">webuydiabeticteststripsOK@gmail.com</a></li>
+            </ul>
+          </div>
+        </div>
       
-      const container = this.parentElement;
-      const input = container.querySelector('input');
-      const icon = this.querySelector('i');
-      
-      if (input.type === 'password') {
-        input.type = 'text';
-        icon.className = 'far fa-eye-slash';
-      } else {
-        input.type = 'password';
-        icon.className = 'far fa-eye';
-      }
-    });
-  });
+        <div class="footer-bottom">
+          <div class="footer-logo">
+            <img src="assets/WBSTOK-Logo_3.png" alt="We Buy Test Strips Oklahoma Logo">
+          </div>
+        
+          <div class="copyright">
+            &copy; 2025 We Buy Test Strips Oklahoma. All rights reserved.
+          </div>
+        
+          <div class="social-icons">
+            <a href="https://facebook.com" target="_blank" aria-label="Follow us on Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://instagram.com" target="_blank" aria-label="Follow us on Instagram"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </footer>
+    </div>
 
-  // Password requirements validation
-  const passwordInput = document.getElementById('password');
-  const confirmPasswordInput = document.getElementById('confirm-password');
-  const signupBtn = document.getElementById('signup-btn');
-  const termsCheckbox = document.getElementById('terms');
-  
-  if (passwordInput) {
-    passwordInput.addEventListener('input', function() {
-      validatePassword();
-      checkFormValidity();
-    });
-  }
-  
-  if (confirmPasswordInput) {
-    confirmPasswordInput.addEventListener('input', function() {
-      checkFormValidity();
-    });
-  }
-  
-  if (termsCheckbox) {
-    termsCheckbox.addEventListener('change', function() {
-      checkFormValidity();
-    });
-  }
-  
-  function validatePassword() {
-    const password = passwordInput.value;
-    const requirements = {
-      length: password.length >= 8,
-      uppercase: /[A-Z]/.test(password),
-      lowercase: /[a-z]/.test(password),
-      number: /\d/.test(password)
-    };
+    <!-- EmailJS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     
-    // Update requirement indicators
-    updateRequirement('req-length', requirements.length);
-    updateRequirement('req-uppercase', requirements.uppercase);
-    updateRequirement('req-lowercase', requirements.lowercase);
-    updateRequirement('req-number', requirements.number);
-    
-    return Object.values(requirements).every(req => req);
-  }
-  
-  function updateRequirement(id, met) {
-    const element = document.getElementById(id);
-    if (element) {
-      if (met) {
-        element.className = 'requirement met';
-        element.querySelector('i').className = 'fas fa-check-circle';
-      } else {
-        element.className = 'requirement unmet';
-        element.querySelector('i').className = 'fas fa-circle';
-      }
-    }
-  }
-  
-  function checkFormValidity() {
-    const fullname = document.getElementById('fullname').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const password = passwordInput.value;
-    const confirmPassword = confirmPasswordInput.value;
-    const termsAccepted = termsCheckbox.checked;
-    
-    const isPasswordValid = validatePassword();
-    const passwordsMatch = password === confirmPassword && password.length > 0;
-    const allFieldsFilled = fullname && email && phone && password;
-    
-    const isFormValid = isPasswordValid && passwordsMatch && termsAccepted && allFieldsFilled;
-    
-    if (signupBtn) {
-      signupBtn.disabled = !isFormValid;
-    }
-  }
-  
-  // Form submission
-  const signupForm = document.getElementById('signup-form');
-  if (signupForm) {
-    signupForm.addEventListener('submit', function(e) {
-      e.preventDefault();
+    <!-- JavaScript -->
+    <script src="js/global.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/mobile-complete.js"></script>
+    <script src="js/emailjs-service.js"></script>
+    <script src="js/debug-emailjs.js"></script>
+    <script src="js/signup-clean.js"></script>
+    <script>
+      // Update cart counter on page load
+      document.addEventListener('DOMContentLoaded', function() {
+        updateCartCount();
+      });
       
-      try {
-        // Get form data
-        const formData = {
-          fullname: document.getElementById('fullname').value,
-          email: document.getElementById('email').value,
-          phone: document.getElementById('phone').value,
-          password: document.getElementById('password').value
-        };
+      function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
         
-        // Validate required fields
-        if (!formData.fullname || !formData.email || !formData.password) {
-          alert('Please fill in all required fields.');
-          return;
-        }
-        
-        // Check password confirmation
-        const confirmPassword = document.getElementById('confirm-password').value;
-        if (formData.password !== confirmPassword) {
-          alert('Passwords do not match.');
-          return;
-        }
-        
-        // Check terms checkbox
-        const termsAccepted = document.getElementById('terms').checked;
-        if (!termsAccepted) {
-          alert('Please accept the Terms of Service and Privacy Policy.');
-          return;
-        }
-        
-        // Show loading
-        const submitBtn = document.getElementById('signup-btn');
-        submitBtn.textContent = 'Creating Account...';
-        submitBtn.disabled = true;
-        
-        // Simulate successful signup
-        setTimeout(() => {
-          // Store user data
-          localStorage.setItem('isLoggedIn', 'true');
-          localStorage.setItem('userData', JSON.stringify(formData));
+        const cartCountElements = document.querySelectorAll('.cart-count');
+        cartCountElements.forEach(element => {
+          element.textContent = cartCount;
+          element.setAttribute('data-count', cartCount);
           
-          // Redirect to dashboard
-          window.location.href = 'dashboard.html';
-        }, 1000);
+          // Always show cart counter
+          element.style.display = 'inline-flex';
+        });
         
-      } catch (error) {
-        console.error('Signup error:', error);
-        alert('An error occurred during signup. Please try again.');
-        
-        // Reset button
-        const submitBtn = document.getElementById('signup-btn');
-        submitBtn.textContent = 'Create Account';
-        submitBtn.disabled = false;
+        console.log(`Cart count updated: ${cartCount}`); // Debug log
       }
-    });
-  }
-});
-</script>
+    </script>
 </body>
 </html>

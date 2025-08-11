@@ -1,17 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MMKVNSCZY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0MMKVNSCZY');
+  </script>
+  
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1458457668401844');
+  fbq('track', 'PageView');
+  </script>
+  <noscript>
+  <img height="1" width="1" src="https://www.facebook.com/tr?id=1458457668401844&ev=PageView&noscript=1"/>
+  </noscript>
+  <!-- End Meta Pixel Code -->
+  
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="facebook-domain-verification" content="43ymi6imhv6gjzclion3lq3cnmvz3r" />
   <title>About Us – We Buy Test Strips Oklahoma</title>
-  <!-- For all pages -->
+  
+  <!-- CSS files in same order as index.html -->
   <link rel="stylesheet" href="css/global.css">
-  <link rel="stylesheet" href="css/footer-styles.css"> <!-- Add this line to all pages -->
-  <link rel="stylesheet" href="css/faq.css">
   <link rel="stylesheet" href="css/navigation.css">
-  <!-- Page-specific CSS -->
-  <link rel="stylesheet" href="css/about.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/footer-styles.css">
+  <link rel="stylesheet" href="css/about.css"> <!-- Page-specific CSS -->
+  <link rel="stylesheet" href="css/faq.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/page-layout.css">
+  <link rel="stylesheet" href="css/mobile-responsive.css">
+  
+  <meta name="description" content="Learn about We Buy Test Strips Oklahoma - your trusted partner for selling unused diabetic supplies." />
   
   <style>
     /* Enhanced styles for the existing About Us page */
@@ -174,6 +203,15 @@
       overflow-x: hidden;
     }
     
+    /* Force cart counter to be visible */
+    .cart-count {
+      display: inline-flex !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      position: relative !important;
+      z-index: 9999 !important;
+    }
+    
     /* Responsive adjustments */
     @media (max-width: 768px) {
       .about-section {
@@ -202,24 +240,42 @@
         <a href="index.html" class="logo">
           <img src="assets/WBSTOK-Logo_2.png" alt="We Buy Test Strips Oklahoma Logo" />
         </a>
+        
         <button class="menu-toggle" aria-label="Toggle menu">
           <span class="bar"></span>
           <span class="bar"></span>
           <span class="bar"></span>
         </button>
+        
         <div class="nav-links">
           <a href="index.html">Home</a>
-          <a href="about.html">About Us</a>
+          <a href="about.html" class="active">About Us</a>
           <a href="how-it-works.html">How it Works</a>
           <a href="sell.html">Sell</a>
           <a href="contact.html">Contact</a>
           <a href="faqs.html">FAQs</a>
         </div>
+        
         <div class="user-actions">
-          <a href="login.html" class="login-link">
-            <i class="fas fa-user"></i>
-            <span>Sign In</span>
-          </a>
+          <!-- Show when user is NOT logged in -->
+          <div class="auth-buttons" id="auth-buttons" style="display: none;">
+            <a href="login.html" class="btn-secondary">Sign In</a>
+            <a href="signup.html" class="btn-primary">Sign Up</a>
+          </div>
+          
+          <!-- Show when user IS logged in -->
+          <div class="user-menu" id="user-menu">
+            <a href="dashboard.html" class="user-profile-link">
+              <i class="fas fa-user"></i>
+              <span class="user-name" id="nav-user-name">User</span>
+            </a>
+            <button class="logout-btn" id="logout-btn">
+              <i class="fas fa-sign-out-alt"></i>
+              Logout
+            </button>
+          </div>
+          
+          <!-- Cart icon (always visible) -->
           <a href="cart.html" class="cart-link">
             <i class="fas fa-shopping-cart"></i>
             <span class="cart-count">0</span>
@@ -234,7 +290,7 @@
         
         <p>At <strong>We Buy Test Strips Oklahoma (WBTSOK)</strong>, we specialize in providing an easy and trustworthy way for people to sell their unused or unneeded diabetes supplies. Whether you have Dexcom G6, Freestyle Libre 2 & 3, or Omnipod 5, we offer competitive payouts and free, prepaid shipping for your convenience.</p>
         
-        <p>As seasoned professionals in the medical reselling industry, our mission is simple: to create a hassle-free platform where people can turn their surplus medical supplies into cash quickly and securely. Since our inception, we've been dedicated to offering transparency, excellent customer service, and prompt payments, all while ensuring that we comply with federal guidelines.</p>
+        <p>As seasoned professionals in the medical reselling industry, our mission is simple: to create a hassle-free platform where people can turn their surplus medical supplies into compensation in a timely and secure manner. Since our inception, we've been dedicated to offering transparency, excellent customer service, and prompt payments, all while ensuring that we comply with federal guidelines.</p>
         
         <h2>Our Commitment to You</h2>
         <p>We are committed to making your experience as easy and efficient as possible. Here's what you can expect when you work with us:</p>
@@ -283,6 +339,41 @@
         
         <h2>Our Mission</h2>
         <p>At WBTSOK, we believe in the power of recycling medical supplies that are still safe and effective. By participating in our buyback program, you not only turn your surplus into cash but also help others in need by making quality medical devices available at a lower cost. Our goal is to create a sustainable solution where everyone benefits—from the seller to the recipient.</p>
+        
+        <h2>Our Values: Honest, Fair, and Reliable</h2>
+        <p>We understand that many people don't realize these unused medical supplies cannot be returned to manufacturers or pharmacies. The secondary market is the only option for turning these valuable items into cash, and we're proud to offer one of the most trustworthy and competitive programs available.</p>
+        
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="value-icon">
+              <i class="fas fa-handshake"></i>
+            </div>
+            <div class="value-content">
+              <h3>Transparent Pricing</h3>
+              <p>Our pricing reflects real wholesale market value, not retail prices. We believe in being upfront about how the secondary market works, so you understand exactly what you're getting and why.</p>
+            </div>
+          </div>
+          
+          <div class="value-card">
+            <div class="value-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <div class="value-content">
+              <h3>Speed & Efficiency</h3>
+              <p>No waiting weeks for buyers or dealing with complicated sales processes. We provide fast payment within 24 hours of verification because we value your time.</p>
+            </div>
+          </div>
+          
+          <div class="value-card">
+            <div class="value-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <div class="value-content">
+              <h3>Risk-Free Process</h3>
+              <p>We handle all the risk once your items are shipped with our prepaid, insured labels. No meeting strangers, no complicated negotiations, no hidden costs.</p>
+            </div>
+          </div>
+        </div>
         
         <div class="contact-cta">
           <h2>Get in Touch</h2>
@@ -348,7 +439,11 @@
   </div>
 
   <script>
+    // Update cart counter on page load
     document.addEventListener('DOMContentLoaded', function() {
+      updateCartCount();
+      
+      // Mobile menu toggle
       const menuToggle = document.querySelector('.menu-toggle');
       const navLinks = document.querySelector('.nav-links');
       
@@ -359,8 +454,34 @@
         });
       }
     });
+    
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+      
+      const cartCountElements = document.querySelectorAll('.cart-count');
+      cartCountElements.forEach(element => {
+        element.textContent = cartCount;
+        element.setAttribute('data-count', cartCount);
+        
+        // Always show cart counter
+        element.style.display = 'inline-flex';
+      });
+      
+      console.log(`Cart count updated: ${cartCount}`); // Debug log
+    }
   </script>
+
+  <!-- All scripts in same order as index.html -->
   <script src="js/script.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="js/image-checker.js"></script>
+  <script src="js/product-images.js"></script>
   <script src="footer.js"></script>
+  <script src="js/global.js"></script>
+  <script src="js/navigation.js"></script> <!-- Only once! -->
+  <script src="js/mobile-complete.js"></script>
+  <script src="js/desktop-navigation.js"></script>
 </body>
 </html>
+

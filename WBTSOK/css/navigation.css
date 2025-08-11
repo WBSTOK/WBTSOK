@@ -1,4 +1,4 @@
-/* Navigation Styles */
+/* Navigation Styles - EXACT COPY FROM INDEX.HTML WORKING VERSION */
 .nav {
   background-color: #fff;
   padding: 10px 20px;
@@ -12,6 +12,7 @@
   width: 100%;
   z-index: 1000;
   height: var(--nav-height);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 .nav-wrapper {
@@ -46,8 +47,10 @@
 .nav-links a {
   text-decoration: none;
   color: var(--dark);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 500;
-  font-size: 1rem;
+  font-size: 15px;
+  letter-spacing: -0.01em;
   transition: color 0.3s ease;
   padding: 5px 0;
   position: relative;
@@ -57,7 +60,6 @@
   color: var(--accent);
 }
 
-/* Active link indicator */
 .nav-links a.active {
   color: var(--accent);
 }
@@ -74,70 +76,186 @@
 
 .user-actions {
   display: flex;
-  gap: 20px;
+  gap: 15px;
   align-items: center;
-  flex: 0 0 auto;
-  margin-left: 30px;
 }
 
-.login-link,
+/* Auth buttons (Sign In / Sign Up) */
+.auth-buttons {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.btn-secondary {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: transparent;
+  color: var(--dark);
+  border: 1px solid var(--dark);
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.btn-secondary:hover {
+  background-color: var(--dark);
+  color: white;
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: var(--accent);
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+}
+
+/* User menu (when logged in) */
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-profile-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #333;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 20px;
+}
+
+.user-profile-link:hover {
+  background: linear-gradient(135deg, #7c8ff0 0%, #8a5cb8 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.user-profile-link i {
+  color: white;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.user-profile-link .user-name {
+  color: white;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  font-weight: 600;
+}
+
+.profile-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #333;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.profile-link:hover {
+  background-color: #f8f9fa;
+  color: #2c5aa0;
+}
+
+.logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: 1px solid #dc3545;
+  color: #dc3545;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.logout-btn:hover {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* Cart link */
 .cart-link {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 8px;
+  color: #333;
   text-decoration: none;
-  color: var(--dark);
+  position: relative;
+  white-space: nowrap;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 500;
-  font-size: 1rem;
+  font-size: 15px;
+  transition: color 0.3s ease;
+  padding: 5px 8px;
+  border-radius: 4px;
+}
+
+.cart-link:hover {
+  color: #2c5aa0;
+  background-color: rgba(44, 90, 160, 0.1);
+}
+
+.cart-link i {
+  font-size: 18px;
+  color: #333;
   transition: color 0.3s ease;
 }
 
-.login-link:hover,
-.cart-link:hover {
-  color: var(--accent);
+.cart-link:hover i {
+  color: #2c5aa0;
 }
 
-/* Specific fix for cart count alignment */
 .cart-count {
-  background-color: var(--accent);
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
   color: white;
   border-radius: 50%;
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  max-width: 20px;
+  min-height: 20px;
+  max-height: 20px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.7rem;
+  font-size: 11px;
+  font-weight: 700;
   text-align: center;
   line-height: 1;
-}
-
-/* Reset any problematic positioning */
-.cart-page .cart-count,
-.cart-page .cart-link,
-.login-page .cart-count,
-.login-page .cart-link {
-  position: static;
-  transform: none;
-}
-
-/* Additional specific fix just for the cart page if needed */
-.cart-page .cart-count {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  margin-left: 4px;
+  border: 2px solid white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
   padding: 0;
-  margin: 0;
-}
-
-.btn-sell {
-  background-color: var(--button-green);
-  color: white;
-  padding: 10px 20px;
-  border-radius: 6px;
-  font-weight: 600;
-  transition: background-color 0.3s ease;
-}
-
-.btn-sell:hover {
-  background-color: var(--button-green-hover);
+  box-sizing: border-box;
+  flex-shrink: 0;
 }
 
 /* Mobile menu toggle */
@@ -148,9 +266,12 @@
   width: 30px;
   height: 21px;
   cursor: pointer;
+  background: transparent;
+  border: none;
 }
 
-.menu-toggle span {
+.menu-toggle span,
+.menu-toggle .bar {
   display: block;
   height: 3px;
   width: 100%;
@@ -159,11 +280,12 @@
   transition: all 0.3s ease;
 }
 
-/* Responsive styles */
+/* Mobile responsive styles */
 @media (max-width: 992px) {
   .menu-toggle {
     display: flex;
   }
+  
   .nav-links {
     position: fixed;
     top: var(--nav-height);
@@ -179,36 +301,56 @@
     transition: all 0.3s ease;
     z-index: 999;
   }
+  
   .nav-links.active {
     transform: translateY(0);
     opacity: 1;
     pointer-events: all;
   }
+  
   .user-actions {
-    margin-left: 0;
-    gap: 15px;
+    display: none;
   }
 }
 
 @media (max-width: 768px) {
-  .user-actions:not(.mobile) {
-    display: none;
-  }
-  .user-actions.mobile {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-    padding-top: 15px;
-    border-top: 1px solid #eee;
-    margin-top: 15px;
-  }
-  .nav-links.active {
-    padding-bottom: 30px;
+  .nav-links a {
+    font-size: 16px;
+    padding: 8px 0;
   }
 }
 
 /* Add padding to body to account for fixed navigation */
 body {
   padding-top: 70px;
+}
+
+/* Hide auth buttons when user menu is present */
+.user-menu ~ .auth-buttons {
+  display: none;
+}
+
+/* Show user menu when user is logged in */
+.user-menu.show-user-menu {
+  display: flex;
+}
+
+.auth-buttons.hide-auth-buttons {
+  display: none;
+}
+
+/* Hamburger menu animation */
+.menu-toggle.active span:nth-child(1),
+.menu-toggle.active .bar:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.active span:nth-child(2),
+.menu-toggle.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3),
+.menu-toggle.active .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
 }

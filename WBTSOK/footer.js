@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <ul>
           <li><a href="how-it-works.html">How It Works</a></li>
           <li><a href="sell.html">Sell Your Supplies</a></li>
+  
           <li><a href="faqs.html">FAQs</a></li>
         </ul>
         <div class="footer-divider"></div>
@@ -35,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <ul>
           <li><a href="tel:+14054590973">405-459-0973</a></li>
           <li><a href="mailto:webuydiabeticteststripsOK@gmail.com">webuydiabeticteststripsOK@gmail.com</a></li>
-          <li>1316 NW Sheridan Rd PMB 293<br>Lawton, OK 73505</li>
+          <li>1316 NW Sheridan Rd PMB 293 (private mailbox only)<br>Lawton, OK 73505</li>
         </ul>
       </div>
     </div>

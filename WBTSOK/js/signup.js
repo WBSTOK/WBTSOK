@@ -1,4 +1,12 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿document.addEventListener('DOMContentLoaded', function() {
+  // Initialize navigation first
+  if (typeof setActiveNavLink === 'function') {
+    setActiveNavLink();
+  }
+  
+  // Initialize EmailJS
+  emailjs.init("YOUR_PUBLIC_KEY"); // Get from emailjs.com
+  
   // Get form elements
   const signupForm = document.getElementById('signup-form');
   const fullnameInput = document.getElementById('fullname');
@@ -114,51 +122,85 @@ document.addEventListener('DOMContentLoaded', function() {
   signupForm.addEventListener('submit', async function(e) {
     e.preventDefault();
     
-    // Get form data
-    const fullname = document.getElementById('fullname').value;
-    const email = document.getElementById('email').value;
-    const phone = document.getElementById('phone').value;
+    const formData = new FormData(this);
+    const userData = {
+      fullname: formData.get('fullname'),
+      email: formData.get('email'),
+      phone: formData.get('phone'),
+      address: formData.get('address'),
+      city: formData.get('city'),
+      state: formData.get('state'),
+      zipcode: formData.get('zipcode')
+    };
+    
+    // Validate form data
+    if (!validateSignupData(userData)) {
+      return;
+    }
+    
+    // Show loading state
+    const submitBtn = this.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Creating Account...';
+    submitBtn.disabled = true;
     
     try {
-      // Show loading state
-      document.getElementById('signup-btn').disabled = true;
-      document.getElementById('signup-btn').textContent = 'Creating Account...';
+      // Generate verification code
+      const verificationCode = Math.floor(100000 + Math.random() * 900000).toString();
       
-      // Send data to your Vercel proxy
-      const response = await fetch('https://api.webuyteststripsoklahoma.com/api/proxy', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          fullname,
-          email,
-          phone
-        }),
-      });
+      // Create pending user object
+      const pendingUser = {
+        fullname: userData.fullname,
+        email: userData.email,
+        phone: userData.phone,
+        password: userData.password, // Make sure to hash this in production
+        verificationCode: verificationCode,
+        verificationExpires: new Date(Date.now() + 15 * 60 * 1000).toISOString(),
+        createdAt: new Date().toISOString(),
+        isActive: false,
+        isVerified: false
+      };
       
-      const data = await response.json();
+      // Send verification email using Resend
+      await emailService.sendVerificationEmail(pendingUser, verificationCode);
       
-      if (data.success) {
-        // Show success message
-        alert('Account created successfully!');
-        // Redirect to login page
-        window.location.href = 'login.html';
-      } else {
-        // Show error message
-        alert(`Error: ${data.message}`);
-        document.getElementById('signup-btn').disabled = false;
-        document.getElementById('signup-btn').textContent = 'Create Account';
-      }
+      // Store pending user data
+      localStorage.setItem('pendingUser', JSON.stringify(pendingUser));
+      
+      // Redirect to verification page
+      window.location.href = `verify-email.html?email=${encodeURIComponent(userData.email)}`;
+      
     } catch (error) {
-      console.error('Error details:', error);
-      if (error.message) console.error('Error message:', error.message);
-      if (error.stack) console.error('Error stack:', error.stack);
-      alert('An error occurred. Please check the console for details.');
-      document.getElementById('signup-btn').disabled = false;
-      document.getElementById('signup-btn').textContent = 'Create Account';
+      console.error('Failed to send verification email:', error);
+      showErrorMessage('Failed to send verification email. Please try again.');
+    } finally {
+      // Reset button
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
     }
   });
+  
+  // ✅ Generate 6-digit verification code
+  function generateVerificationCode() {
+    return Math.floor(100000 + Math.random() * 900000).toString();
+  }
+  
+  // ✅ Send verification email using EmailJS
+  async function sendVerificationEmail(userData, code) {
+    const templateParams = {
+      to_name: userData.fullname,
+      to_email: userData.email,
+      verification_code: code,
+      company_name: 'We Buy Test Strips Oklahoma'
+    };
+    
+    return emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams);
+  }
+  
+  // ✅ Show verification message
+  function showVerificationMessage(email) {
+    showSuccessMessage(`Account created! Please check ${email} for your verification code.`);
+  }
   
   // Helper function to update requirement indicators
   function updateRequirement(element, isValid) {
@@ -197,4 +239,70 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
   });
+  
+  function validateSignupData(data) {
+    // Add your validation logic here
+    if (!data.email || !data.fullname) {
+      showErrorMessage('Please fill in all required fields.');
+      return false;
+    }
+    
+    if (!isValidEmail(data.email)) {
+      showErrorMessage('Please enter a valid email address.');
+      return false;
+    }
+    
+    return true;
+  }
+  
+  function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+  
+  // Success/Error message functions
+  function showSuccessMessage(message) {
+    removeExistingMessages();
+    
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'form-message success';
+    messageDiv.innerHTML = `
+      <i class="fas fa-check-circle"></i>
+      <span>${message}</span>
+    `;
+    
+    signupForm.insertBefore(messageDiv, signupForm.firstChild);
+    
+    // Auto-remove after 5 seconds
+    setTimeout(() => {
+      if (messageDiv.parentNode) {
+        messageDiv.remove();
+      }
+    }, 5000);
+  }
+  
+  function showErrorMessage(message) {
+    removeExistingMessages();
+    
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'form-message error';
+    messageDiv.innerHTML = `
+      <i class="fas fa-exclamation-circle"></i>
+      <span>${message}</span>
+    `;
+    
+    signupForm.insertBefore(messageDiv, signupForm.firstChild);
+    
+    // Auto-remove after 5 seconds
+    setTimeout(() => {
+      if (messageDiv.parentNode) {
+        messageDiv.remove();
+      }
+    }, 5000);
+  }
+  
+  function removeExistingMessages() {
+    const existingMessages = document.querySelectorAll('.form-message');
+    existingMessages.forEach(msg => msg.remove());
+  }
 });

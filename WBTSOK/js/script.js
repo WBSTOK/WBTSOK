@@ -60,9 +60,9 @@ function showMessage(message, type = 'success') {
 function renderCart() {
   console.log("renderCart function called");
   
-  const cartItemsContainer = document.querySelector('.cart-items');
-  const emptyCartMessage = document.getElementById('empty-cart-message');
-  const cartSummary = document.querySelector('.cart-summary');
+  const cartItemsContainer = document.getElementById('cart-items');
+  const emptyCartMessage = document.querySelector('.empty-cart');
+  const cartSummary = document.getElementById('cart-summary');
   
   if (!cartItemsContainer) {
     console.error("Cart items container not found");
@@ -79,14 +79,12 @@ function renderCart() {
   if (cart.length === 0) {
     // Show empty cart message
     if (emptyCartMessage) emptyCartMessage.style.display = 'block';
-    if (cartItemsContainer) cartItemsContainer.style.display = 'none';
-    // Always show cart summary
-    if (cartSummary) cartSummary.style.display = 'block';
+    if (cartSummary) cartSummary.style.display = 'none';
     
     // Update total to zero
-    const totalElement = document.getElementById('cart-total-amount');
+    const totalElement = document.getElementById('cart-total');
     if (totalElement) {
-      totalElement.textContent = '0.00';
+      totalElement.textContent = '$0.00';
     }
     
     // Change button text for empty cart
@@ -101,10 +99,12 @@ function renderCart() {
     return;
   }
   
-  // Hide empty cart message
+  // Hide empty cart message and show cart items/summary
   if (emptyCartMessage) emptyCartMessage.style.display = 'none';
-  if (cartItemsContainer) cartItemsContainer.style.display = 'block';
   if (cartSummary) cartSummary.style.display = 'block';
+  
+  // Clear the cart items container to add new items
+  cartItemsContainer.innerHTML = '';
   
   // Reset checkout button text
   const checkoutBtn = document.querySelector('.checkout-btn');
@@ -163,9 +163,9 @@ function renderCart() {
   });
   
   // Update total display
-  const totalElement = document.getElementById('cart-total-amount');
+  const totalElement = document.getElementById('cart-total');
   if (totalElement) {
-    totalElement.textContent = total.toFixed(2);
+    totalElement.textContent = '$' + total.toFixed(2);
   }
   
   // Set up event listeners for the newly added cart items
@@ -276,6 +276,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Function to update the cart total on the sell page - with more specific targeting
 function updateSellPageTotal() {
+  // Only run on sell page to prevent console spam
+  if (!window.location.pathname.includes('sell.html')) {
+    return;
+  }
+  
   console.log("updateSellPageTotal called");
   
   const cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -317,27 +322,32 @@ function updateSellPageTotal() {
 function addToCart(item) {
   console.log(`Adding to cart: ${item.name}, quantity: ${item.quantity}, price: ${item.price}`);
   
-  // Get current cart
-  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  // Check if user is signed in
+  const userData = JSON.parse(localStorage.getItem('userData'));
+  const isSignedIn = userData && userData.email;
   
-  // Check if item already exists in cart
+  // Add item to cart first
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
   const existingItemIndex = cart.findIndex(cartItem => cartItem.id === item.id);
   
   if (existingItemIndex >= 0) {
-    // Update quantity if item exists
     cart[existingItemIndex].quantity += item.quantity;
     console.log(`Updated existing item quantity to ${cart[existingItemIndex].quantity}`);
   } else {
-    // Add new item
     cart.push(item);
     console.log("Added new item to cart");
   }
   
-  // Save updated cart
   localStorage.setItem('cart', JSON.stringify(cart));
   
-  // Show success message
-  showMessage(`${item.name} added to cart`, 'success');
+  // Show different prompts based on sign-in status
+  if (!isSignedIn) {
+    // Show guest checkout prompt for non-signed-in users
+    showGuestCheckoutPrompt(item.name);
+  } else {
+    // Show regular success message for signed-in users
+    showMessage(`${item.name} added to cart`, 'success');
+  }
   
   // Update UI
   console.log("Updating UI after adding to cart");
@@ -350,6 +360,114 @@ function addToCart(item) {
   
   // Also try with a slight delay in case there's a timing issue
   setTimeout(updateSellPageTotal, 100);
+}
+
+// Show guest checkout prompt for non-signed-in users
+function showGuestCheckoutPrompt(itemName) {
+  // Remove any existing prompts
+  const existingPrompt = document.getElementById('guest-checkout-prompt');
+  if (existingPrompt) {
+    existingPrompt.remove();
+  }
+  
+  // Create modal overlay
+  const modal = document.createElement('div');
+  modal.id = 'guest-checkout-prompt';
+  modal.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  `;
+  
+  // Create modal content
+  modal.innerHTML = `
+    <div style="
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    ">
+      <div style="color: #4CAF50; font-size: 48px; margin-bottom: 15px;">
+        ✓
+      </div>
+      <h3 style="margin: 0 0 15px 0; color: #333;">
+        ${itemName} added to cart!
+      </h3>
+      <p style="margin: 0 0 25px 0; color: #666; line-height: 1.5;">
+        Would you like to create an account for faster checkout and order tracking?
+      </p>
+      <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+        <button onclick="continueAsGuest()" style="
+          background: #6c757d;
+          color: white;
+          border: none;
+          padding: 12px 24px;
+          border-radius: 5px;
+          cursor: pointer;
+          font-size: 14px;
+        ">
+          Continue as Guest
+        </button>
+        <button onclick="redirectToSignup()" style="
+          background: #4CAF50;
+          color: white;
+          border: none;
+          padding: 12px 24px;
+          border-radius: 5px;
+          cursor: pointer;
+          font-size: 14px;
+        ">
+          Create Account
+        </button>
+        <button onclick="redirectToLogin()" style="
+          background: #2196F3;
+          color: white;
+          border: none;
+          padding: 12px 24px;
+          border-radius: 5px;
+          cursor: pointer;
+          font-size: 14px;
+        ">
+          Sign In
+        </button>
+      </div>
+    </div>
+  `;
+  
+  document.body.appendChild(modal);
+  
+  // Close on outside click
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) {
+      continueAsGuest();
+    }
+  });
+}
+
+// Helper functions for guest checkout prompt
+function continueAsGuest() {
+  const prompt = document.getElementById('guest-checkout-prompt');
+  if (prompt) {
+    prompt.remove();
+  }
+}
+
+function redirectToSignup() {
+  window.location.href = 'signup.html';
+}
+
+function redirectToLogin() {
+  window.location.href = 'login.html';
 }
 
 function setupCartItemRemoval() {
@@ -433,12 +551,83 @@ document.addEventListener('click', function() {
 setInterval(updateSellPageTotal, 1000);
 
 document.addEventListener('DOMContentLoaded', function() {
+  // Mobile menu toggle functionality
+  const menuToggle = document.getElementById('menu-toggle');
+  const navLinks = document.getElementById('nav-links');
+  const mobileUserActions = document.getElementById('mobile-user-actions');
+  
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener('click', function() {
+      navLinks.classList.toggle('active');
+      
+      // Toggle hamburger animation
+      this.classList.toggle('active');
+      
+      // Show/hide mobile user actions
+      if (mobileUserActions) {
+        if (navLinks.classList.contains('active')) {
+          navLinks.appendChild(mobileUserActions);
+          mobileUserActions.style.display = 'flex';
+        } else {
+          mobileUserActions.style.display = 'none';
+        }
+      }
+    });
+  }
+  
+  // Close mobile menu when clicking on a link
+  const navLinksItems = document.querySelectorAll('.nav-links a');
+  navLinksItems.forEach(link => {
+    link.addEventListener('click', function() {
+      if (navLinks.classList.contains('active')) {
+        navLinks.classList.remove('active');
+        menuToggle.classList.remove('active');
+        if (mobileUserActions) {
+          mobileUserActions.style.display = 'none';
+        }
+      }
+    });
+  });
+  
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', function(event) {
+    if (navLinks && navLinks.classList.contains('active')) {
+      if (!navLinks.contains(event.target) && !menuToggle.contains(event.target)) {
+        navLinks.classList.remove('active');
+        menuToggle.classList.remove('active');
+        if (mobileUserActions) {
+          mobileUserActions.style.display = 'none';
+        }
+      }
+    }
+  });
+  
+  // Set active navigation link based on current page
+  setActiveNavLink();
+});
+
+function setActiveNavLink() {
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  const navLinks = document.querySelectorAll('.nav-links a, .user-actions a');
+  
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    const linkPage = link.getAttribute('href');
+    
+    if (linkPage === currentPage || 
+        (currentPage === '' && linkPage === 'index.html') ||
+        (currentPage === 'index.html' && linkPage === 'index.html')) {
+      link.classList.add('active');
+    }
+  });
+}
+  
   // Testimonial data
   const testimonials = [
     {
-      quote: "I had boxes of test strips that were just going to expire. We Buy Test Strips Oklahoma gave me a fair price and made the process so easy!",
-      name: "Sarah M.",
-      location: "Oklahoma City, OK"
+      quote: "I just wanna say thank you for what you do.",
+      name: "Katie Turley Beckman",
+      location: "Waco, Texas"
     },
     {
       quote: "The team was professional and quick to respond. I received payment the same day they received my supplies. Highly recommend!",
@@ -461,6 +650,11 @@ document.addEventListener('DOMContentLoaded', function() {
   // Function to update testimonial
   function showTestimonial(index) {
     // Update testimonial content
+    if (!quoteElement || !nameElement || !locationElement) {
+      console.log('Testimonial element not found - skipping');
+      return;
+    }
+    
     quoteElement.textContent = testimonials[index].quote;
     nameElement.textContent = testimonials[index].name;
     locationElement.textContent = testimonials[index].location;
@@ -479,4 +673,4 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Show first testimonial by default
   showTestimonial(0);
-});
+;

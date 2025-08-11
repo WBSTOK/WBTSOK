@@ -1,15 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MMKVNSCZY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0MMKVNSCZY');
+  </script>
+  
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1458457668401844');
+  fbq('track', 'PageView');
+  </script>
+  <noscript>
+  <img height="1" width="1" src="https://www.facebook.com/tr?id=1458457668401844&ev=PageView&noscript=1"/>
+  </noscript>
+  <!-- End Meta Pixel Code -->
+  
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="facebook-domain-verification" content="43ymi6imhv6gjzclion3lq3cnmvz3r" />
+
   <title>Sell Your Supplies – We Buy Test Strips Oklahoma</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="css/global.css">
-  <link rel="stylesheet" href="css/footer-styles.css">
-  <link rel="stylesheet" href="css/home.css">
   <link rel="stylesheet" href="css/navigation.css">
+  <link rel="stylesheet" href="css/footer-styles.css">
   <link rel="stylesheet" href="css/sell.css">
+  <link rel="stylesheet" href="css/faq.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/page-layout.css">
+  <link rel="stylesheet" href="css/mobile-responsive.css">
   <meta name="description" content="Sell your unopened, unexpired diabetic test strips and supplies in Oklahoma. We buy Dexcom, Libre, Omnipod and more." />
   <!-- Add this CSS in the head section of your sell.html -->
   <style>
@@ -67,6 +95,8 @@
       padding-bottom: 70px;
     }
   </style>
+  <!-- Mobile Responsive CSS - ADD THIS -->
+  <link rel="stylesheet" href="css/mobile-responsive.css">
 </head>
 <body class="sell-page">
   <div class="page-container">
@@ -74,27 +104,45 @@
     <nav class="nav">
       <div class="nav-wrapper">
         <a href="index.html" class="logo">
-          <img src="assets/WBSTOK-Logo_2.png" alt="We Buy Test Strips Oklahoma Logo" />
+          <img src="assets/WBSTOK-Logo_2.png" alt="Sell Dexcom G6 sensors, Omnipod 5 pods, and Freestyle Libre 2 supplies in Oklahoma for cash" />
         </a>
+        
         <button class="menu-toggle" aria-label="Toggle menu">
           <span class="bar"></span>
           <span class="bar"></span>
           <span class="bar"></span>
         </button>
+        
         <div class="nav-links">
           <a href="index.html">Home</a>
           <a href="about.html">About Us</a>
-          <!-- Change this line in ALL HTML files -->
           <a href="how-it-works.html">How it Works</a>
           <a href="sell.html">Sell</a>
           <a href="contact.html">Contact</a>
           <a href="faqs.html">FAQs</a>
         </div>
+        
         <div class="user-actions">
-          <a href="login.html" class="login-link">
-            <i class="fas fa-user"></i>
-            <span>Sign In</span>
-          </a>
+          <!-- Show when user is NOT logged in -->
+          <div class="auth-buttons" id="auth-buttons" style="display: none;">
+            <a href="login.html" class="btn-secondary">Sign In</a>
+            <a href="signup.html" class="btn-primary">Sign Up</a>
+          </div>
+          
+          <!-- Show when user IS logged in -->
+          <div class="user-menu" id="user-menu">
+            <a href="dashboard.html" class="user-profile-link">
+              <i class="fas fa-user"></i>
+              <span class="user-name" id="nav-user-name">User</span>
+            </a>
+
+            <button class="logout-btn" id="logout-btn">
+              <i class="fas fa-sign-out-alt"></i>
+              Logout
+            </button>
+          </div>
+          
+          <!-- Cart icon (always visible) -->
           <a href="cart.html" class="cart-link">
             <i class="fas fa-shopping-cart"></i>
             <span class="cart-count">0</span>
@@ -136,7 +184,7 @@
       <div class="products-grid">
         <!-- Accu-Chek Brand -->
         <div class="product-card" data-category="test-strips" data-product="accu-chek">
-          <img src="assets/products/Accu-Chek Aviva Plus 100ct.png" alt="Accu-Chek Test Strips">
+          <img src="assets/products/Accu-Chek Aviva Plus 100ct.png" alt="Sell Accu-Chek, Contour Next, FreeStyle Lite, and One Touch Test Strips in Oklahoma for cash">
           <h3>Accu-Chek</h3>
           <p>We buy unopened boxes of various Accu-Chek test strips.</p>
           
@@ -144,14 +192,14 @@
             <label for="accu-chek-model">Select Model:</label>
             <select id="accu-chek-model" class="model-select" data-product="accu-chek">
               <option value="">-- Select Model --</option>
-              <option value="aviva-plus-100" data-price="25" data-expiry="10+ mos">Aviva Plus 100ct Retail - $25.00 (10+ mos)</option>
-              <option value="aviva-plus-50" data-price="10" data-expiry="10+ mos">Aviva Plus 50ct Retail - $10.00 (10+ mos)</option>
-              <option value="guide-100" data-price="10" data-expiry="10+ mos">Guide 100ct Retail - $10.00 (10+ mos)</option>
-              <option value="guide-50" data-price="5" data-expiry="10+ mos">Guide 50ct Retail - $5.00 (10+ mos)</option>
-              <option value="guide-50-mail" data-price="3" data-expiry="10+ mos">Guide 50ct Mail Order - $3.00 (10+ mos)</option>
-              <option value="smartview-100" data-price="15" data-expiry="10+ mos">SmartView 100ct - $15.00 (10+ mos)</option>
-              <option value="smartview-50" data-price="8" data-expiry="10+ mos">SmartView 50ct - $8.00 (10+ mos)</option>
-              <option value="smartview-50-mail" data-price="3" data-expiry="10+ mos">SmartView 50ct Mail Order - $3.00 (10+ mos)</option>
+              <option value="aviva-plus-100" data-price="25" data-expiry="10+ mos Mint">Aviva Plus 100ct Retail - $25.00 (10+ mos Mint)</option>
+              <option value="aviva-plus-50" data-price="10" data-expiry="10+ mos Mint">Aviva Plus 50ct Retail - $10.00 (10+ mos Mint)</option>
+              <option value="guide-100" data-price="10" data-expiry="10+ mos Mint">Guide 100ct Retail - $10.00 (10+ mos Mint)</option>
+              <option value="guide-50" data-price="5" data-expiry="10+ mos Mint">Guide 50ct Retail - $5.00 (10+ mos Mint)</option>
+              <option value="guide-50-mail" data-price="3" data-expiry="10+ mos Mint">Guide 50ct Mail Order - $3.00 (10+ mos Mint)</option>
+              <option value="smartview-100" data-price="15" data-expiry="10+ mos Mint">SmartView 100ct - $15.00 (10+ mos Mint)</option>
+              <option value="smartview-50" data-price="8" data-expiry="10+ mos Mint">SmartView 50ct - $8.00 (10+ mos Mint)</option>
+              <option value="smartview-50-mail" data-price="3" data-expiry="10+ mos Mint">SmartView 50ct Mail Order - $3.00 (10+ mos Mint)</option>
             </select>
           </div>
           
@@ -171,7 +219,7 @@
 
         <!-- Contour Brand -->
         <div class="product-card" data-category="test-strips" data-product="contour">
-          <img src="assets/products/contour next 100ct.png" alt="Contour Test Strips">
+          <img src="assets/products/contour next 100ct.png" alt="Sell Accu-Chek, Contour Next, FreeStyle Lite, and One Touch Test Strips in Oklahoma for cash">
           <h3>Contour</h3>
           <p>We buy unopened boxes of Contour test strips.</p>
           
@@ -179,8 +227,8 @@
             <label for="contour-model">Select Model:</label>
             <select id="contour-model" class="model-select" data-product="contour">
               <option value="">-- Select Model --</option>
-              <option value="next-100" data-price="10" data-expiry="10+ mos">Contour Next 100ct Retail - $10.00 (10+ mos)</option>
-              <option value="next-50" data-price="5" data-expiry="10+ mos">Contour Next 50ct Retail - $5.00 (10+ mos)</option>
+              <option value="next-100" data-price="10" data-expiry="10+ mos Mint">Contour Next 100ct Retail - $10.00 (10+ mos Mint)</option>
+              <option value="next-50" data-price="5" data-expiry="10+ mos Mint">Contour Next 50ct Retail - $5.00 (10+ mos Mint)</option>
             </select>
           </div>
           
@@ -200,7 +248,7 @@
 
         <!-- FreeStyle Brand -->
         <div class="product-card" data-category="test-strips" data-product="freestyle">
-          <img src="assets/products/FSL3.png" alt="FreeStyle Test Strips">
+          <img src="assets/products/FreeStyle-Lite-100ct.png" alt="Sell Dexcom G6 sensors, Omnipod 5 pods, and Freestyle Libre supplies in Oklahoma for cash">
           <h3>FreeStyle</h3>
           <p>We buy unopened boxes of FreeStyle test strips.</p>
           
@@ -208,12 +256,12 @@
             <label for="freestyle-model">Select Model:</label>
             <select id="freestyle-model" class="model-select" data-product="freestyle">
               <option value="">-- Select Model --</option>
-              <option value="freestyle-100" data-price="10" data-expiry="10+ mos">FreeStyle 100ct Retail - $10.00 (10+ mos)</option>
-              <option value="freestyle-50" data-price="5" data-expiry="10+ mos">FreeStyle 50ct Retail - $5.00 (10+ mos)</option>
-              <option value="freestyle-lite-100" data-price="35" data-expiry="10+ mos">FreeStyle Lite 100ct Retail - $35.00 (10+ mos)</option>
-              <option value="freestyle-lite-50-inst" data-price="3" data-expiry="10+ mos">FreeStyle Lite 50ct Institutional Use Only - $3.00 (10+ mos)</option>
-              <option value="freestyle-lite-50-nfr" data-price="3" data-expiry="10+ mos">FreeStyle Lite 50ct NFR - $3.00 (10+ mos)</option>
-              <option value="freestyle-lite-50" data-price="16" data-expiry="10+ mos">FreeStyle Lite 50ct Retail - $16.00 (10+ mos)</option>
+              <option value="freestyle-100" data-price="10" data-expiry="10+ mos Mint">FreeStyle 100ct Retail - $10.00 (10+ mos Mint)</option>
+              <option value="freestyle-50" data-price="5" data-expiry="10+ mos Mint">FreeStyle 50ct Retail - $5.00 (10+ mos Mint)</option>
+              <option value="freestyle-lite-100" data-price="35" data-expiry="10+ mos Mint">FreeStyle Lite 100ct Retail - $35.00 (10+ mos Mint)</option>
+              <option value="freestyle-lite-50-inst" data-price="3" data-expiry="10+ mos Mint">FreeStyle Lite 50ct Institutional Use Only - $3.00 (10+ mos Mint)</option>
+              <option value="freestyle-lite-50-nfr" data-price="3" data-expiry="10+ mos Mint">FreeStyle Lite 50ct NFR - $3.00 (10+ mos Mint)</option>
+              <option value="freestyle-lite-50" data-price="16" data-expiry="10+ mos Mint">FreeStyle Lite 50ct Retail - $16.00 (10+ mos Mint)</option>
             </select>
           </div>
           
@@ -233,7 +281,7 @@
 
         <!-- One Touch Brand -->
         <div class="product-card" data-category="test-strips" data-product="onetouch">
-          <img src="assets/products/OneTouch Ultra 100ct.png" alt="One Touch Test Strips">
+          <img src="assets/products/OneTouch Ultra 100ct.png" alt="Sell Accu-Chek, Contour Next, FreeStyle Lite, and One Touch Test Strips in Oklahoma for cash">
           <h3>One Touch</h3>
           <p>We buy unopened boxes of One Touch test strips.</p>
           
@@ -241,11 +289,11 @@
             <label for="onetouch-model">Select Model:</label>
             <select id="onetouch-model" class="model-select" data-product="onetouch">
               <option value="">-- Select Model --</option>
-              <option value="ultra-100" data-price="25" data-expiry="10+ mos">One Touch Ultra 100ct Retail - $25.00 (10+ mos)</option>
-              <option value="ultra-50-mail" data-price="7" data-expiry="10+ mos">One Touch Ultra 50ct Mail Order - $7.00 (10+ mos)</option>
-              <option value="ultra-50" data-price="14" data-expiry="10+ mos">One Touch Ultra 50ct Retail - $14.00 (10+ mos)</option>
-              <option value="verio-100" data-price="17" data-expiry="10+ mos">One Touch Verio 100ct Retail - $17.00 (10+ mos)</option>
-              <option value="verio-50" data-price="8" data-expiry="10+ mos">One Touch Verio 50ct Retail - $8.00 (10+ mos)</option>
+              <option value="ultra-100" data-price="25" data-expiry="10+ mos Mint">One Touch Ultra 100ct Retail - $25.00 (10+ mos Mint)</option>
+              <option value="ultra-50-mail" data-price="7" data-expiry="10+ mos Mint">One Touch Ultra 50ct Mail Order - $7.00 (10+ mos Mint)</option>
+              <option value="ultra-50" data-price="14" data-expiry="10+ mos Mint">One Touch Ultra 50ct Retail - $14.00 (10+ mos Mint)</option>
+              <option value="verio-100" data-price="17" data-expiry="10+ mos Mint">One Touch Verio 100ct Retail - $17.00 (10+ mos Mint)</option>
+              <option value="verio-50" data-price="8" data-expiry="10+ mos Mint">One Touch Verio 50ct Retail - $8.00 (10+ mos Mint)</option>
             </select>
           </div>
           
@@ -264,8 +312,8 @@
         </div>
 
         <!-- Omnipod -->
-        <div class="product-card" data-category="cgms" data-product="omnipod">
-          <img src="assets/products/Omnipod_5_5.png" alt="Omnipod">
+        <div class="product-card" data-category="cgms expired" data-product="omnipod">
+          <img src="assets/products/Omnipod_5_5.png" alt="Sell Dexcom G6 sensors, Omnipod 5 pods, and Freestyle Libre supplies in Oklahoma for cash">
           <h3>Omnipod</h3>
           <p>We buy unopened Omnipod supplies.</p>
           
@@ -274,11 +322,11 @@
             <select id="omnipod-model" class="model-select" data-product="omnipod">
               <option value="">-- Select Model --</option>
               <!-- Regular Omnipod Products -->
-              <option value="omnipod-10" data-price="N/A" data-expiry="7+ mos" data-category="cgms">Omnipod 10 pack - N/A (7+ mos)</option>
-              <option value="omnipod-5-full" data-price="150" data-expiry="6+ mos" data-category="cgms">Omnipod 5 Full Kit - $150.00 (6+ mos)</option>
-              <option value="omnipod-5-pdm" data-price="50" data-expiry="No Exp" data-category="cgms">Omnipod 5 PDM - $50.00 (No Exp)</option>
-              <option value="omnipod-5-classic" data-price="50" data-expiry="7+ mos" data-category="cgms">Omnipod 5 pack Classic - $50.00 (7+ mos)</option>
-              <option value="omnipod-5-purple" data-price="75" data-expiry="7+ mos" data-category="cgms">Omnipod 5 (Purple Box) - $75.00 (7+ mos)</option>
+              <option value="omnipod-10" data-price="N/A" data-expiry="7+ mos Mint" data-category="cgms">Omnipod 10 pack - N/A (7+ mos Mint)</option>
+              <option value="omnipod-5-full" data-price="150" data-expiry="6+ mos Mint" data-category="cgms">Omnipod 5 Full Kit - $150.00 (6+ mos Mint)</option>
+              <option value="omnipod-5-pdm" data-price="50" data-expiry="No Exp Mint" data-category="cgms">Omnipod 5 PDM - $50.00 (No Exp Mint)</option>
+              <option value="omnipod-5-classic" data-price="50" data-expiry="7+ mos Mint" data-category="cgms">Omnipod 5 pack Classic - $50.00 (7+ mos Mint)</option>
+              <option value="omnipod-5-purple" data-price="75" data-expiry="7+ mos Mint" data-category="cgms">Omnipod 5 (Purple Box) - $75.00 (7+ mos Mint)</option>
               
               <!-- Expired/Damaged Omnipod Products -->
               <option value="omnipod-10-expired" data-price="10" data-expiry="Expired" data-category="expired">Omnipod 10 pack Expired - $10.00 (Expired)</option>
@@ -303,8 +351,8 @@
         </div>
 
         <!-- Dexcom G6 -->
-        <div class="product-card" data-category="cgms" data-product="dexcomg6">
-          <img src="assets/products/dexcom_g6_3.png" alt="Dexcom G6">
+        <div class="product-card" data-category="cgms expired" data-product="dexcomg6">
+          <img src="assets/products/dexcom_g6_3.png" alt="Sell Dexcom G6 sensors, Omnipod 5 pods, and Freestyle Libre supplies in Oklahoma for cash">
           <h3>Dexcom G6</h3>
           <p>We buy unopened Dexcom G6 supplies.</p>
           
@@ -312,10 +360,10 @@
             <label for="dexcomg6-model">Select Model:</label>
             <select id="dexcomg6-model" class="model-select" data-product="dexcomg6">
               <option value="">-- Select Model --</option>
-              <option value="g6-receiver" data-price="65" data-expiry="No Exp">Dexcom G6 Receiver - $65.00 (No Exp)</option>
-              <option value="g6-receiver-dme" data-price="40" data-expiry="No Exp">Dexcom G6 Receiver DME - $40.00 (No Exp)</option>
-              <option value="g6-sensor-1" data-price="30" data-expiry="6+ mos">Dexcom G6 Sensor 1 Pack (Boxed) - $30.00 (6+ mos)</option>
-              <option value="g6-sensor-3" data-price="150" data-expiry="6+ mos">Dexcom G6 Sensor 3 Pack - $150.00 (6+ mos)</option>
+              <option value="g6-receiver" data-price="65" data-expiry="No Exp Mint">Dexcom G6 Receiver - $65.00 (No Exp Mint)</option>
+              <option value="g6-receiver-dme" data-price="40" data-expiry="No Exp Mint">Dexcom G6 Receiver DME - $40.00 (No Exp Mint)</option>
+              <option value="g6-sensor-1" data-price="30" data-expiry="6+ mos Mint">Dexcom G6 Sensor 1 Pack (Boxed) - $30.00 (6+ mos Mint)</option>
+              <option value="g6-sensor-3" data-price="150" data-expiry="6+ mos Mint">Dexcom G6 Sensor 3 Pack - $150.00 (6+ mos Mint)</option>
             </select>
           </div>
           
@@ -334,8 +382,8 @@
         </div>
 
         <!-- Dexcom G7 -->
-        <div class="product-card" data-category="cgms" data-product="dexcomg7">
-          <img src="assets/products/dexcom-g7-sensor.png" alt="Dexcom G7">
+        <div class="product-card" data-category="cgms expired" data-product="dexcomg7">
+          <img src="assets/products/dexcom-g7-sensor.png" alt="Sell Dexcom G6 sensors, Omnipod 5 pods, and Freestyle Libre supplies in Oklahoma for cash">
           <h3>Dexcom G7</h3>
           <p>We buy unopened Dexcom G7 supplies.</p>
           
@@ -343,11 +391,11 @@
             <label for="dexcomg7-model">Select Model:</label>
             <select id="dexcomg7-model" class="model-select" data-product="dexcomg7">
               <option value="">-- Select Model --</option>
-              <option value="g7-receiver" data-price="75" data-expiry="No Exp">Dexcom G7 Receiver 1pk - $75.00 (No Exp)</option>
-              <option value="g7-sensor-011" data-price="35" data-expiry="6+ mos">Dexcom G7 Sensor (STP-AT-011) - $35.00 (6+ mos)</option>
-              <option value="g7-sensor-012" data-price="40" data-expiry="6+ mos">Dexcom G7 Sensor (STP-AT-012) - $40.00 (6+ mos)</option>
-              <option value="g7-sensor-013" data-price="25" data-expiry="6+ mos">Dexcom G7 Sensor (STP-AT-013) DME - $25.00 (6+ mos)</option>
-              <option value="g7-sensor-030" data-price="5" data-expiry="6+ mos">Dexcom G7 Sensor (STP-AT-030) - $5.00 (6+ mos)</option>
+              <option value="g7-receiver" data-price="75" data-expiry="No Exp Mint">Dexcom G7 Receiver 1pk - $75.00 (No Exp Mint)</option>
+              <option value="g7-sensor-011" data-price="35" data-expiry="6+ mos Mint">Dexcom G7 Sensor (STP-AT-011) - $35.00 (6+ mos Mint)</option>
+              <option value="g7-sensor-012" data-price="40" data-expiry="6+ mos Mint">Dexcom G7 Sensor (STP-AT-012) - $40.00 (6+ mos Mint)</option>
+              <option value="g7-sensor-013" data-price="25" data-expiry="6+ mos Mint">Dexcom G7 Sensor (STP-AT-013) DME - $25.00 (6+ mos Mint)</option>
+              <option value="g7-sensor-030" data-price="5" data-expiry="6+ mos Mint">Dexcom G7 Sensor (STP-AT-030) - $5.00 (6+ mos Mint)</option>
             </select>
           </div>
           
@@ -363,6 +411,66 @@
           <div class="product-subtotal">Subtotal: $<span class="subtotal-amount">0.00</span></div>
           <button class="add-to-cart-btn" data-product="dexcomg7" disabled>Add to Cart</button>
           <button class="clear-selection-btn" data-product="dexcomg7">Clear Selection</button>
+        </div>
+
+        <!-- Freestyle Libre CGM -->
+        <div class="product-card" data-category="cgms expired" data-product="freestylelibre">
+          <img src="assets/products/FSL3.png" alt="Sell Freestyle Libre 2, Freestyle Libre 3, and Freestyle Libre 14 Day sensors in Oklahoma for cash">
+          <h3>Freestyle Libre CGM</h3>
+          <p>We buy unopened Freestyle Libre CGM sensors.</p>
+          
+          <div class="product-model-selection">
+            <label for="freestylelibre-model">Select Model:</label>
+            <select id="freestylelibre-model" class="model-select" data-product="freestylelibre">
+              <option value="">-- Select Model --</option>
+              <option value="libre-3" data-price="30" data-expiry="3+ mos Mint">Freestyle Libre 3 (NDC 57599-0818-00) - $30.00 (3+ mos Mint)</option>
+              <option value="libre-2" data-price="25" data-expiry="3+ mos Mint">Freestyle Libre 2 (NDC 57599-0800-00) - $25.00 (3+ mos Mint)</option>
+              <option value="libre-14-day" data-price="20" data-expiry="3+ mos Mint">Freestyle Libre 14 Day Sensor (NDC 57599-0001-01) - $20.00 (3+ mos Mint)</option>
+            </select>
+          </div>
+          
+          <div class="product-price" id="freestylelibre-price">Select a model to see price</div>
+          <div class="product-expiry" id="freestylelibre-expiry"></div>
+          
+          <div class="quantity-control">
+            <button class="quantity-btn minus" data-product="freestylelibre" disabled>-</button>
+            <input type="number" min="0" value="0" class="quantity-input" data-product="freestylelibre" disabled>
+            <button class="quantity-btn plus" data-product="freestylelibre" disabled>+</button>
+          </div>
+          
+          <div class="product-subtotal">Subtotal: $<span class="subtotal-amount">0.00</span></div>
+          <button class="add-to-cart-btn" data-product="freestylelibre" disabled>Add to Cart</button>
+          <button class="clear-selection-btn" data-product="freestylelibre">Clear Selection</button>
+        </div>
+
+        <!-- Dexcom G6 Transmitters -->
+        <div class="product-card" data-category="cgms expired" data-product="dexcomg6transmitter">
+          <img src="assets/products/Dexcom-G6-Transmitter.png" alt="Sell Dexcom G6 transmitters in Oklahoma for cash">
+          <h3>Dexcom G6 Transmitters</h3>
+          <p>We buy unopened Dexcom G6 transmitters and transmitter kits.</p>
+          
+          <div class="product-model-selection">
+            <label for="dexcomg6transmitter-model">Select Model:</label>
+            <select id="dexcomg6transmitter-model" class="model-select" data-product="dexcomg6transmitter">
+              <option value="">-- Select Model --</option>
+              <option value="g6-transmitter-kit" data-price="50" data-expiry="6+ mos Mint">Dexcom G6 Transmitter Kit (NDC 08627-0016-01) (REF STT-OE-001) - $50.00 (6+ mos Mint)</option>
+              <option value="g6-transmitter" data-price="45" data-expiry="6+ mos Mint">Dexcom G6 Transmitter (NDC 08627-0016-01) (REF STT-OR-001) - $45.00 (6+ mos Mint)</option>
+              <option value="g6-transmitter-dme" data-price="40" data-expiry="6+ mos Mint">Dexcom G6 Transmitter DME (NDC 08627-0016-01) (REF STT-OM-001) - $40.00 (6+ mos Mint)</option>
+            </select>
+          </div>
+          
+          <div class="product-price" id="dexcomg6transmitter-price">Select a model to see price</div>
+          <div class="product-expiry" id="dexcomg6transmitter-expiry"></div>
+          
+          <div class="quantity-control">
+            <button class="quantity-btn minus" data-product="dexcomg6transmitter" disabled>-</button>
+            <input type="number" min="0" value="0" class="quantity-input" data-product="dexcomg6transmitter" disabled>
+            <button class="quantity-btn plus" data-product="dexcomg6transmitter" disabled>+</button>
+          </div>
+          
+          <div class="product-subtotal">Subtotal: $<span class="subtotal-amount">0.00</span></div>
+          <button class="add-to-cart-btn" data-product="dexcomg6transmitter" disabled>Add to Cart</button>
+          <button class="clear-selection-btn" data-product="dexcomg6transmitter">Clear Selection</button>
         </div>
       </div> <!-- Close the products-grid div -->
     </section> <!-- Close the product-categories section -->
@@ -605,7 +713,10 @@
         const productCards = document.querySelectorAll('.product-card');
         
         productCards.forEach(card => {
-          if (category === 'all' || card.dataset.category === category) {
+          // Split categories by space and check if the selected category is included
+          const cardCategories = card.dataset.category.split(' ');
+          
+          if (category === 'all' || cardCategories.includes(category)) {
             card.style.display = 'block';
           } else {
             card.style.display = 'none';
@@ -617,10 +728,14 @@
         const cart = JSON.parse(localStorage.getItem('cart')) || [];
         const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
         
-        const cartCount = document.querySelector('.cart-count');
-        if (cartCount) {
-          cartCount.textContent = totalItems;
-        }
+        const cartCountElements = document.querySelectorAll('.cart-count');
+        cartCountElements.forEach(element => {
+          element.textContent = totalItems;
+          element.setAttribute('data-count', totalItems);
+          
+          // Always show cart counter
+          element.style.display = 'inline-flex';
+        });
       }
       
       function getProductName(productId) {
@@ -689,8 +804,18 @@
       // Save updated cart to localStorage
       localStorage.setItem('cart', JSON.stringify(cart));
     
-      // Show confirmation message
-      showMessage(`Added ${product.quantity} ${product.name} to your cart.`, 'success');
+      // Check if user is signed in
+      const userData = JSON.parse(localStorage.getItem('userData'));
+      const isSignedIn = userData && userData.email;
+      
+      // Show different prompts based on sign-in status
+      if (!isSignedIn) {
+        // Show guest checkout prompt for non-signed-in users
+        showGuestCheckoutPrompt(product.name);
+      } else {
+        // Show regular success message for signed-in users
+        showMessage(`Added ${product.quantity} ${product.name} to your cart.`, 'success');
+      }
     
       // Update cart count
       updateCartCount();
@@ -745,5 +870,9 @@
       }
     }
   </script>
+  <script src="js/global.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/mobile-navigation-fix.js"></script>
+  <script src="js/mobile-complete.js"></script>
 </body>
 </html>

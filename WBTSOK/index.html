@@ -1,21 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MMKVNSCZY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0MMKVNSCZY');
+  </script>
+  
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1458457668401844');
+  fbq('track', 'PageView');
+  </script>
+  <noscript>
+  <img height="1" width="1" src="https://www.facebook.com/tr?id=1458457668401844&ev=PageView&noscript=1"/>
+  </noscript>
+  <!-- End Meta Pixel Code -->
+  
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="facebook-domain-verification" content="43ymi6imhv6gjzclion3lq3cnmvz3r" />
   <title>We Buy Test Strips Oklahoma - Cash for Diabetic Supplies</title>
   <link rel="stylesheet" href="css/global.css">
-  <link rel="stylesheet" href="css/footer-styles.css"> <!-- Add this line to all pages -->
+  <link rel="stylesheet" href="css/navigation.css">
+  <link rel="stylesheet" href="css/footer-styles.css">
   <link rel="stylesheet" href="css/home.css">
   <link rel="stylesheet" href="css/faq.css">
-  <link rel="stylesheet" href="css/navigation.css">
-  <!-- Add this new file last to override all other styles -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/page-layout.css">
+  <link rel="stylesheet" href="css/mobile-only-nav.css">
+  <link rel="stylesheet" href="css/desktop-navigation-override.css">
+  <link rel="stylesheet" href="css/mobile-responsive.css">
   <meta name="description" content="Sell your unused diabetic test strips for cash. We Buy Test Strips Oklahoma offers top dollar for unopened boxes." />
 </head>
 <body class="home-page">
@@ -24,27 +47,51 @@
     <!-- Navigation -->
     <nav class="nav">
       <div class="nav-wrapper">
-        <a href="/" class="logo">
-          <img src="assets/WBSTOK-Logo_2.png" alt="Logo">
+        <a href="index.html" class="logo">
+          <img src="assets/WBSTOK-Logo_2.png" alt="Sell Dexcom G6 sensors, Omnipod 5 pods, and Freestyle Libre supplies in Oklahoma for cash" />
         </a>
+        
         <button class="menu-toggle" aria-label="Toggle menu">
           <span class="bar"></span>
           <span class="bar"></span>
           <span class="bar"></span>
         </button>
+        
         <div class="nav-links">
           <a href="index.html">Home</a>
           <a href="about.html">About Us</a>
+          <!-- Change this line in ALL HTML files -->
           <a href="how-it-works.html">How it Works</a>
           <a href="sell.html">Sell</a>
+
           <a href="contact.html">Contact</a>
           <a href="faqs.html">FAQs</a>
         </div>
         <div class="user-actions">
-          <a href="login.html" class="login-link">
-            <i class="fas fa-user"></i>
-            <span>Sign In</span>
+          <!-- Admin Panel Link (for business owner) -->
+          <a href="admin-panel.html" class="admin-link" id="admin-link" style="display: none;">
+            <i class="fas fa-cog"></i> Admin
           </a>
+          
+          <!-- Show when user is NOT logged in -->
+          <div class="auth-buttons" id="auth-buttons" style="display: none;">
+            <a href="login.html" class="btn-secondary">Sign In</a>
+            <a href="signup.html" class="btn-primary">Sign Up</a>
+          </div>
+          
+          <!-- Show when user IS logged in -->
+          <div class="user-menu" id="user-menu">
+            <a href="dashboard.html" class="user-profile-link">
+              <i class="fas fa-user"></i>
+              <span class="user-name" id="nav-user-name">User</span>
+            </a>
+            <button class="logout-btn" id="logout-btn">
+              <i class="fas fa-sign-out-alt"></i>
+              Logout
+            </button>
+          </div>
+          
+          <!-- Cart icon (always visible) -->
           <a href="cart.html" class="cart-link">
             <i class="fas fa-shopping-cart"></i>
             <span class="cart-count">0</span>
@@ -67,12 +114,13 @@
       <div class="section-container">
         <div class="section-header">
           <h2>Our Mission</h2>
-          <p>Making diabetes management more affordable, sustainable, and community-driven.</p>
+          <p>We Buy Test Strips Oklahoma is a local buyback program that purchases unused, unexpired diabetic supplies — such as test strips, continuous glucose monitors (CGMs), and insulin pump pods — from people who no longer need them. If you have extra supplies sitting in a drawer or if your prescription has changed, we offer a simple way to turn them into cash instead of letting them go to waste.
+</p>
         </div> <!-- Add this closing tag -->
         <!-- Replace cards with a mission statement paragraph -->
         <div class="mission-statement">
-          <p>At We Buy Test Strips Oklahoma, our mission is rooted in a simple yet powerful goal: to help people and reduce waste. We provide a safe, fast, and discreet way for individuals to sell their unopened diabetic supplies — giving new life to unused products while putting extra cash in your pocket.</p>
-          <p>What began as a local effort has grown into a trusted, community-first service across Oklahoma. Whether you're clearing out extra supplies or simply looking to give them a meaningful purpose, we’re here to make the process smooth, respectful, and reliable — every step of the way</p>
+          <p><em>Our mission is rooted in a simple yet powerful goal: to help people and reduce waste. We provide a safe, fast, and discreet way for individuals to sell their unopened diabetic supplies — giving new life to unused products while putting extra cash in your pocket.</em></p>
+          <p><em>What began as a local effort has grown into a trusted, community-first service across Oklahoma. Whether you're clearing out extra supplies or simply looking to give them a meaningful purpose, we’re here to make the process smooth, respectful, and reliable — every step of the way</em></p>
           <a href="about.html" class="learn-more-btn">Learn More About Us</a>
         </div>
       </div>
@@ -108,7 +156,7 @@
               <div class="step-number">3</div>
               <div class="step-content">
                 <h3>Get Paid Fast</h3>
-                <p>Receive payment via PayPal, Venmo, or check within 1-2 business days.</p>
+                <p>Receive payment via PayPal, Venmo, Cashapp, or Zelle within 1-2 business days upon approval and products have been received.</p>
               </div>
             </div>
           </div>
@@ -149,9 +197,9 @@
               <h3>FreeStyle</h3>
             </div>
       
-            <div class="brand-card true-metrix fade-scroll">
+            <div class="brand-card omnipod fade-scroll">
               <div class="brand-color-block"></div>
-              <h3>True Metrix</h3>
+              <h3>Omnipod</h3>
             </div>
       
             <div class="brand-card dexcom fade-scroll">
@@ -175,16 +223,16 @@
         
         <div class="testimonials-display">
           <div class="testimonial-quote" id="testimonial-quote">
-            "I had boxes of test strips that were just going to expire. We Buy Test Strips Oklahoma gave me a fair price and made the process so easy!"
+            "I just wanna say thank you for what you do."
           </div>
-          <div class="testimonial-attribution" id="testimonial-name">Sarah M.</div>
-          <div class="testimonial-location" id="testimonial-location">Oklahoma City, OK</div>
+          <div class="testimonial-attribution" id="testimonial-name">Katie Turley Beckman</div>
+          <div class="testimonial-location" id="testimonial-location">Waco, Texas</div>
         </div>
         
         <div class="testimonial-nav">
           <div class="testimonial-nav-item active" data-index="0">
-            <div class="nav-item-name">Sarah M.</div>
-            <div class="nav-item-location">Oklahoma City</div>
+            <div class="nav-item-name">Katie Turley Beckmann</div>
+            <div class="nav-item-location">Texas</div>
           </div>
           
           <div class="testimonial-nav-item" data-index="1">
@@ -293,9 +341,9 @@
       // Testimonial data
       const testimonials = [
         {
-          quote: "I had boxes of test strips that were just going to expire. We Buy Test Strips Oklahoma gave me a fair price and made the process so easy!",
-          name: "Sarah M.",
-          location: "Oklahoma City, OK"
+          quote: "I just wanna say thank you for what you do.",
+          name: "Katie Turley Beckman",
+          location: "Waco, Texas"
         },
         {
           quote: "Great service and fast payment! I was skeptical at first, but they made the whole process simple and paid me quickly.",
@@ -377,5 +425,104 @@
       transform: translateY(0) !important;
     }
   </style>
+
+  <!-- Announcement Popup -->
+  <div class="announcement-popup" id="announcement-popup">
+    <div class="popup-content">
+      <button class="popup-close" id="popup-close">&times;</button>
+      <div class="popup-header">
+        <h3>🎉 Coming Soon: WBTSOK Rewards Program!</h3>
+        <p class="popup-subtitle">We're building something special for our loyal customers!</p>
+      </div>
+      <div class="popup-body">
+        <p>Soon, you'll be able to earn points with every shipment. Climb your way through Bronze, Silver, and Gold tiers, unlock exclusive perks like:</p>
+        <ul class="rewards-list">
+          <li>💸 Prepaid payouts</li>
+          <li>🎁 Milestone bonuses & gift kits</li>
+          <li>🎟️ Monthly sweepstake entries</li>
+          <li>⚡ Priority processing and faster payments</li>
+        </ul>
+        <p>Track your progress, get rewarded, and enjoy a smoother selling experience — all from your personalized dashboard.</p>
+        <div class="popup-note">
+          <p>🛠️ This feature is currently under development and will be launching soon. Stay tuned!</p>
+        </div>
+      </div>
+      <div class="popup-footer">
+        <button class="popup-got-it" id="popup-got-it">Got it ✖️</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add these scripts to ALL pages before closing </body> tag -->
+  <script src="js/global.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/mobile-complete.js"></script>
+  <script src="js/desktop-navigation.js"></script>
+  <script>
+    // Update cart counter on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      updateCartCount();
+    });
+    
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+      
+      const cartCountElements = document.querySelectorAll('.cart-count');
+      cartCountElements.forEach(element => {
+        element.textContent = cartCount;
+        element.setAttribute('data-count', cartCount);
+        
+        // Always show cart counter
+        element.style.display = 'inline-flex';
+      });
+      
+      console.log(`Cart count updated: ${cartCount}`); // Debug log
+    }
+
+    // Announcement Popup Script
+    const popup = document.getElementById('announcement-popup');
+    const closeBtn = document.getElementById('popup-close');
+    const gotItBtn = document.getElementById('popup-got-it');
+    
+    console.log('Popup script loaded', popup); // Debug log
+    
+    // Show popup after 3 seconds with animation
+    setTimeout(() => {
+      if (popup) {
+        console.log('Showing popup'); // Debug log
+        popup.classList.add('show');
+      }
+    }, 3000);
+    
+    // Function to hide popup
+    function hidePopup() {
+      console.log('Hiding popup'); // Debug log
+      popup.classList.remove('show');
+      popup.classList.add('hide');
+      setTimeout(() => {
+        popup.style.display = 'none';
+      }, 500);
+    }
+    
+    // Close popup when X button is clicked
+    if (closeBtn) {
+      closeBtn.addEventListener('click', hidePopup);
+    }
+    
+    // Close popup when "Got it" button is clicked
+    if (gotItBtn) {
+      gotItBtn.addEventListener('click', hidePopup);
+    }
+    
+    // Close popup when pressing Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && popup && popup.classList.contains('show')) {
+        hidePopup();
+      }
+    });
+  </script>
 </body>
 </html>
+
+

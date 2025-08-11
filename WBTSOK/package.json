@@ -1,16 +1,19 @@
 {
-  "name": "wbtsok-website",
+  "name": "wbstok-website",
   "version": "1.0.0",
   "description": "We Buy Test Strips Oklahoma Website",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vercel dev",
+    "build": "echo 'No build step required'",
+    "deploy": "vercel --prod"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "main": "animations.js",
   "dependencies": {
-    "google-auth-library": "^9.15.1",
-    "googleapis": "^149.0.0"
+    "@vercel/kv": "^3.0.0",
+    "@vercel/node": "^2.15.0",
+    "shippo": "^1.7.1"
+  },
+  "devDependencies": {
+    "vercel": "^32.0.0"
   }
 }

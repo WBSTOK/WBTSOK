@@ -1,50 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MMKVNSCZY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0MMKVNSCZY');
+  </script>
+  
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1458457668401844');
+  fbq('track', 'PageView');
+  </script>
+  <noscript>
+  <img height="1" width="1" src="https://www.facebook.com/tr?id=1458457668401844&ev=PageView&noscript=1"/>
+  </noscript>
+  <!-- End Meta Pixel Code -->
+  
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>FAQs – We Buy Test Strips Oklahoma</title>
   
-  <!-- Global styles first -->
   <link rel="stylesheet" href="css/global.css">
-  <link rel="stylesheet" href="css/footer-styles.css"> <!-- Add this line to all pages -->
-  
-  <!-- Page-specific CSS -->
-  <link rel="stylesheet" href="css/faq.css">
-  
-  <!-- Navigation styles last to override any conflicts -->
   <link rel="stylesheet" href="css/navigation.css">
-  <link rel="stylesheet" href="css/navigation-override.css">
-  <link rel="stylesheet" href="css/navigation-fix.css">
-  
-  <!-- Remove home.css if not needed for this page -->
-  <!-- <link rel="stylesheet" href="css/home.css"> -->
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/footer-styles.css">
+  <link rel="stylesheet" href="css/faq.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/page-layout.css">
+  <link rel="stylesheet" href="css/mobile-responsive.css">
+  
   <meta name="description" content="Frequently asked questions about selling test strips to We Buy Test Strips Oklahoma." />
 </head>
 <body class="faq-page">
+  <div class="page-container">
     <!-- Navigation -->
     <nav class="nav">
       <div class="nav-wrapper">
         <a href="index.html" class="logo">
-          <img src="assets/WBSTOK-Logo_2.png" alt="We Buy Test Strips Oklahoma Logo" />
+          <img src="assets/WBSTOK-Logo_2.png" alt="We Buy Test Strips Oklahoma Logo">
         </a>
+        
+        <button class="menu-toggle" aria-label="Toggle menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+        
         <div class="nav-links">
           <a href="index.html">Home</a>
           <a href="about.html">About Us</a>
-          <!-- Change this line in ALL HTML files -->
           <a href="how-it-works.html">How it Works</a>
           <a href="sell.html">Sell</a>
           <a href="contact.html">Contact</a>
           <a href="faqs.html">FAQs</a>
         </div>
+        
         <div class="user-actions">
-          <a href="login.html" class="login-link">
-            <i class="fas fa-user"></i>
-            <span>Sign In</span>
-          </a>
+          <!-- Show when user is NOT logged in -->
+          <div class="auth-buttons" id="auth-buttons" style="display: none;">
+            <a href="login.html" class="btn-secondary">Sign In</a>
+            <a href="signup.html" class="btn-primary">Sign Up</a>
+          </div>
+          
+          <!-- Show when user IS logged in -->
+          <div class="user-menu" id="user-menu">
+            <a href="dashboard.html" class="user-profile-link">
+              <i class="fas fa-user"></i>
+              <span class="user-name" id="nav-user-name">User</span>
+            </a>
+            <button class="logout-btn" id="logout-btn">
+              <i class="fas fa-sign-out-alt"></i>
+              Logout
+            </button>
+          </div>
+          
+          <!-- Cart icon (always visible) -->
           <a href="cart.html" class="cart-link">
             <i class="fas fa-shopping-cart"></i>
             <span class="cart-count">0</span>
@@ -106,17 +144,67 @@
                   <p>Yes, it is legal to sell test strips that you purchased. If you received them through Medicare or Medicaid, however, you cannot legally sell them. All boxes must be unopened and unexpired.</p>
                 </div>
               </div>
+
+              <div class="faq-item">
+                <button class="faq-question">
+                  <span>Do I need to create an account to sell?</span>
+                  <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                  <p>While you can complete a one-time sale without an account, creating a free account gives you access to your personal dashboard where you can track orders, view payment history, manage multiple sales more easily, and much more!.</p>
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button class="faq-question">
+                  <span>What's new about your online system?</span>
+                  <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                  <p>Our new online system features an easy shopping cart, instant order confirmation, automated email updates at every step, and a member dashboard to track all your orders and payments in one place.</p>
+                </div>
+              </div>
             </div>
             
             <!-- Selling Process -->
             <div class="faq-category" id="selling">
               <div class="faq-item">
                 <button class="faq-question">
+                  <span>How does your new checkout process work?</span>
+                  <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                  <p>Our streamlined checkout has 5 simple steps: 1) Review your cart and total payout, 2) Enter your shipping information, 3) Upload clear photos of your items, 4) Choose your payment method (PayPal, Venmo, Cashapp, or Zelle), 5) Review and confirm your order. You'll get instant confirmation!</p>
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button class="faq-question">
+                  <span>Do I need to upload photos of my items?</span>
+                  <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                  <p>Yes, during checkout you'll upload clear photos of your diabetic supplies. This helps us verify items and process orders faster. Include expiration dates, show packaging condition, and don't worry about prescription labels - we'll remove them safely for you and destroy them afterwards.</p>
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button class="faq-question">
+                  <span>What photo requirements do you have?</span>
+                  <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                  <p>Take clear, well-lit photos showing: expiration dates clearly, unopened/sealed packaging, any prescription labels (don't remove them), and overall condition. Use good lighting, keep photos in focus, and ensure text is readable. Photos are securely stored and deleted after order completion.</p>
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button class="faq-question">
                   <span>How do I sell my test strips to you?</span>
                   <span class="faq-icon">+</span>
                 </button>
                 <div class="faq-answer">
-                  <p>Simply visit our "Sell" page, select the brand and quantity of test strips you have, and follow the checkout process. We'll provide a prepaid shipping label, and once we receive and verify your items, we'll send payment.</p>
+                  <p>Visit our "Sell" page, browse available items, add them to your cart, and complete our secure 4-step checkout process. Upload photos of your items, and you'll get instant order confirmation with a prepaid shipping label via email.</p>
                 </div>
               </div>
               
@@ -126,18 +214,37 @@
                   <span class="faq-icon">+</span>
                 </button>
                 <div class="faq-answer">
-                  <p>Preferably, the boxes must be unopened, unexpired, and in their original sealed packaging. Boxes should not be damaged, and the expiration date should be at least 6 months away. Omnipod 5 is the only exception that we will take at the moment. Make sure boxes are not dirty or have markings of anykind. If boxes come in dinged or damaged, this will result in a price change or potential rejection. If you are not sure, please send us a message, and we'll assist you!</p>
+                  <p>Boxes must be unopened, unexpired, and in original sealed packaging. Expiration dates should be at least 10 months away (unless otherwise approved). Boxes should not be damaged, dirty (inside or outside), or have markings. If you're unsure about condition, contact us with photos first!</p>
                 </div>
               </div>
-
               
               <div class="faq-item">
                 <button class="faq-question">
-                  <span>Which brands do you accept?</span>
+                  <span>Which brands and supplies do you accept?</span>
                   <span class="faq-icon">+</span>
                 </button>
                 <div class="faq-answer">
-                  <p>We accept most major brands including Accu-Chek, OneTouch, Contour, FreeStyle, and more. Visit our "Sell" page to see the complete list of accepted brands and current prices.</p>
+                  <p>We accept test strips (OneTouch, Freestyle, Contour, Accu-Chek), CGM sensors (Dexcom G6/G7, Freestyle Libre 2/3), insulin pump supplies (Omnipod Dash/5, Medtronic), and other diabetic accessories. Visit our "Sell" page for the complete list and current prices.</p>
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button class="faq-question">
+                  <span>Can I sell multiple items in one order?</span>
+                  <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                  <p>Yes! Our shopping cart system lets you add multiple items, adjust quantities, and see your total payout before checkout. You can mix different brands and types of supplies in a single order.</p>
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button class="faq-question">
+                  <span>What happens after I place an order?</span>
+                  <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                  <p>You'll receive automated email updates when your order is: confirmed (with shipping label), being processed at our facility, shipped with payment sent, and delivered/completed. You can also track everything in your member dashboard.</p>
                 </div>
               </div>
             </div>
@@ -150,7 +257,7 @@
                   <span class="faq-icon">+</span>
                 </button>
                 <div class="faq-answer">
-                  <p>We offer payment via PayPal, Venmo, or Zelle. You can select your preferred payment method during checkout. Payments are typically processed within 1-2 business days after we receive and verify your items.</p>
+                  <p>We offer payment via PayPal (instant), Venmo (instant), or Zelle (same-day). You select your preferred method during checkout. Payments are processed within 24-48 hours after we receive and verify your items.</p>
                 </div>
               </div>
               
@@ -160,7 +267,7 @@
                   <span class="faq-icon">+</span>
                 </button>
                 <div class="faq-answer">
-                  <p>Payment amounts vary based on brand, quantity, and expiration date. Current prices are listed on our "Sell" page. Generally, boxes with longer expiration dates and more popular brands command higher prices.</p>
+                  <p>Payment amounts vary based on brand, quantity, and expiration date. Current prices are listed on our "Sell" page with real-time pricing. Generally, boxes with longer expiration dates and more popular brands command higher prices.</p>
                 </div>
               </div>
               
@@ -170,7 +277,37 @@
                   <span class="faq-icon">+</span>
                 </button>
                 <div class="faq-answer">
-                  <p>No, shipping is free. We provide a prepaid shipping label that you can print at home. Simply package your items securely and drop them off at any USPS location or schedule a pickup.</p>
+                  <p>No, shipping is 100% free! After checkout, you'll receive a prepaid USPS shipping label via email. Print it, pack your items securely, and drop off at any USPS location or schedule a pickup. We cover all shipping costs.</p>
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button class="faq-question">
+                  <span>How do I get my shipping label?</span>
+                  <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                  <p>Immediately after completing checkout, you'll receive an automated email with your order confirmation and prepaid shipping label. The label is ready to print and includes tracking information so you can monitor your shipment.</p>
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button class="faq-question">
+                  <span>Can I track my order and payment status?</span>
+                  <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                  <p>Yes! Create a free account to access your member dashboard where you can view all orders, track shipment status, see payment history, download shipping labels, and manage your account settings all in one place.</p>
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button class="faq-question">
+                  <span>What if my items are rejected?</span>
+                  <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                  <p>If items don't meet our standards, we'll email you with the reason and options to either have them returned (you pay return shipping) or donate them. Common rejection reasons include expired dates, damaged packaging, or items that don't match photos. If you're not sure, please send us a message and we will assist you.</p>
                 </div>
               </div>
             </div>
@@ -183,7 +320,7 @@
                   <span class="faq-icon">+</span>
                 </button>
                 <div class="faq-answer">
-                  <p>No, it is illegal to sell test strips that were paid for by Medicare, Medicaid, or other government insurance programs. We only purchase test strips that you personally paid for.</p>
+                  <p>No, it is illegal to sell test strips that were paid for by Medicare, Medicaid, or other government insurance programs. We only purchase test strips that you personally paid for out-of-pocket or through private insurance.</p>
                 </div>
               </div>
               
@@ -193,7 +330,7 @@
                   <span class="faq-icon">+</span>
                 </button>
                 <div class="faq-answer">
-                  <p>Yes, we take data security seriously. Your personal and payment information is encrypted and securely stored. We never share your information with third parties except as required to process your payment and shipment.</p>
+                  <p>Yes, we take data security seriously. Your personal and payment information is encrypted and securely stored. We never share your information with third parties except as required to process your payment and shipment. Photos are encrypted, used only for verification, and automatically deleted after order completion.</p>
                 </div>
               </div>
               
@@ -206,7 +343,36 @@
                   <p>Yes, our privacy policy details how we collect, use, and protect your information. You can view our full <a href="privacy-policy.html">privacy policy</a> on our website.</p>
                 </div>
               </div>
-            </div>
+
+              <div class="faq-item">
+                <button class="faq-question">
+                  <span>What do you do with prescription labels?</span>
+                  <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                  <p>DO NOT remove prescription labels yourself - this can damage packaging and reduce your payout. We safely and professionally remove all labels for you, protecting your privacy with secure handling. All personal information is destroyed according to HIPAA guidelines.</p>
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button class="faq-question">
+                  <span>Are you licensed and compliant?</span>
+                  <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                  <p>Yes, we operate in full compliance with all federal and state regulations regarding the resale of diabetic supplies. We maintain proper licensing and follow all required procedures for handling medical supplies and protecting customer privacy.</p>
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button class="faq-question">
+                  <span>What happens to my data after my order is complete?</span>
+                  <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                  <p>Order photos are automatically deleted after completion. Your account information is retained only as long as necessary for customer service and legal compliance. You can request data deletion at any time by locating the "Delete Account" button at the bottom of the profile page when you're signed into your account, or contacting our support team.</p>
+                </div>
+              </div>
           </div>
         </div>
       </section>
@@ -222,66 +388,85 @@
 
       <!-- Footer -->
       <footer>
-        <!-- Footer content will be inserted by footer.js -->
+        <div class="footer-container">
+          <div class="footer-column">
+            <h4>About Us</h4>
+            <ul>
+              <li><a href="about.html">Our Story</a></li>
+              <li><a href="about.html">Our Mission</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-column">
+            <h4>Sell to Us</h4>
+            <ul>
+              <!-- Change this line in ALL HTML files -->
+              <li><a href="how-it-works.html">How It Works</a></li>
+              <li><a href="sell.html">Sell Your Supplies</a></li>
+              <li><a href="faqs.html">FAQs</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-column">
+            <h4>Resources</h4>
+            <ul>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms of Service</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-column">
+            <h4>Get in Touch</h4>
+            <ul>
+              <li><a href="tel:+1405-459-0973">405-459-0973</a></li>
+              <li><a href="mailto:webuydiabeticteststripsOK@gmail.com">webuydiabeticteststripsOK@gmail.com</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="footer-bottom">
+          <div class="footer-logo">
+            <img src="assets/WBSTOK-Logo_3.png" alt="We Buy Test Strips Oklahoma Logo">
+          </div>
+          
+          <div class="copyright">
+            &copy; 2025 We Buy Test Strips Oklahoma. All rights reserved.
+          </div>
+          
+          <div class="social-icons">
+            <a href="https://facebook.com" target="_blank" aria-label="Follow us on Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://instagram.com" target="_blank" aria-label="Follow us on Instagram"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
       </footer>
     </div>
 
-  <script src="js/script.js"></script>
-  <script src="footer.js"></script>
+  <script src="js/global.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/mobile-complete.js"></script>
+  <script src="js/faq.js"></script>
+  
   <script>
+    // Update cart counter on page load
     document.addEventListener('DOMContentLoaded', function() {
-      // Category switching functionality
-      const categoryButtons = document.querySelectorAll('.category-btn');
-      const faqCategories = document.querySelectorAll('.faq-category');
-      
-      categoryButtons.forEach(button => {
-        button.addEventListener('click', function() {
-          // Remove active class from all buttons
-          categoryButtons.forEach(btn => btn.classList.remove('active'));
-          
-          // Add active class to clicked button
-          this.classList.add('active');
-          
-          // Get the category to show
-          const categoryToShow = this.getAttribute('data-category');
-          
-          // Hide all categories
-          faqCategories.forEach(category => {
-            category.classList.remove('active');
-          });
-          
-          // Show the selected category
-          document.getElementById(categoryToShow).classList.add('active');
-        });
-      });
-      
-      // FAQ question toggling functionality
-      const faqQuestions = document.querySelectorAll('.faq-question');
-      
-      faqQuestions.forEach(question => {
-        question.addEventListener('click', function() {
-          // Toggle the open class on the parent faq-item
-          const faqItem = this.parentElement;
-          
-          // Check if this item is already open
-          const isOpen = faqItem.classList.contains('open');
-          
-          // Close all other open items
-          document.querySelectorAll('.faq-item.open').forEach(item => {
-            if (item !== faqItem) {
-              item.classList.remove('open');
-            }
-          });
-          
-          // Toggle this item
-          if (isOpen) {
-            faqItem.classList.remove('open');
-          } else {
-            faqItem.classList.add('open');
-          }
-        });
-      });
+      updateCartCount();
     });
+    
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+      
+      const cartCountElements = document.querySelectorAll('.cart-count');
+      cartCountElements.forEach(element => {
+        element.textContent = cartCount;
+        element.setAttribute('data-count', cartCount);
+        
+        // Always show cart counter
+        element.style.display = 'inline-flex';
+      });
+    }
   </script>
+  </div>
 </body>
 </html>

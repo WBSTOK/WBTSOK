@@ -244,3 +244,280 @@ body.fixed-nav {
     margin-top: 10px; /* Reduced margin */
   }
 }
+
+/* ========================================
+   SIGNUP PAGE STYLES - Fixed Navigation
+   ======================================== */
+
+/* Signup Page Body - MUST have padding-top for fixed nav */
+body.signup-page {
+  background-color: #f5f5f5;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  padding-top: 70px; /* CRITICAL: Match your fixed nav height */
+}
+
+/* Signup Main Section */
+.signup-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  background-color: #f5f5f5;
+  min-height: calc(100vh - 70px); /* Account for fixed nav */
+}
+
+/* Signup Container */
+.signup-container {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  padding: 50px 40px;
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+}
+
+/* Signup Headings */
+.signup-container h1 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.signup-subtitle {
+  color: #777;
+  margin-bottom: 35px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Signup Form */
+.signup-form {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.signup-form .form-group {
+  margin-bottom: 24px;
+}
+
+.signup-form .form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #444;
+  font-size: 0.95rem;
+}
+
+.signup-form .form-group input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #ffffff;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  box-sizing: border-box;
+}
+
+.signup-form .form-group input:focus {
+  border-color: var(--accent, #ff6f61);
+  box-shadow: 0 0 0 3px rgba(255, 111, 97, 0.1);
+  outline: none;
+}
+
+/* Password Container */
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-container input {
+  flex: 1;
+  padding-right: 50px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 15px;
+  cursor: pointer;
+  color: #777;
+  transition: color 0.3s ease;
+}
+
+.toggle-password:hover {
+  color: var(--accent, #ff6f61);
+}
+
+/* Password Requirements */
+.password-requirements {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.requirement {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+.requirement i {
+  font-size: 0.6rem;
+}
+
+.requirement.unmet {
+  color: #dc3545;
+}
+
+.requirement.met {
+  color: #28a745;
+}
+
+.requirement.met i {
+  color: #28a745;
+}
+
+/* Terms Checkbox */
+.terms-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.terms-checkbox input[type="checkbox"] {
+  margin-top: 4px;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.terms-checkbox label {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #666;
+}
+
+.terms-checkbox a {
+  color: var(--accent, #ff6f61);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.terms-checkbox a:hover {
+  text-decoration: underline;
+}
+
+/* Signup Button */
+.signup-btn {
+  width: 100%;
+  padding: 14px;
+  background-color: var(--accent, #ff6f61);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-bottom: 5px;
+  text-transform: none;
+}
+
+.signup-btn:hover:not(:disabled) {
+  background-color: #e25e50;
+}
+
+.signup-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Login Link */
+.signup-login-link {
+  margin-top: 25px;
+  font-size: 0.95rem;
+  color: #666;
+  text-align: center;
+}
+
+.signup-login-link p {
+  margin: 0;
+}
+
+.signup-login-link a {
+  color: var(--accent, #ff6f61);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.signup-login-link a:hover {
+  text-decoration: underline;
+}
+
+/* Active state for login-link in navigation */
+.login-link {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+  padding: 5px 10px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.login-link:hover {
+  color: #ff6f61;
+}
+
+.login-link.active {
+  color: #ff6f61;
+  background-color: rgba(255, 111, 97, 0.1);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .signup-container {
+    padding: 40px 30px;
+    margin: 20px;
+  }
+  
+  .signup-container h1 {
+    font-size: 1.8rem;
+  }
+  
+  .password-requirements {
+    grid-template-columns: 1fr;
+  }
+  
+  .terms-checkbox {
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .signup-container {
+    padding: 30px 20px;
+  }
+  
+  .signup-container h1 {
+    font-size: 1.6rem;
+  }
+}
+
+/* ========================================
+   END SIGNUP PAGE STYLES
+   ======================================== */

@@ -1,21 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MMKVNSCZY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0MMKVNSCZY');
+    </script>
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1458457668401844');
+    fbq('track', 'PageView');
+    </script>
+    <noscript>
+    <img height="1" width="1" src="https://www.facebook.com/tr?id=1458457668401844&ev=PageView&noscript=1"/>
+    </noscript>
+    <!-- End Meta Pixel Code -->
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Your Cart – We Buy Test Strips Oklahoma</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS files in exact same order as signup.html -->
     <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/footer-styles.css"> <!-- Add this line to all pages -->
-    <link rel="stylesheet" href="css/home.css">
-    <link rel="stylesheet" href="css/faq.css">
     <link rel="stylesheet" href="css/navigation.css">
-    <!-- Page-specific CSS -->
+    <link rel="stylesheet" href="css/footer-styles.css">
     <link rel="stylesheet" href="css/cart-styles.css">
+    <link rel="stylesheet" href="css/faq.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/page-layout.css">
+    <link rel="stylesheet" href="css/mobile-responsive.css">
+
+    
     <meta name="description" content="Review your cart at We Buy Test Strips Oklahoma." />
 </head>
 <body class="cart-page">
@@ -26,24 +51,43 @@
           <a href="index.html" class="logo">
             <img src="assets/WBSTOK-Logo_2.png" alt="We Buy Test Strips Oklahoma Logo" />
           </a>
+          
           <button class="menu-toggle" aria-label="Toggle menu">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
           </button>
+          
           <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="about.html">About Us</a>
+            <!-- Change this line in ALL HTML files -->
             <a href="how-it-works.html">How it Works</a>
             <a href="sell.html">Sell</a>
             <a href="contact.html">Contact</a>
             <a href="faqs.html">FAQs</a>
           </div>
           <div class="user-actions">
-            <a href="login.html" class="login-link">
-              <i class="fas fa-user"></i>
-              <span>Sign In</span>
-            </a>
+            <!-- Show when user is NOT logged in -->
+            <div class="auth-buttons" id="auth-buttons" style="display: none;">
+              <a href="login.html" class="btn-secondary">Sign In</a>
+              <a href="signup.html" class="btn-primary">Sign Up</a>
+            </div>
+            
+            <!-- Show when user IS logged in -->
+            <div class="user-menu" id="user-menu">
+              <a href="dashboard.html" class="user-profile-link">
+                <i class="fas fa-user"></i>
+                <span class="user-name" id="nav-user-name">User</span>
+              </a>
+
+              <button class="logout-btn" id="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+              </button>
+            </div>
+            
+            <!-- Cart icon (always visible) -->
             <a href="cart.html" class="cart-link">
               <i class="fas fa-shopping-cart"></i>
               <span class="cart-count">0</span>
@@ -51,25 +95,33 @@
           </div>
         </div>
       </nav>
+      
       <!-- Cart Section -->
       <section class="cart-section">
         <div class="cart-container">
           <h1>Your Cart</h1>
-          <p class="cart-subtitle">Review your items before checkout</p>
-          
-          <!-- Cart Items -->
-          <div class="cart-items"></div>
-          <div id="empty-cart-message">Your cart is empty</div>
-          <!-- Cart Summary -->
-          <div class="cart-summary">
-            <div class="cart-total">
-              <span>Total:</span>
-              <span>$<span id="cart-total-amount">0.00</span></span>
+          <div id="cart-items">
+            <div class="empty-cart">
+              <i class="fas fa-shopping-cart"></i>
+              <h2>Your cart is empty</h2>
+              <p>Start adding items to your cart to see them here.</p>
+              <a href="sell.html" class="btn-primary">Start Selling</a>
             </div>
-            <button class="checkout-btn">Proceed to Checkout</button>
+          </div>
+          
+          <div id="cart-summary" style="display: none;">
+            <div class="cart-total">
+              <h3>Cart Summary</h3>
+              <div class="total-line">
+                <span>Total:</span>
+                <span id="cart-total">$0.00</span>
+              </div>
+              <button class="btn-primary checkout-btn" id="checkout-btn">Proceed to Checkout</button>
+            </div>
           </div>
         </div>
       </section>
+
       <!-- Footer -->
       <footer>
         <div class="footer-container">
@@ -102,7 +154,7 @@
           <div class="footer-column">
             <h4>Get in Touch</h4>
             <ul>
-              <li><a href="tel:+18001234567">405-459-0973</a></li>
+              <li><a href="tel:+1405-459-0973">405-459-0973</a></li>
               <li><a href="mailto:webuydiabeticteststripsOK@gmail.com">webuydiabeticteststripsOK@gmail.com</a></li>
             </ul>
           </div>
@@ -118,138 +170,76 @@
           </div>
           
           <div class="social-icons">
-            <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://facebook.com" target="_blank" aria-label="Follow us on Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://instagram.com" target="_blank" aria-label="Follow us on Instagram"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
       </footer>
     </div>
-    <script src="js/script.js"></script>
-    <script src="footer.js"></script>
-    <!-- No need for cart.js anymore -->
+
     <script>
+      // Cart functionality
       document.addEventListener('DOMContentLoaded', function() {
-        // Menu toggle functionality
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
-        
-        if (menuToggle && navLinks) {
-          menuToggle.addEventListener('click', function() {
-            navLinks.classList.toggle('active');
-            menuToggle.classList.toggle('active');
-          });
-        }
-        
-        // Initialize cart
-        renderCart();
+        loadCart();
         updateCartCount();
       });
       
-      // Add missing functions if they're not in script.js
-      function addToCart(item) {
-        // Get current cart
+      function loadCart() {
         const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartSummary = document.getElementById('cart-summary');
+        const emptyCart = document.querySelector('.empty-cart');
         
-        // Check if item already exists in cart
-        const existingItemIndex = cart.findIndex(cartItem => cartItem.id === item.id);
-        
-        if (existingItemIndex >= 0) {
-          // Update quantity if item exists
-          cart[existingItemIndex].quantity += item.quantity;
-        } else {
-          // Add new item
-          cart.push(item);
+        if (cart.length === 0) {
+          emptyCart.style.display = 'block';
+          cartSummary.style.display = 'none';
+          return;
         }
         
-        // Save updated cart
-        localStorage.setItem('cart', JSON.stringify(cart));
+        emptyCart.style.display = 'none';
+        cartSummary.style.display = 'block';
         
-        // Show success message
-        showMessage(`${item.name} added to cart`, 'success');
-      }
-      
-      function setupCartItemRemoval() {
-        const removeButtons = document.querySelectorAll('.cart-item-remove');
-        removeButtons.forEach(button => {
-          button.addEventListener('click', function() {
-            const itemId = this.dataset.id;
-            removeCartItem(itemId);
-          });
-        });
-      }
-      
-      function setupCartQuantityControls() {
-        // Handle quantity increase/decrease
-        const quantityBtns = document.querySelectorAll('.quantity-btn');
-        quantityBtns.forEach(btn => {
-          btn.addEventListener('click', function() {
-            const itemId = this.dataset.id;
-            const isIncrease = this.classList.contains('increase');
-            updateCartItemQuantity(itemId, isIncrease);
-          });
-        });
+        // Display cart items and update total
+        let total = 0;
+        cartItemsContainer.innerHTML = '';
         
-        // Handle direct quantity input
-        const quantityInputs = document.querySelectorAll('.cart-item .quantity-input');
-        quantityInputs.forEach(input => {
-          input.addEventListener('change', function() {
-            const itemId = this.dataset.id;
-            const newQuantity = parseInt(this.value) || 1;
-            setCartItemQuantity(itemId, newQuantity);
-          });
-        });
-      }
-      
-      function updateCartItemQuantity(itemId, isIncrease) {
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        const itemIndex = cart.findIndex(item => item.id === itemId);
-        
-        if (itemIndex >= 0) {
-          if (isIncrease) {
-            cart[itemIndex].quantity += 1;
-          } else {
-            cart[itemIndex].quantity = Math.max(1, cart[itemIndex].quantity - 1);
-          }
+        cart.forEach((item, index) => {
+          const itemTotal = item.price * item.quantity;
+          total += itemTotal;
           
-          localStorage.setItem('cart', JSON.stringify(cart));
-          renderCart();
-          updateCartCount();
-        }
-      }
-      
-      function setCartItemQuantity(itemId, quantity) {
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        const itemIndex = cart.findIndex(item => item.id === itemId);
+          // Create cart item HTML here
+        });
         
-        if (itemIndex >= 0) {
-          cart[itemIndex].quantity = Math.max(1, quantity);
-          localStorage.setItem('cart', JSON.stringify(cart));
-          renderCart();
-          updateCartCount();
-        }
+        document.getElementById('cart-total').textContent = `$${total.toFixed(2)}`;
       }
       
       function updateCartCount() {
         const cart = JSON.parse(localStorage.getItem('cart')) || [];
         const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
         
-        const cartCountElement = document.querySelector('.cart-count');
-        if (cartCountElement) {
-          cartCountElement.textContent = cartCount;
-          cartCountElement.style.display = cartCount > 0 ? 'inline-block' : 'none';
-        }
-      }
-      
-      // These functions might be needed depending on your implementation
-      function updateSubtotal(productId) {
-        // Implementation depends on your product page structure
-        console.log(`Updating subtotal for product ${productId}`);
-      }
-      
-      function updateAddToCartButton(productId) {
-        // Implementation depends on your product page structure
-        console.log(`Updating add to cart button for product ${productId}`);
+        const cartCountElements = document.querySelectorAll('.cart-count');
+        console.log(`Found ${cartCountElements.length} cart count elements`); // Debug log
+        
+        cartCountElements.forEach(element => {
+          element.textContent = cartCount;
+          element.setAttribute('data-count', cartCount);
+          
+          // Always show cart counter
+          element.style.display = 'inline-flex';
+          console.log(`Updated cart count to: ${cartCount}`); // Debug log
+        });
       }
     </script>
+    
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="js/image-checker.js"></script>
+    <script src="js/product-images.js"></script>
+    <script src="footer.js"></script>
+    <script src="js/global.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/mobile-complete.js"></script>
+    <script src="js/desktop-navigation.js"></script>
 </body>
 </html>
