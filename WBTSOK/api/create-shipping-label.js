@@ -2,14 +2,12 @@
 const shippo = require('shippo');
 
 export default async function handler(req, res) {
-  // Enable CORS
-  res.setHeader('Access-Control-Allow-Credentials', true);
+  // Enable CORS with proper headers
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
-  res.setHeader(
-    'Access-Control-Allow-Headers',
-    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
-  );
+  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS, PATCH, DELETE, POST, PUT');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Accept, Authorization, X-CSRF-Token, X-Requested-With, Accept-Version, Content-Length, Content-MD5, Date, X-Api-Version');
+  res.setHeader('Access-Control-Allow-Credentials', 'false');
+  res.setHeader('Access-Control-Max-Age', '86400');
 
   if (req.method === 'OPTIONS') {
     res.status(200).end();
@@ -23,7 +21,7 @@ export default async function handler(req, res) {
   try {
     const orderData = req.body;
     
-    console.log('📦 Creating shipping label for order:', orderData.id);
+    console.log('📦 Creating shipping label for order:', orderData.orderId);
     
     // Use production or test API key based on environment
     const apiKey = process.env.NODE_ENV === 'production' 
@@ -70,11 +68,11 @@ async function createShippoLabel(shippoClient, orderData) {
         phone: '4054590973'
       },
       address_to: {
-        name: `${orderData.firstName} ${orderData.lastName}`,
-        street1: orderData.address,
-        city: orderData.city,
-        state: orderData.state,
-        zip: orderData.zip,
+        name: orderData.customerName,
+        street1: orderData.shippingAddress.street1,
+        city: orderData.shippingAddress.city,
+        state: orderData.shippingAddress.state,
+        zip: orderData.shippingAddress.zip,
         country: 'US',
         phone: orderData.phone || '0000000000'
       },
@@ -100,7 +98,7 @@ async function createShippoLabel(shippoClient, orderData) {
       return {
         success: true,
         message: 'Shipping label created successfully',
-        orderId: orderData.id,
+        orderId: orderData.orderId,
         labelUrl: transaction.label_url,
         trackingNumber: transaction.tracking_number,
         estimatedDelivery: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toISOString() // 3 days
@@ -120,8 +118,8 @@ function getMockResponse(orderData) {
   return {
     success: true,
     message: 'Shipping label created successfully (DEMO MODE)',
-    orderId: orderData.id,
-    labelUrl: `https://demo.shippo.com/labels/${orderData.id}.pdf`,
+    orderId: orderData.orderId,
+    labelUrl: `https://demo.shippo.com/labels/${orderData.orderId}.pdf`,
     trackingNumber: `DEMO${Date.now().toString().slice(-10)}`,
     estimatedDelivery: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString()
   };

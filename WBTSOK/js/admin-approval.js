@@ -2,27 +2,90 @@ document.addEventListener('DOMContentLoaded', function() {
   const urlParams = new URLSearchParams(window.location.search);
   const orderId = urlParams.get('order');
   
+  console.log('🔍 Admin Approval Page Loaded');
+  console.log('📋 Order ID from URL:', orderId);
+  console.log('🌐 Current URL:', window.location.href);
+  
   if (orderId) {
+    console.log('✅ Order ID found, loading order details...');
     loadOrderForApproval(orderId);
+  } else {
+    console.error('❌ No order ID found in URL');
+    showError('No order ID provided in URL');
   }
   
   document.getElementById('approve-btn').addEventListener('click', () => approveOrder(orderId));
   document.getElementById('reject-btn').addEventListener('click', () => rejectOrder(orderId));
 });
 
+function showError(message) {
+  const loadingState = document.getElementById('loading-state');
+  loadingState.innerHTML = `
+    <i class="fas fa-exclamation-triangle" style="color: #dc3545; font-size: 2rem; margin-bottom: 1rem;"></i>
+    <h3 style="color: #dc3545;">Error Loading Order</h3>
+    <p>${message}</p>
+    <button onclick="window.location.reload()" style="padding: 10px 20px; background: #2c5aa0; color: white; border: none; border-radius: 4px; cursor: pointer;">
+      <i class="fas fa-refresh"></i> Retry
+    </button>
+  `;
+}
+
+function showOrderMismatchOption(requestedId, availableOrder) {
+  const loadingState = document.getElementById('loading-state');
+  loadingState.innerHTML = `
+    <i class="fas fa-exclamation-triangle" style="color: #ffc107; font-size: 2rem; margin-bottom: 1rem;"></i>
+    <h3 style="color: #856404;">Order ID Mismatch</h3>
+    <p>Looking for order <strong>${requestedId}</strong>, but found recent order <strong>${availableOrder.id}</strong></p>
+    <p>Customer: <strong>${availableOrder.firstName} ${availableOrder.lastName}</strong> (${availableOrder.email})</p>
+    <p>Amount: <strong>$${availableOrder.total}</strong></p>
+    <p>Created: <strong>${new Date(availableOrder.createdAt || availableOrder.timestamp).toLocaleString()}</strong></p>
+    <div style="margin-top: 20px;">
+      <button onclick="displayOrderDetails(${JSON.stringify(availableOrder).replace(/"/g, '&quot;')})" 
+              style="padding: 10px 20px; background: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; margin-right: 10px;">
+        <i class="fas fa-check"></i> Use This Order
+      </button>
+      <button onclick="window.location.reload()" 
+              style="padding: 10px 20px; background: #6c757d; color: white; border: none; border-radius: 4px; cursor: pointer;">
+        <i class="fas fa-refresh"></i> Retry
+      </button>
+    </div>
+  `;
+}
+
 async function loadOrderForApproval(orderId) {
   try {
+    console.log('🔄 Fetching orders from API...');
     const orders = await window.ordersAPI.getOrders();
+    console.log('📦 Total orders received:', orders.length);
+    console.log('🔍 Looking for order ID:', orderId);
+    console.log('📋 Available order IDs:', orders.map(o => o.id));
+    
     const order = orders.find(o => o.id === orderId);
     
     if (order) {
+      console.log('✅ Order found:', order);
       displayOrderDetails(order);
     } else {
-      document.getElementById('order-details').innerHTML = '<p>Order not found.</p>';
+      console.error('❌ Order not found in database');
+      console.log('🔍 Available orders:', orders);
+      
+      // If there's only one order and it's recent, offer to use it instead
+      if (orders.length === 1) {
+        const availableOrder = orders[0];
+        const orderAge = new Date() - new Date(availableOrder.createdAt || availableOrder.timestamp);
+        const hoursSinceCreated = orderAge / (1000 * 60 * 60);
+        
+        if (hoursSinceCreated < 24) { // If order is less than 24 hours old
+          showOrderMismatchOption(orderId, availableOrder);
+          return;
+        }
+      }
+      
+      showError(`Order ${orderId} not found in database. Available orders: ${orders.map(o => o.id).join(', ')}`);
     }
   } catch (error) {
-    console.error('Failed to load order:', error);
-    document.getElementById('order-details').innerHTML = '<p>Error loading order. Please refresh the page.</p>';
+    console.error('❌ Failed to load order:', error);
+    showError(`API Error: ${error.message}`);
   }
 }
 
@@ -151,10 +214,36 @@ function displayOrderDetails(order) {
 async function approveOrder(orderId) {
   if (confirm('Are you sure you want to approve this order?')) {
     try {
-      // Update order status
-      await updateOrderStatus(orderId, 'approved');
+      // Update order status to 'processing' first
+      await updateOrderStatus(orderId, 'processing');
       
-      alert('Order approved! Customer will be notified.');
+      // Get the updated order details
+      const orders = await window.ordersAPI.getOrders();
+      const order = orders.find(o => o.id === orderId);
+      
+      if (order) {
+        // Create shipping label
+        const shippingResult = await createShippingLabel(order);
+        
+        // Update status to 'approved' after shipping label is created
+        await updateOrderStatus(orderId, 'approved');
+        
+        // Send approval email with shipping instructions
+        if (window.emailService && shippingResult.success) {
+          try {
+            await window.emailService.sendOrderApproval(order, {
+              trackingNumber: shippingResult.trackingNumber,
+              labelUrl: shippingResult.labelUrl
+            });
+            console.log('✅ Order approval email sent to customer');
+          } catch (emailError) {
+            console.error('❌ Failed to send approval email:', emailError);
+            // Don't fail the approval process if email fails
+          }
+        }
+      }
+      
+      alert('Order approved, shipping label created, and customer notified with packing instructions!');
       window.close();
     } catch (error) {
       console.error('Error approving order:', error);
@@ -203,6 +292,57 @@ async function updateOrderStatus(orderId, status, reason = null) {
   } catch (error) {
     console.error('Error updating order status:', error);
     alert('Error updating order status. Please try again.');
+  }
+}
+
+async function createShippingLabel(order) {
+  try {
+    console.log('Creating shipping label for order:', order.id);
+    
+    // Validate required fields for shipping
+    if (!order.firstName || !order.lastName) {
+      throw new Error('Customer name is missing');
+    }
+    if (!order.address || !order.city || !order.state || !order.zip) {
+      throw new Error('Shipping address is incomplete');
+    }
+    
+    const response = await fetch(`${window.ordersAPI.baseURL}/api/create-shipping-label`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        orderId: order.id,
+        customerName: `${order.firstName} ${order.lastName}`,
+        customerEmail: order.email,
+        phone: order.phone || '0000000000',
+        shippingAddress: {
+          street1: order.address,
+          city: order.city,
+          state: order.state,
+          zip: order.zip
+        },
+        orderItems: order.items || [{
+          name: 'Test Strips',
+          quantity: 5,
+          price: order.total
+        }]
+      })
+    });
+
+    if (!response.ok) {
+      const errorData = await response.text();
+      throw new Error(`HTTP error! status: ${response.status}, details: ${errorData}`);
+    }
+
+    const result = await response.json();
+    console.log('✅ Shipping label created successfully:', result);
+    return result;
+
+  } catch (error) {
+    console.error('❌ Error creating shipping label:', error);
+    throw error;
   }
 }
 

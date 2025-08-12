@@ -3,9 +3,13 @@
 class OrdersAPI {
   constructor() {
     // Use environment-based URLs
-    this.baseURL = window.location.hostname === 'localhost' 
-      ? 'http://localhost:3000' 
-      : window.location.origin;
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+      this.baseURL = 'http://localhost:3000';
+    } else {
+      // Point to your Vercel deployment for production API calls
+      this.baseURL = 'https://wbtsok-oormlsgus-we-buy-test-strips-oklahoma.vercel.app';
+    }
+    console.log('🔗 Orders API Base URL:', this.baseURL);
   }
 
   async createOrder(orderData) {
@@ -72,6 +76,54 @@ class OrdersAPI {
 
     } catch (error) {
       console.error('❌ Failed to update order in database:', error);
+      throw error;
+    }
+  }
+
+  async deleteOrder(orderId) {
+    try {
+      const response = await fetch(`${this.baseURL}/api/delete`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ orderId })
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      console.log('✅ Order deleted from database:', result);
+      return result;
+
+    } catch (error) {
+      console.error('❌ Failed to delete order from database:', error);
+      throw error;
+    }
+  }
+
+  async clearAllOrders() {
+    try {
+      const response = await fetch(`${this.baseURL}/api/delete`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ clearAll: true })
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      console.log('✅ All orders cleared from database:', result);
+      return result;
+
+    } catch (error) {
+      console.error('❌ Failed to clear orders from database:', error);
       throw error;
     }
   }

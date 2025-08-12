@@ -651,7 +651,7 @@ async function processOrder() {
     let data = { success: false };
     
     try {
-      const response = await fetch('/api/create-shipping-label', {
+      const response = await fetch(`${window.ordersAPI.baseURL}/api/create-shipping-label`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -740,11 +740,18 @@ async function processOrder() {
 // ✅ UPDATED FUNCTION TO SAVE ORDER DATA TO VERCEL KV
 async function saveOrderToDatabase(orderData) {
   try {
+    console.log('💾 Attempting to save order to database:', orderData.id);
+    console.log('🔗 Using API URL:', window.ordersAPI.baseURL);
+    console.log('📦 Order data:', orderData);
+    
     // Save to Vercel KV database
-    await window.ordersAPI.createOrder(orderData);
-    console.log('✅ Order saved to database:', orderData.id);
+    const result = await window.ordersAPI.createOrder(orderData);
+    console.log('✅ Order saved to database successfully:', result);
+    console.log('✅ Order ID confirmed:', orderData.id);
   } catch (error) {
     console.error('❌ Failed to save order to database:', error);
+    console.error('❌ Error details:', error.message);
+    console.error('❌ Full error:', error);
     // Fallback is handled in ordersAPI
   }
 }

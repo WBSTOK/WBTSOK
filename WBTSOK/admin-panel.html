@@ -213,10 +213,33 @@
       </div>
     </section>
 
+    <!-- Management Controls -->
+    <section class="management-controls" style="margin-bottom: 2rem;">
+      <div style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <h3 style="margin: 0; color: #2c5aa0;">Order Management</h3>
+          <p style="margin: 0.5rem 0 0 0; color: #666; font-size: 0.9rem;">View all orders and manage your order history</p>
+        </div>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <button id="view-all-orders-btn" class="action-btn" style="background: #2c5aa0; color: white;">
+            <i class="fas fa-list"></i> View All Orders
+          </button>
+          <button id="clear-history-btn" class="action-btn" style="background: #dc3545; color: white;">
+            <i class="fas fa-trash"></i> Clear All History
+          </button>
+        </div>
+      </div>
+    </section>
+
     <!-- Pending Orders -->
     <section class="pending-orders">
       <div class="pending-orders-header">
-        <h2>Orders Requiring Approval</h2>
+        <h2 id="orders-section-title">Orders Requiring Approval</h2>
+        <div style="display: flex; gap: 1rem; align-items: center;">
+          <button id="show-pending-btn" class="action-btn" style="background: #ffc107; color: #000; display: none;">
+            <i class="fas fa-clock"></i> Show Pending Only
+          </button>
+        </div>
       </div>
       
       <div class="orders-table-container">
