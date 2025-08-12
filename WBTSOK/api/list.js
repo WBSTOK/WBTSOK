@@ -1,4 +1,4 @@
-import { kv } from '@vercel/kv';
+import { Redis } from '@upstash/redis';
 
 export default async function handler(req, res) {
   // Enable CORS with proper headers
@@ -18,13 +18,19 @@ export default async function handler(req, res) {
   }
 
   try {
+    // Initialize Redis client
+    const redis = new Redis({
+      url: process.env.KV_REST_API_URL,
+      token: process.env.KV_REST_API_TOKEN,
+    });
+
     // Get list of order IDs
-    const orderIds = await kv.lrange('orders:list', 0, -1);
+    const orderIds = await redis.lrange('orders:list', 0, -1);
     
     // Get all orders
     const orders = [];
     for (const orderId of orderIds) {
-      const order = await kv.get(`order:${orderId}`);
+      const order = await redis.get(`order:${orderId}`);
       if (order) {
         orders.push(order);
       }

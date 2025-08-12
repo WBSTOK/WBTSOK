@@ -1,4 +1,4 @@
-import { kv } from '@vercel/kv';
+import { Redis } from '@upstash/redis';
 
 export default async function handler(req, res) {
   // Enable CORS with proper headers
@@ -24,8 +24,14 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Order ID is required' });
     }
 
+    // Initialize Redis client
+    const redis = new Redis({
+      url: process.env.KV_REST_API_URL,
+      token: process.env.KV_REST_API_TOKEN,
+    });
+
     // Get existing order
-    const existingOrder = await kv.get(`order:${orderId}`);
+    const existingOrder = await redis.get(`order:${orderId}`);
     
     if (!existingOrder) {
       return res.status(404).json({ error: 'Order not found' });
@@ -39,7 +45,7 @@ export default async function handler(req, res) {
     };
 
     // Save updated order
-    await kv.set(`order:${orderId}`, updatedOrder);
+    await redis.set(`order:${orderId}`, updatedOrder);
 
     res.status(200).json({ 
       success: true, 
