@@ -9,7 +9,7 @@
     "deploy": "vercel --prod"
   },
   "dependencies": {
-    "@vercel/kv": "^3.0.0",
+    "@upstash/redis": "^1.35.0",
     "@vercel/node": "^2.15.0",
     "shippo": "^1.7.1"
   },
