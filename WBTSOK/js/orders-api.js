@@ -6,7 +6,7 @@ class OrdersAPI {
     if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
       this.baseURL = 'http://localhost:3000';
     } else {
-      // Point to your Vercel deployment for production API calls
+      // Point to your Vercel deployment for production API calls  
       this.baseURL = 'https://wbtsok-oormlsgus-we-buy-test-strips-oklahoma.vercel.app';
     }
     console.log('🔗 Orders API Base URL:', this.baseURL);
