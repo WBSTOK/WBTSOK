@@ -1,4 +1,4 @@
-import { Redis } from '@upstash/redis';
+import { kv } from '@vercel/kv';
 
 export default async function handler(req, res) {
   // Enable CORS with proper headers
@@ -25,17 +25,11 @@ export default async function handler(req, res) {
       orderData.timestamp = new Date().toISOString();
     }
 
-    // Initialize Redis client
-    const redis = new Redis({
-      url: process.env.KV_REST_API_URL,
-      token: process.env.KV_REST_API_TOKEN,
-    });
-
     // Store order in KV with order ID as key
-    await redis.set(`order:${orderData.id}`, orderData);
+    await kv.set(`order:${orderData.id}`, orderData);
     
     // Also add to orders list for easy retrieval
-    await redis.lpush('orders:list', orderData.id);
+    await kv.lpush('orders:list', orderData.id);
 
     console.log('Order saved to KV:', orderData.id);
     
