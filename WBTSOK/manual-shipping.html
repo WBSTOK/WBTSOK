@@ -165,7 +165,20 @@
         </div>
     </div>
 
-    <script src="js/orders-api.js"></script>
+    <script>
+        // Embedded OrdersAPI class to avoid 404 issues
+        class OrdersAPI {
+          constructor() {
+            // Use relative paths
+            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+              this.baseURL = 'http://localhost:3000';
+            } else {
+              this.baseURL = '';
+            }
+            console.log('🔗 Orders API Base URL:', this.baseURL || 'relative paths');
+          }
+        }
+    </script>
     <script>
         document.getElementById('shippingForm').addEventListener('submit', async function(e) {
             e.preventDefault();
