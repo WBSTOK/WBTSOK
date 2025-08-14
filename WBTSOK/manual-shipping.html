@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual Shipping Label Generator - WBTSOK</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #8B4513;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .row {
+            display: flex;
+            gap: 15px;
+        }
+        .row .form-group {
+            flex: 1;
+        }
+        button {
+            background: #28a745;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+        button:hover {
+            background: #218838;
+        }
+        button:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+        }
+        .result {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 5px;
+            display: none;
+        }
+        .success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        .loading {
+            text-align: center;
+            color: #6c757d;
+        }
+        .tracking-info {
+            background: #e7f4ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #8B4513;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="admin-panel.html" class="back-link">← Back to Admin Panel</a>
+        
+        <h1>📦 Manual Shipping Label Generator</h1>
+        
+        <form id="shippingForm">
+            <div class="form-group">
+                <label for="orderId">Order ID:</label>
+                <input type="text" id="orderId" placeholder="e.g., WB1234567890" required>
+            </div>
+
+            <h3>📍 Customer Shipping Address</h3>
+            <div class="form-group">
+                <label for="customerName">Full Name:</label>
+                <input type="text" id="customerName" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="street">Street Address:</label>
+                <input type="text" id="street" required>
+            </div>
+            
+            <div class="row">
+                <div class="form-group">
+                    <label for="city">City:</label>
+                    <input type="text" id="city" required>
+                </div>
+                <div class="form-group">
+                    <label for="state">State:</label>
+                    <input type="text" id="state" placeholder="OK" maxlength="2" required>
+                </div>
+                <div class="form-group">
+                    <label for="zip">ZIP Code:</label>
+                    <input type="text" id="zip" pattern="[0-9]{5}" required>
+                </div>
+            </div>
+
+            <h3>📦 Package Details</h3>
+            <div class="row">
+                <div class="form-group">
+                    <label for="weight">Weight (lbs):</label>
+                    <input type="number" id="weight" step="0.1" value="0.5" required>
+                </div>
+                <div class="form-group">
+                    <label for="service">Service Level:</label>
+                    <select id="service">
+                        <option value="PRIORITY">USPS Priority Mail</option>
+                        <option value="GROUND">Ground Shipping</option>
+                        <option value="FIRST">First-Class Mail</option>
+                    </select>
+                </div>
+            </div>
+
+            <button type="submit" id="generateBtn">🏷️ Generate Shipping Label</button>
+        </form>
+
+        <div id="result" class="result">
+            <div id="resultContent"></div>
+        </div>
+    </div>
+
+    <script src="js/orders-api.js"></script>
+    <script>
+        document.getElementById('shippingForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const generateBtn = document.getElementById('generateBtn');
+            const result = document.getElementById('result');
+            const resultContent = document.getElementById('resultContent');
+            
+            // Disable button and show loading
+            generateBtn.disabled = true;
+            generateBtn.textContent = '⏳ Generating Label...';
+            
+            // Show loading state
+            result.className = 'result loading';
+            result.style.display = 'block';
+            resultContent.innerHTML = '⏳ Creating your shipping label, please wait...';
+            
+            try {
+                // Prepare order data
+                const orderData = {
+                    orderId: document.getElementById('orderId').value,
+                    firstName: document.getElementById('customerName').value.split(' ')[0] || '',
+                    lastName: document.getElementById('customerName').value.split(' ').slice(1).join(' ') || '',
+                    streetAddress: document.getElementById('street').value,
+                    city: document.getElementById('city').value,
+                    state: document.getElementById('state').value,
+                    zipCode: document.getElementById('zip').value,
+                    weight: parseFloat(document.getElementById('weight').value),
+                    serviceLevel: document.getElementById('service').value
+                };
+
+                console.log('📦 Generating label for:', orderData);
+
+                // Initialize API
+                const ordersAPI = new OrdersAPI();
+
+                // Call the shipping label API
+                const response = await fetch(`${ordersAPI.baseURL}/api/create-shipping-label`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(orderData)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+
+                const labelData = await response.json();
+                console.log('✅ Label created:', labelData);
+
+                // Show success result
+                result.className = 'result success';
+                resultContent.innerHTML = `
+                    <h3>✅ Shipping Label Created Successfully!</h3>
+                    <div class="tracking-info">
+                        <p><strong>Order ID:</strong> ${orderData.orderId}</p>
+                        <p><strong>Tracking Number:</strong> ${labelData.trackingNumber || 'N/A'}</p>
+                        <p><strong>Service:</strong> ${labelData.serviceLevel || orderData.serviceLevel}</p>
+                        <p><strong>Cost:</strong> $${labelData.cost || '0.00'}</p>
+                    </div>
+                    ${labelData.labelUrl ? `
+                        <div style="background: #f9f9f9; padding: 20px; text-align: center; margin-top: 15px; border: 2px dashed #ccc;">
+                            <p><strong>📄 Print Your Label:</strong></p>
+                            <a href="${labelData.labelUrl}" target="_blank" style="color: #007bff; font-weight: bold;">
+                                🖨️ Open Label PDF
+                            </a>
+                            <p style="font-size: 14px; color: #666; margin-top: 10px;">
+                                Click the link above to open and print your shipping label
+                            </p>
+                        </div>
+                    ` : ''}
+                    <p style="margin-top: 20px; color: #666; font-size: 14px;">
+                        💡 Attach this label to your package and drop it off at any USPS location.
+                    </p>
+                `;
+
+            } catch (error) {
+                console.error('❌ Label generation failed:', error);
+                
+                // Show error result
+                result.className = 'result error';
+                resultContent.innerHTML = `
+                    <h3>❌ Failed to Generate Label</h3>
+                    <p><strong>Error:</strong> ${error.message}</p>
+                    <p>Please check:</p>
+                    <ul>
+                        <li>All address fields are filled correctly</li>
+                        <li>ZIP code is valid (5 digits)</li>
+                        <li>Your internet connection is stable</li>
+                    </ul>
+                `;
+            } finally {
+                // Re-enable button
+                generateBtn.disabled = false;
+                generateBtn.textContent = '🏷️ Generate Shipping Label';
+            }
+        });
+
+        // Auto-fill from URL parameters if provided
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('orderId')) {
+            document.getElementById('orderId').value = urlParams.get('orderId');
+        }
+    </script>
+</body>
+</html>
