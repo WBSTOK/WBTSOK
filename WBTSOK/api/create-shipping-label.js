@@ -1,5 +1,5 @@
 // Production-ready Vercel serverless function for creating shipping labels
-const shippo = require('shippo');
+import shippo from 'shippo';
 
 export default async function handler(req, res) {
   // Enable CORS with proper headers
