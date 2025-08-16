@@ -42,8 +42,12 @@ export default async function handler(req, res) {
     const shippoClient = shippo(apiKey);
     
     // Create shipping label with Shippo
+    console.log('📦 Sending request to Shippo with:');
+    console.log(JSON.stringify(orderData, null, 2));
+    
     const shippoResponse = await createShippoLabel(shippoClient, orderData);
     
+    console.log('✅ Shippo response:', shippoResponse);
     console.log('✅ Real shipping label created:', shippoResponse.trackingNumber);
     
     res.status(200).json(shippoResponse);
@@ -51,13 +55,15 @@ export default async function handler(req, res) {
   } catch (error) {
     console.error('❌ Shipping label creation failed:', error);
     console.error('❌ Error details:', error.message);
+    console.error('❌ Error response:', error?.response?.data || 'No response data');
     console.error('❌ Error stack:', error.stack);
     
-    // Return error instead of fallback to mock
+    // Return detailed error information
     res.status(500).json({
       success: false,
       error: 'Shippo API failed',
       details: error.message,
+      responseData: error?.response?.data || null,
       message: 'Real shipping label creation failed - check server logs'
     });
   }
