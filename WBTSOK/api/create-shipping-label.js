@@ -38,9 +38,10 @@ export default async function handler(req, res) {
       return res.status(200).json(getMockResponse(orderData));
     }
     
-    // Initialize Shippo with CommonJS require syntax
+    // Initialize Shippo with dynamic import to fix Vercel bundling
     console.log('📦 Initializing Shippo client...');
-    const shippo = require('shippo');
+    const shippoModule = await import('shippo');
+    const shippo = shippoModule.default || shippoModule;
     const shippoClient = shippo(apiKey);
     console.log('✅ Shippo client initialized');
     
