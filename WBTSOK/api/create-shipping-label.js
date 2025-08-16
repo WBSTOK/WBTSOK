@@ -1,5 +1,4 @@
 // Production-ready Vercel serverless function for creating shipping labels
-import shippo from 'shippo';
 
 export default async function handler(req, res) {
   // Enable CORS with proper headers
@@ -39,8 +38,11 @@ export default async function handler(req, res) {
       return res.status(200).json(getMockResponse(orderData));
     }
     
-    // Initialize Shippo with live API key
+    // Initialize Shippo with CommonJS require syntax
+    console.log('📦 Initializing Shippo client...');
+    const shippo = require('shippo');
     const shippoClient = shippo(apiKey);
+    console.log('✅ Shippo client initialized');
     
     // Create shipping label with Shippo
     console.log('📦 Sending request to Shippo with:');
