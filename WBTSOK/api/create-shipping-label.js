@@ -58,13 +58,17 @@ export default async function handler(req, res) {
     console.error('❌ Error response:', error?.response?.data || 'No response data');
     console.error('❌ Error stack:', error.stack);
     
-    // Return detailed error information
+    // Return detailed error information for debugging
     res.status(500).json({
       success: false,
       error: 'Shippo API failed',
       details: error.message,
       responseData: error?.response?.data || null,
-      message: 'Real shipping label creation failed - check server logs'
+      shippoError: error?.response || null,
+      nodeEnv: process.env.NODE_ENV,
+      apiKeyType: process.env.SHIPPO_API_KEY ? 'live' : 'missing',
+      requestData: orderData,
+      message: 'Check responseData for Shippo error details'
     });
   }
 }
