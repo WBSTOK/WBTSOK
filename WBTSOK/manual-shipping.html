@@ -215,8 +215,8 @@
                 // Initialize API
                 const ordersAPI = new OrdersAPI();
 
-                // Call the shipping label API
-                const response = await fetch(`${ordersAPI.baseURL}/api/create-shipping-label`, {
+                // Call the shipping label API (direct REST version)
+                const response = await fetch(`${ordersAPI.baseURL}/api/create-shipping-label-direct`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

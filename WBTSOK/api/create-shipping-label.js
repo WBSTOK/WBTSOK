@@ -38,18 +38,12 @@ export default async function handler(req, res) {
       return res.status(200).json(getMockResponse(orderData));
     }
     
-    // Initialize Shippo with dynamic import to fix Vercel bundling
-    console.log('📦 Initializing Shippo client...');
-    const shippoModule = await import('shippo');
-    const shippo = shippoModule.default || shippoModule;
-    const shippoClient = shippo(apiKey);
-    console.log('✅ Shippo client initialized');
-    
-    // Create shipping label with Shippo
+    // Call Shippo REST API directly to avoid bundling issues
+    console.log('📦 Calling Shippo REST API directly...');
     console.log('📦 Sending request to Shippo with:');
     console.log(JSON.stringify(orderData, null, 2));
     
-    const shippoResponse = await createShippoLabel(shippoClient, orderData);
+    const shippoResponse = await createShippoLabelDirect(apiKey, orderData);
     
     console.log('✅ Shippo response:', shippoResponse);
     console.log('✅ Real shipping label created:', shippoResponse.trackingNumber);
@@ -77,11 +71,11 @@ export default async function handler(req, res) {
   }
 }
 
-// Real Shippo integration
-async function createShippoLabel(shippoClient, orderData) {
+// Real Shippo integration using REST API directly
+async function createShippoLabelDirect(apiKey, orderData) {
   try {
-    // Create shipment (prepaid return label)
-    const shipment = await shippoClient.shipment.create({
+    // Create shipment using Shippo REST API
+    const shipmentData = {
       address_from: {
         name: 'WBTSOK',
         company: 'We Buy Test Strips Oklahoma',
