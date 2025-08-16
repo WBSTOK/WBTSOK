@@ -23,20 +23,21 @@ export default async function handler(req, res) {
     
     console.log('📦 Creating shipping label for order:', orderData.orderId);
     
-    // Use production or test API key based on environment
+    // Force production mode for live shipping labels
     console.log('🔍 NODE_ENV:', process.env.NODE_ENV);
-    const apiKey = process.env.NODE_ENV === 'production' 
-      ? process.env.SHIPPO_API_KEY 
-      : process.env.SHIPPO_TEST_API_KEY;
+    console.log('🔐 SHIPPO_API_KEY exists:', !!process.env.SHIPPO_API_KEY);
+    console.log('🔐 SHIPPO_TEST_API_KEY exists:', !!process.env.SHIPPO_TEST_API_KEY);
     
-    console.log('🔑 Using API key type:', process.env.NODE_ENV === 'production' ? 'LIVE' : 'TEST');
+    // Always use live API key for real labels
+    const apiKey = process.env.SHIPPO_API_KEY;
+    console.log('🔑 Using LIVE API key for production labels');
     
     if (!apiKey) {
-      console.warn('⚠️ No Shippo API key found, using mock response');
+      console.warn('⚠️ No live Shippo API key found, using mock response');
       return res.status(200).json(getMockResponse(orderData));
     }
     
-    // Initialize Shippo with API key
+    // Initialize Shippo with live API key
     const shippoClient = shippo(apiKey);
     
     // Create shipping label with Shippo
