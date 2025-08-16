@@ -19,6 +19,7 @@ export default async function handler(req, res) {
   }
 
   try {
+    console.log('🚀 create-shipping-label invoked. Shippo key starts with:', process.env.SHIPPO_API_KEY?.substring(0, 15));
     const orderData = req.body;
     
     console.log('📦 Creating shipping label for order:', orderData.orderId);
