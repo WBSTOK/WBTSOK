@@ -49,10 +49,16 @@ export default async function handler(req, res) {
     
   } catch (error) {
     console.error('❌ Shipping label creation failed:', error);
+    console.error('❌ Error details:', error.message);
+    console.error('❌ Error stack:', error.stack);
     
-    // Fallback to mock response if Shippo fails
-    console.log('🔄 Falling back to mock response');
-    res.status(200).json(getMockResponse(req.body));
+    // Return error instead of fallback to mock
+    res.status(500).json({
+      success: false,
+      error: 'Shippo API failed',
+      details: error.message,
+      message: 'Real shipping label creation failed - check server logs'
+    });
   }
 }
 
