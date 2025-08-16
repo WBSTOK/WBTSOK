@@ -307,7 +307,7 @@ async function createShippingLabel(order) {
       throw new Error('Shipping address is incomplete');
     }
     
-    const response = await fetch(`${window.ordersAPI.baseURL}/api/create-shipping-label`, {
+    const response = await fetch(`${window.ordersAPI.baseURL}/api/create-shipping-label-direct`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

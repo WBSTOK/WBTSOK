@@ -651,7 +651,7 @@ async function processOrder() {
     let data = { success: false };
     
     try {
-      const response = await fetch(`${window.ordersAPI.baseURL}/api/create-shipping-label`, {
+      const response = await fetch(`${window.ordersAPI.baseURL}/api/create-shipping-label-direct`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
