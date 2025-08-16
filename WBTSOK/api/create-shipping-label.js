@@ -31,6 +31,7 @@ export default async function handler(req, res) {
     // Always use live API key for real labels
     const apiKey = process.env.SHIPPO_API_KEY;
     console.log('🔑 Using LIVE API key for production labels');
+    console.log('🔐 API Key starts with:', apiKey ? apiKey.substring(0, 15) + '...' : 'NONE');
     
     if (!apiKey) {
       console.warn('⚠️ No live Shippo API key found, using mock response');
